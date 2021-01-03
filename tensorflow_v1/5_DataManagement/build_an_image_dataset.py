@@ -45,28 +45,28 @@ except:
     tf.set_random_seed(1)
 
 # Dataset Parameters - CHANGE HERE
-MODE = 'folder' # or 'file', if you choose a plain text file (see above).
-DATASET_PATH = '/path/to/dataset/' # the dataset file or root folder path.
+MODE = "folder"  # or 'file', if you choose a plain text file (see above).
+DATASET_PATH = "/path/to/dataset/"  # the dataset file or root folder path.
 
 # Image Parameters
-N_CLASSES = 2 # CHANGE HERE, total number of classes
-IMG_HEIGHT = 64 # CHANGE HERE, the image height to be resized to
-IMG_WIDTH = 64 # CHANGE HERE, the image width to be resized to
-CHANNELS = 3 # The 3 color channels, change to 1 if grayscale
+N_CLASSES = 2  # CHANGE HERE, total number of classes
+IMG_HEIGHT = 64  # CHANGE HERE, the image height to be resized to
+IMG_WIDTH = 64  # CHANGE HERE, the image width to be resized to
+CHANNELS = 3  # The 3 color channels, change to 1 if grayscale
 
 
 # Reading the dataset
 # 2 modes: 'file' or 'folder'
 def read_images(dataset_path, mode, batch_size):
     imagepaths, labels = list(), list()
-    if mode == 'file':
+    if mode == "file":
         # Read dataset file
         with open(dataset_path) as f:
             data = f.read().splitlines()
         for d in data:
-            imagepaths.append(d.split(' ')[0])
-            labels.append(int(d.split(' ')[1]))
-    elif mode == 'folder':
+            imagepaths.append(d.split(" ")[0])
+            labels.append(int(d.split(" ")[1]))
+    elif mode == "folder":
         # An ID will be affected to each sub-folders by alphabetical order
         label = 0
         # List the directory
@@ -84,7 +84,7 @@ def read_images(dataset_path, mode, batch_size):
             # Add each image to the training set
             for sample in walk[2]:
                 # Only keeps jpeg images
-                if sample.endswith('.jpg') or sample.endswith('.jpeg'):
+                if sample.endswith(".jpg") or sample.endswith(".jpeg"):
                     imagepaths.append(os.path.join(c_dir, sample))
                     labels.append(label)
             label += 1
@@ -95,8 +95,7 @@ def read_images(dataset_path, mode, batch_size):
     imagepaths = tf.convert_to_tensor(imagepaths, dtype=tf.string)
     labels = tf.convert_to_tensor(labels, dtype=tf.int32)
     # Build a TF Queue, shuffle data
-    image, label = tf.train.slice_input_producer([imagepaths, labels],
-                                                 shuffle=True)
+    image, label = tf.train.slice_input_producer([imagepaths, labels], shuffle=True)
 
     # Read images from disk
     image = tf.read_file(image)
@@ -106,14 +105,15 @@ def read_images(dataset_path, mode, batch_size):
     image = tf.image.resize_images(image, [IMG_HEIGHT, IMG_WIDTH])
 
     # Normalize
-    image = image * 1.0/127.5 - 1.0
+    image = image * 1.0 / 127.5 - 1.0
 
     # Create batches
-    X, Y = tf.train.batch([image, label], batch_size=batch_size,
-                          capacity=batch_size * 8,
-                          num_threads=4)
+    X, Y = tf.train.batch(
+        [image, label], batch_size=batch_size, capacity=batch_size * 8, num_threads=4
+    )
 
     return X, Y
+
 
 # -----------------------------------------------
 # THIS IS A CLASSIC CNN (see examples, section 3)
@@ -127,7 +127,7 @@ batch_size = 128
 display_step = 100
 
 # Network Parameters
-dropout = 0.75 # Dropout, probability to keep units
+dropout = 0.75  # Dropout, probability to keep units
 
 # Build the data input
 X, Y = read_images(DATASET_PATH, MODE, batch_size)
@@ -136,7 +136,7 @@ X, Y = read_images(DATASET_PATH, MODE, batch_size)
 # Create model
 def conv_net(x, n_classes, dropout, reuse, is_training):
     # Define a scope for reusing the variables
-    with tf.variable_scope('ConvNet', reuse=reuse):
+    with tf.variable_scope("ConvNet", reuse=reuse):
 
         # Convolution Layer with 32 filters and a kernel size of 5
         conv1 = tf.layers.conv2d(x, 32, 5, activation=tf.nn.relu)
@@ -174,8 +174,9 @@ logits_train = conv_net(X, N_CLASSES, dropout, reuse=False, is_training=True)
 logits_test = conv_net(X, N_CLASSES, dropout, reuse=True, is_training=False)
 
 # Define loss and optimizer (with train logits, for dropout to take effect)
-loss_op = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(
-    logits=logits_train, labels=Y))
+loss_op = tf.reduce_mean(
+    tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits_train, labels=Y)
+)
 optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
 train_op = optimizer.minimize(loss_op)
 
@@ -199,14 +200,19 @@ with tf.Session() as sess:
     tf.train.start_queue_runners()
 
     # Training cycle
-    for step in range(1, num_steps+1):
+    for step in range(1, num_steps + 1):
 
         if step % display_step == 0:
             # Run optimization and calculate batch loss and accuracy
             _, loss, acc = sess.run([train_op, loss_op, accuracy])
-            print("Step " + str(step) + ", Minibatch Loss= " + \
-                  "{:.4f}".format(loss) + ", Training Accuracy= " + \
-                  "{:.3f}".format(acc))
+            print(
+                "Step "
+                + str(step)
+                + ", Minibatch Loss= "
+                + "{:.4f}".format(loss)
+                + ", Training Accuracy= "
+                + "{:.3f}".format(acc)
+            )
         else:
             # Only run the optimization op (backprop)
             sess.run(train_op)
@@ -214,4 +220,4 @@ with tf.Session() as sess:
     print("Optimization Finished!")
 
     # Save your model
-    saver.save(sess, 'my_tf_model')
+    saver.save(sess, "my_tf_model")

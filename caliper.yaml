@@ -1,7 +1,10 @@
 analysis:
   name: Testing tensorflow
+  packagemanager: pypi
   dockerfile: Dockerfile
   dependency: tensorflow
+  python_versions:
+    - cp27
   tests:
     - tensorflow_v0.11/5_MultiGPU/multigpu_basics.py
     - tensorflow_v0.11/1_Introduction/basic_operations.py

@@ -34,25 +34,25 @@ except:
 # Training Parameters
 learning_rate = 0.1
 batch_size = 128
-num_steps = 3000000
-display_step = 10000
-eval_step = 200000
+num_steps = 1000
+display_step = 100
+eval_step = 2000
 
 # Evaluation Parameters
-eval_words = ['five', 'of', 'going', 'hardware', 'american', 'britain']
+eval_words = ["five", "of", "going", "hardware", "american", "britain"]
 
 # Word2Vec Parameters
-embedding_size = 200 # Dimension of the embedding vector
-max_vocabulary_size = 50000 # Total number of different words in the vocabulary
-min_occurrence = 10 # Remove all words that does not appears at least n times
-skip_window = 3 # How many words to consider left and right
-num_skips = 2 # How many times to reuse an input to generate a label
-num_sampled = 64 # Number of negative examples to sample
+embedding_size = 200  # Dimension of the embedding vector
+max_vocabulary_size = 50000  # Total number of different words in the vocabulary
+min_occurrence = 10  # Remove all words that does not appears at least n times
+skip_window = 3  # How many words to consider left and right
+num_skips = 2  # How many times to reuse an input to generate a label
+num_sampled = 64  # Number of negative examples to sample
 
 
 # Download a small chunk of Wikipedia articles collection
-url = 'http://mattmahoney.net/dc/text8.zip'
-data_path = 'text8.zip'
+url = "http://mattmahoney.net/dc/text8.zip"
+data_path = "text8.zip"
 if not os.path.exists(data_path):
     print("Downloading the dataset... (It may take some time)")
     filename, _ = urllib.urlretrieve(url, data_path)
@@ -62,7 +62,7 @@ with zipfile.ZipFile(data_path) as f:
     text_words = f.read(f.namelist()[0]).lower().split()
 
 # Build the dictionary and replace rare words with UNK token
-count = [('UNK', -1)]
+count = [("UNK", -1)]
 # Retrieve the most common words
 count.extend(collections.Counter(text_words).most_common(max_vocabulary_size - 1))
 # Remove samples with less than 'min_occurrence' occurrences
@@ -76,7 +76,7 @@ for i in range(len(count) - 1, -1, -1):
 vocabulary_size = len(count)
 # Assign an id to each word
 word2id = dict()
-for i, (word, _)in enumerate(count):
+for i, (word, _) in enumerate(count):
     word2id[word] = i
 
 data = list()
@@ -87,7 +87,7 @@ for word in text_words:
     if index == 0:
         unk_count += 1
     data.append(index)
-count[0] = ('UNK', unk_count)
+count[0] = ("UNK", unk_count)
 id2word = dict(zip(word2id.values(), word2id.keys()))
 
 print("Words count:", len(text_words))
@@ -108,7 +108,7 @@ def next_batch(batch_size, num_skips, skip_window):
     buffer = collections.deque(maxlen=span)
     if data_index + span > len(data):
         data_index = 0
-    buffer.extend(data[data_index:data_index + span])
+    buffer.extend(data[data_index : data_index + span])
     data_index += span
     for i in range(batch_size // num_skips):
         context_words = [w for w in range(span) if w != skip_window]
@@ -134,7 +134,7 @@ Y = tf.placeholder(tf.int32, shape=[None, 1])
 
 # Ensure the following ops & var are assigned on CPU
 # (some ops are not compatible on GPU)
-with tf.device('/cpu:0'):
+with tf.device("/cpu:0"):
     # Create the embedding variable (each row represent a word embedding vector)
     embedding = tf.Variable(tf.random_normal([vocabulary_size, embedding_size]))
     # Lookup the corresponding embedding vectors for each sample in X
@@ -146,12 +146,15 @@ with tf.device('/cpu:0'):
 
 # Compute the average NCE loss for the batch
 loss_op = tf.reduce_mean(
-    tf.nn.nce_loss(weights=nce_weights,
-                   biases=nce_biases,
-                   labels=Y,
-                   inputs=X_embed,
-                   num_sampled=num_sampled,
-                   num_classes=vocabulary_size))
+    tf.nn.nce_loss(
+        weights=nce_weights,
+        biases=nce_biases,
+        labels=Y,
+        inputs=X_embed,
+        num_sampled=num_sampled,
+        num_classes=vocabulary_size,
+    )
+)
 
 # Define the optimizer
 optimizer = tf.train.GradientDescentOptimizer(learning_rate)
@@ -160,7 +163,9 @@ train_op = optimizer.minimize(loss_op)
 # Evaluation
 # Compute the cosine similarity between input data embedding and every embedding vectors
 X_embed_norm = X_embed / tf.sqrt(tf.reduce_sum(tf.square(X_embed)))
-embedding_norm = embedding / tf.sqrt(tf.reduce_sum(tf.square(embedding), 1, keepdims=True))
+embedding_norm = embedding / tf.sqrt(
+    tf.reduce_sum(tf.square(embedding), 1, keepdims=True)
+)
 cosine_sim_op = tf.matmul(X_embed_norm, embedding_norm, transpose_b=True)
 
 # Initialize the variables (i.e. assign their default value)
@@ -185,8 +190,9 @@ with tf.Session() as sess:
         if step % display_step == 0 or step == 1:
             if step > 1:
                 average_loss /= display_step
-            print("Step " + str(step) + ", Average Loss= " + \
-                  "{:.4f}".format(average_loss))
+            print(
+                "Step " + str(step) + ", Average Loss= " + "{:.4f}".format(average_loss)
+            )
             average_loss = 0
 
         # Evaluation
@@ -195,8 +201,8 @@ with tf.Session() as sess:
             sim = sess.run(cosine_sim_op, feed_dict={X: x_test})
             for i in xrange(len(eval_words)):
                 top_k = 8  # number of nearest neighbors
-                nearest = (-sim[i, :]).argsort()[1:top_k + 1]
+                nearest = (-sim[i, :]).argsort()[1 : top_k + 1]
                 log_str = '"%s" nearest neighbors:' % eval_words[i]
                 for k in xrange(top_k):
-                    log_str = '%s %s,' % (log_str, id2word[nearest[k]])
+                    log_str = "%s %s," % (log_str, id2word[nearest[k]])
                 print(log_str)

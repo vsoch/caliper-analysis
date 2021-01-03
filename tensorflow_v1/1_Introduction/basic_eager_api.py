@@ -1,4 +1,4 @@
-'''
+"""
 Basic introduction to TensorFlow's Eager API.
 
 Author: Aymeric Damien
@@ -15,7 +15,7 @@ by using eager execution. Conversely, most models written with Eager enabled
 can be converted to a graph that can be further optimized and/or extracted
 for deployment in production without changing code. " - Rajat Monga
 
-'''
+"""
 from __future__ import absolute_import, division, print_function
 
 import numpy as np
@@ -52,11 +52,9 @@ print("a * b = %i" % d)
 print("Mixing operations with Tensors and Numpy Arrays")
 
 # Define constant tensors
-a = tf.constant([[2., 1.],
-                 [1., 0.]], dtype=tf.float32)
+a = tf.constant([[2.0, 1.0], [1.0, 0.0]], dtype=tf.float32)
 print("Tensor:\n a = %s" % a)
-b = np.array([[3., 0.],
-              [5., 1.]], dtype=np.float32)
+b = np.array([[3.0, 0.0], [5.0, 1.0]], dtype=np.float32)
 print("NumpyArray:\n b = %s" % b)
 
 # Run the operation without the need for tf.Session
@@ -72,4 +70,3 @@ print("Iterate through Tensor 'a':")
 for i in range(a.shape[0]):
     for j in range(a.shape[1]):
         print(a[i][j])
-

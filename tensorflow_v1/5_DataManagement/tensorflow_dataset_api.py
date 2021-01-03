@@ -18,24 +18,24 @@ except:
 
 # Import MNIST data (Numpy format)
 from tensorflow.examples.tutorials.mnist import input_data
+
 mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
 
 # Parameters
 learning_rate = 0.001
-num_steps = 2000
+num_steps = 100
 batch_size = 128
 display_step = 100
 
 # Network Parameters
-n_input = 784 # MNIST data input (img shape: 28*28)
-n_classes = 10 # MNIST total classes (0-9 digits)
-dropout = 0.75 # Dropout, probability to keep units
+n_input = 784  # MNIST data input (img shape: 28*28)
+n_classes = 10  # MNIST total classes (0-9 digits)
+dropout = 0.75  # Dropout, probability to keep units
 
 sess = tf.Session()
 
 # Create a dataset tensor from the images and the labels
-dataset = tf.data.Dataset.from_tensor_slices(
-    (mnist.train.images, mnist.train.labels))
+dataset = tf.data.Dataset.from_tensor_slices((mnist.train.images, mnist.train.labels))
 # Automatically refill the data queue when empty
 dataset = dataset.repeat()
 # Create batches of data
@@ -60,7 +60,7 @@ X, Y = iterator.get_next()
 # Create model
 def conv_net(x, n_classes, dropout, reuse, is_training):
     # Define a scope for reusing the variables
-    with tf.variable_scope('ConvNet', reuse=reuse):
+    with tf.variable_scope("ConvNet", reuse=reuse):
         # MNIST data input is a 1-D vector of 784 features (28*28 pixels)
         # Reshape to match picture format [Height x Width x Channel]
         # Tensor input become 4-D: [Batch Size, Height, Width, Channel]
@@ -103,8 +103,9 @@ logits_train = conv_net(X, n_classes, dropout, reuse=False, is_training=True)
 logits_test = conv_net(X, n_classes, dropout, reuse=True, is_training=False)
 
 # Define loss and optimizer (with train logits, for dropout to take effect)
-loss_op = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(
-    logits=logits_train, labels=Y))
+loss_op = tf.reduce_mean(
+    tf.nn.softmax_cross_entropy_with_logits(logits=logits_train, labels=Y)
+)
 optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
 train_op = optimizer.minimize(loss_op)
 
@@ -128,8 +129,13 @@ for step in range(1, num_steps + 1):
         # Calculate batch loss and accuracy
         # (note that this consume a new batch of data)
         loss, acc = sess.run([loss_op, accuracy])
-        print("Step " + str(step) + ", Minibatch Loss= " + \
-              "{:.4f}".format(loss) + ", Training Accuracy= " + \
-              "{:.3f}".format(acc))
+        print(
+            "Step "
+            + str(step)
+            + ", Minibatch Loss= "
+            + "{:.4f}".format(loss)
+            + ", Training Accuracy= "
+            + "{:.3f}".format(acc)
+        )
 
 print("Optimization Finished!")

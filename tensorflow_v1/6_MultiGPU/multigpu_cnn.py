@@ -1,4 +1,4 @@
-''' Multi-GPU Training Example.
+""" Multi-GPU Training Example.
 
 Train a convolutional neural network on multiple GPU with TensorFlow.
 
@@ -10,7 +10,7 @@ This example is using the MNIST database of handwritten digits
 
 Author: Aymeric Damien
 Project: https://github.com/aymericdamien/TensorFlow-Examples/
-'''
+"""
 
 from __future__ import division, print_function, absolute_import
 
@@ -26,25 +26,26 @@ except:
 
 # Import MNIST data
 from tensorflow.examples.tutorials.mnist import input_data
+
 mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
 
 # Training Parameters
 num_gpus = 2
-num_steps = 200
+num_steps = 10
 learning_rate = 0.001
 batch_size = 1024
 display_step = 10
 
 # Network Parameters
-num_input = 784 # MNIST data input (img shape: 28*28)
-num_classes = 10 # MNIST total classes (0-9 digits)
-dropout = 0.75 # Dropout, probability to keep units
+num_input = 784  # MNIST data input (img shape: 28*28)
+num_classes = 10  # MNIST total classes (0-9 digits)
+dropout = 0.75  # Dropout, probability to keep units
 
 
 # Build a convolutional neural network
 def conv_net(x, n_classes, dropout, reuse, is_training):
     # Define a scope for reusing the variables
-    with tf.variable_scope('ConvNet', reuse=reuse):
+    with tf.variable_scope("ConvNet", reuse=reuse):
         # MNIST data input is a 1-D vector of 784 features (28*28 pixels)
         # Reshape to match picture format [Height x Width x Channel]
         # Tensor input become 4-D: [Batch Size, Height, Width, Channel]
@@ -113,9 +114,10 @@ def average_gradients(tower_grads):
 # By default, all variables will be placed on '/gpu:0'
 # So we need a custom device function, to assign all variables to '/cpu:0'
 # Note: If GPUs are peered, '/gpu:0' can be a faster option
-PS_OPS = ['Variable', 'VariableV2', 'AutoReloadVariable']
+PS_OPS = ["Variable", "VariableV2", "AutoReloadVariable"]
 
-def assign_to_device(device, ps_device='/cpu:0'):
+
+def assign_to_device(device, ps_device="/cpu:0"):
     def _assign(op):
         node_def = op if isinstance(op, tf.NodeDef) else op.node_def
         if node_def.op in PS_OPS:
@@ -127,7 +129,7 @@ def assign_to_device(device, ps_device='/cpu:0'):
 
 
 # Place all ops on CPU by default
-with tf.device('/cpu:0'):
+with tf.device("/cpu:0"):
     tower_grads = []
     reuse_vars = False
 
@@ -137,25 +139,28 @@ with tf.device('/cpu:0'):
 
     # Loop over all GPUs and construct their own computation graph
     for i in range(num_gpus):
-        with tf.device(assign_to_device('/gpu:{}'.format(i), ps_device='/cpu:0')):
+        with tf.device(assign_to_device("/gpu:{}".format(i), ps_device="/cpu:0")):
 
             # Split data between GPUs
-            _x = X[i * batch_size: (i+1) * batch_size]
-            _y = Y[i * batch_size: (i+1) * batch_size]
+            _x = X[i * batch_size : (i + 1) * batch_size]
+            _y = Y[i * batch_size : (i + 1) * batch_size]
 
             # Because Dropout have different behavior at training and prediction time, we
             # need to create 2 distinct computation graphs that share the same weights.
 
             # Create a graph for training
-            logits_train = conv_net(_x, num_classes, dropout,
-                                    reuse=reuse_vars, is_training=True)
+            logits_train = conv_net(
+                _x, num_classes, dropout, reuse=reuse_vars, is_training=True
+            )
             # Create another graph for testing that reuse the same weights
-            logits_test = conv_net(_x, num_classes, dropout,
-                                   reuse=True, is_training=False)
+            logits_test = conv_net(
+                _x, num_classes, dropout, reuse=True, is_training=False
+            )
 
             # Define loss and optimizer (with train logits, for dropout to take effect)
-            loss_op = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(
-                logits=logits_train, labels=_y))
+            loss_op = tf.reduce_mean(
+                tf.nn.softmax_cross_entropy_with_logits(logits=logits_train, labels=_y)
+            )
             optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
             grads = optimizer.compute_gradients(loss_op)
 
@@ -190,15 +195,34 @@ with tf.device('/cpu:0'):
             te = time.time() - ts
             if step % display_step == 0 or step == 1:
                 # Calculate batch loss and accuracy
-                loss, acc = sess.run([loss_op, accuracy], feed_dict={X: batch_x,
-                                                                     Y: batch_y})
-                print("Step " + str(step) + ": Minibatch Loss= " + \
-                      "{:.4f}".format(loss) + ", Training Accuracy= " + \
-                      "{:.3f}".format(acc) + ", %i Examples/sec" % int(len(batch_x)/te))
+                loss, acc = sess.run(
+                    [loss_op, accuracy], feed_dict={X: batch_x, Y: batch_y}
+                )
+                print(
+                    "Step "
+                    + str(step)
+                    + ": Minibatch Loss= "
+                    + "{:.4f}".format(loss)
+                    + ", Training Accuracy= "
+                    + "{:.3f}".format(acc)
+                    + ", %i Examples/sec" % int(len(batch_x) / te)
+                )
             step += 1
         print("Optimization Finished!")
 
         # Calculate accuracy for MNIST test images
-        print("Testing Accuracy:", \
-            np.mean([sess.run(accuracy, feed_dict={X: mnist.test.images[i:i+batch_size],
-            Y: mnist.test.labels[i:i+batch_size]}) for i in range(0, len(mnist.test.images), batch_size)]))
+        print(
+            "Testing Accuracy:",
+            np.mean(
+                [
+                    sess.run(
+                        accuracy,
+                        feed_dict={
+                            X: mnist.test.images[i : i + batch_size],
+                            Y: mnist.test.labels[i : i + batch_size],
+                        },
+                    )
+                    for i in range(0, len(mnist.test.images), batch_size)
+                ]
+            ),
+        )

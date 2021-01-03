@@ -26,7 +26,7 @@ except:
 #  TOY DATA GENERATOR
 # ====================
 class ToySequenceData(object):
-    """ Generate sequence of data with dynamic length.
+    """Generate sequence of data with dynamic length.
     This class generate samples for training:
     - Class 0: linear sequences (i.e. [0, 1, 2, 3,...])
     - Class 1: random sequences (i.e. [1, 3, 10, 7,...])
@@ -37,8 +37,8 @@ class ToySequenceData(object):
     dimensions). The dynamic calculation will then be perform thanks to
     'seqlen' attribute that records every actual sequence length.
     """
-    def __init__(self, n_samples=1000, max_seq_len=20, min_seq_len=3,
-                 max_value=1000):
+
+    def __init__(self, n_samples=1000, max_seq_len=20, min_seq_len=3, max_value=1000):
         self.data = []
         self.labels = []
         self.seqlen = []
@@ -48,36 +48,41 @@ class ToySequenceData(object):
             # Monitor sequence length for TensorFlow dynamic calculation
             self.seqlen.append(len)
             # Add a random or linear int sequence (50% prob)
-            if random.random() < .5:
+            if random.random() < 0.5:
                 # Generate a linear sequence
                 rand_start = random.randint(0, max_value - len)
-                s = [[float(i)/max_value] for i in
-                     range(rand_start, rand_start + len)]
+                s = [
+                    [float(i) / max_value] for i in range(rand_start, rand_start + len)
+                ]
                 # Pad sequence for dimension consistency
-                s += [[0.] for i in range(max_seq_len - len)]
+                s += [[0.0] for i in range(max_seq_len - len)]
                 self.data.append(s)
-                self.labels.append([1., 0.])
+                self.labels.append([1.0, 0.0])
             else:
                 # Generate a random sequence
-                s = [[float(random.randint(0, max_value))/max_value]
-                     for i in range(len)]
+                s = [
+                    [float(random.randint(0, max_value)) / max_value]
+                    for i in range(len)
+                ]
                 # Pad sequence for dimension consistency
-                s += [[0.] for i in range(max_seq_len - len)]
+                s += [[0.0] for i in range(max_seq_len - len)]
                 self.data.append(s)
-                self.labels.append([0., 1.])
+                self.labels.append([0.0, 1.0])
         self.batch_id = 0
 
     def next(self, batch_size):
-        """ Return a batch of data. When dataset end is reached, start over.
-        """
+        """Return a batch of data. When dataset end is reached, start over."""
         if self.batch_id == len(self.data):
             self.batch_id = 0
-        batch_data = (self.data[self.batch_id:min(self.batch_id +
-                                                  batch_size, len(self.data))])
-        batch_labels = (self.labels[self.batch_id:min(self.batch_id +
-                                                  batch_size, len(self.data))])
-        batch_seqlen = (self.seqlen[self.batch_id:min(self.batch_id +
-                                                  batch_size, len(self.data))])
+        batch_data = self.data[
+            self.batch_id : min(self.batch_id + batch_size, len(self.data))
+        ]
+        batch_labels = self.labels[
+            self.batch_id : min(self.batch_id + batch_size, len(self.data))
+        ]
+        batch_seqlen = self.seqlen[
+            self.batch_id : min(self.batch_id + batch_size, len(self.data))
+        ]
         self.batch_id = min(self.batch_id + batch_size, len(self.data))
         return batch_data, batch_labels, batch_seqlen
 
@@ -93,9 +98,9 @@ batch_size = 128
 display_step = 200
 
 # Network Parameters
-seq_max_len = 20 # Sequence max length
-n_hidden = 64 # hidden layer num of features
-n_classes = 2 # linear sequence or not
+seq_max_len = 20  # Sequence max length
+n_hidden = 64  # hidden layer num of features
+n_classes = 2  # linear sequence or not
 
 trainset = ToySequenceData(n_samples=1000, max_seq_len=seq_max_len)
 testset = ToySequenceData(n_samples=500, max_seq_len=seq_max_len)
@@ -107,12 +112,8 @@ y = tf.placeholder("float", [None, n_classes])
 seqlen = tf.placeholder(tf.int32, [None])
 
 # Define weights
-weights = {
-    'out': tf.Variable(tf.random_normal([n_hidden, n_classes]))
-}
-biases = {
-    'out': tf.Variable(tf.random_normal([n_classes]))
-}
+weights = {"out": tf.Variable(tf.random_normal([n_hidden, n_classes]))}
+biases = {"out": tf.Variable(tf.random_normal([n_classes]))}
 
 
 def dynamicRNN(x, seqlen, weights, biases):
@@ -120,7 +121,7 @@ def dynamicRNN(x, seqlen, weights, biases):
     # Prepare data shape to match `rnn` function requirements
     # Current data input shape: (batch_size, n_steps, n_input)
     # Required shape: 'n_steps' tensors list of shape (batch_size, n_input)
-    
+
     # Unstack to get a list of 'n_steps' tensors of shape (batch_size, n_input)
     x = tf.unstack(x, seq_max_len, 1)
 
@@ -129,8 +130,9 @@ def dynamicRNN(x, seqlen, weights, biases):
 
     # Get lstm cell output, providing 'sequence_length' will perform dynamic
     # calculation.
-    outputs, states = tf.contrib.rnn.static_rnn(lstm_cell, x, dtype=tf.float32,
-                                sequence_length=seqlen)
+    outputs, states = tf.contrib.rnn.static_rnn(
+        lstm_cell, x, dtype=tf.float32, sequence_length=seqlen
+    )
 
     # When performing dynamic calculation, we must retrieve the last
     # dynamically computed output, i.e., if a sequence length is 10, we need
@@ -152,16 +154,19 @@ def dynamicRNN(x, seqlen, weights, biases):
     outputs = tf.gather(tf.reshape(outputs, [-1, n_hidden]), index)
 
     # Linear activation, using outputs computed above
-    return tf.matmul(outputs, weights['out']) + biases['out']
+    return tf.matmul(outputs, weights["out"]) + biases["out"]
+
 
 pred = dynamicRNN(x, seqlen, weights, biases)
 
 # Define loss and optimizer
 cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=pred, labels=y))
-optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate).minimize(cost)
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate).minimize(
+    cost
+)
 
 # Evaluate model
-correct_pred = tf.equal(tf.argmax(pred,1), tf.argmax(y,1))
+correct_pred = tf.equal(tf.argmax(pred, 1), tf.argmax(y, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 
 # Initialize the variables (i.e. assign their default value)
@@ -176,15 +181,21 @@ with tf.Session() as sess:
     for step in range(1, training_steps + 1):
         batch_x, batch_y, batch_seqlen = trainset.next(batch_size)
         # Run optimization op (backprop)
-        sess.run(optimizer, feed_dict={x: batch_x, y: batch_y,
-                                       seqlen: batch_seqlen})
+        sess.run(optimizer, feed_dict={x: batch_x, y: batch_y, seqlen: batch_seqlen})
         if step % display_step == 0 or step == 1:
             # Calculate batch accuracy & loss
-            acc, loss = sess.run([accuracy, cost], feed_dict={x: batch_x, y: batch_y,
-                                                seqlen: batch_seqlen})
-            print("Step " + str(step*batch_size) + ", Minibatch Loss= " + \
-                  "{:.6f}".format(loss) + ", Training Accuracy= " + \
-                  "{:.5f}".format(acc))
+            acc, loss = sess.run(
+                [accuracy, cost],
+                feed_dict={x: batch_x, y: batch_y, seqlen: batch_seqlen},
+            )
+            print(
+                "Step "
+                + str(step * batch_size)
+                + ", Minibatch Loss= "
+                + "{:.6f}".format(loss)
+                + ", Training Accuracy= "
+                + "{:.5f}".format(acc)
+            )
 
     print("Optimization Finished!")
 
@@ -192,6 +203,9 @@ with tf.Session() as sess:
     test_data = testset.data
     test_label = testset.labels
     test_seqlen = testset.seqlen
-    print("Testing Accuracy:", \
-        sess.run(accuracy, feed_dict={x: test_data, y: test_label,
-                                      seqlen: test_seqlen}))
+    print(
+        "Testing Accuracy:",
+        sess.run(
+            accuracy, feed_dict={x: test_data, y: test_label, seqlen: test_seqlen}
+        ),
+    )

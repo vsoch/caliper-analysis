@@ -28,6 +28,7 @@ tfe = tf.contrib.eager
 
 # Import MNIST data
 from tensorflow.examples.tutorials.mnist import input_data
+
 mnist = input_data.read_data_sets("/tmp/data/", one_hot=False)
 
 # Parameters
@@ -37,14 +38,13 @@ batch_size = 128
 display_step = 100
 
 # Network Parameters
-n_hidden_1 = 256 # 1st layer number of neurons
-n_hidden_2 = 256 # 2nd layer number of neurons
-num_input = 784 # MNIST data input (img shape: 28*28)
-num_classes = 10 # MNIST total classes (0-9 digits)
+n_hidden_1 = 256  # 1st layer number of neurons
+n_hidden_2 = 256  # 2nd layer number of neurons
+num_input = 784  # MNIST data input (img shape: 28*28)
+num_classes = 10  # MNIST total classes (0-9 digits)
 
 # Using TF Dataset to split data into batches
-dataset = tf.data.Dataset.from_tensor_slices(
-    (mnist.train.images, mnist.train.labels))
+dataset = tf.data.Dataset.from_tensor_slices((mnist.train.images, mnist.train.labels))
 dataset = dataset.repeat().batch(batch_size).prefetch(batch_size)
 dataset_iter = tfe.Iterator(dataset)
 
@@ -57,10 +57,12 @@ class NeuralNet(tfe.Network):
         super(NeuralNet, self).__init__()
         # Hidden fully connected layer with 256 neurons
         self.layer1 = self.track_layer(
-            tf.layers.Dense(n_hidden_1, activation=tf.nn.relu))
+            tf.layers.Dense(n_hidden_1, activation=tf.nn.relu)
+        )
         # Hidden fully connected layer with 256 neurons
         self.layer2 = self.track_layer(
-            tf.layers.Dense(n_hidden_2, activation=tf.nn.relu))
+            tf.layers.Dense(n_hidden_2, activation=tf.nn.relu)
+        )
         # Output fully connected layer with a neuron for each class
         self.out_layer = self.track_layer(tf.layers.Dense(num_classes))
 
@@ -76,8 +78,11 @@ neural_net = NeuralNet()
 # Cross-Entropy loss function
 def loss_fn(inference_fn, inputs, labels):
     # Using sparse_softmax cross entropy
-    return tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(
-        logits=inference_fn(inputs), labels=labels))
+    return tf.reduce_mean(
+        tf.nn.sparse_softmax_cross_entropy_with_logits(
+            logits=inference_fn(inputs), labels=labels
+        )
+    )
 
 
 # Calculate accuracy
@@ -93,8 +98,8 @@ optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
 grad = tfe.implicit_gradients(loss_fn)
 
 # Training
-average_loss = 0.
-average_acc = 0.
+average_loss = 0.0
+average_acc = 0.0
 for step in range(num_steps):
 
     # Iterate through the dataset
@@ -124,11 +129,16 @@ for step in range(num_steps):
         if step > 0:
             average_loss /= display_step
             average_acc /= display_step
-        print("Step:", '%04d' % (step + 1), " loss=",
-              "{:.9f}".format(average_loss), " accuracy=",
-              "{:.4f}".format(average_acc))
-        average_loss = 0.
-        average_acc = 0.
+        print(
+            "Step:",
+            "%04d" % (step + 1),
+            " loss=",
+            "{:.9f}".format(average_loss),
+            " accuracy=",
+            "{:.4f}".format(average_acc),
+        )
+        average_loss = 0.0
+        average_acc = 0.0
 
 # Evaluate model on the test image set
 testX = mnist.test.images

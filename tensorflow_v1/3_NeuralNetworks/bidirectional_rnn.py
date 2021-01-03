@@ -25,25 +25,26 @@ except:
 
 # Import MNIST data
 from tensorflow.examples.tutorials.mnist import input_data
+
 mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
 
-'''
+"""
 To classify images using a bidirectional recurrent neural network, we consider
 every image row as a sequence of pixels. Because MNIST image shape is 28*28px,
 we will then handle 28 sequences of 28 steps for every sample.
-'''
+"""
 
 # Training Parameters
 learning_rate = 0.001
-training_steps = 10000
+training_steps = 1000
 batch_size = 128
 display_step = 200
 
 # Network Parameters
-num_input = 28 # MNIST data input (img shape: 28*28)
-timesteps = 28 # timesteps
-num_hidden = 128 # hidden layer num of features
-num_classes = 10 # MNIST total classes (0-9 digits)
+num_input = 28  # MNIST data input (img shape: 28*28)
+timesteps = 28  # timesteps
+num_hidden = 128  # hidden layer num of features
+num_classes = 10  # MNIST total classes (0-9 digits)
 
 # tf Graph input
 X = tf.placeholder("float", [None, timesteps, num_input])
@@ -52,11 +53,9 @@ Y = tf.placeholder("float", [None, num_classes])
 # Define weights
 weights = {
     # Hidden layer weights => 2*n_hidden because of forward + backward cells
-    'out': tf.Variable(tf.random_normal([2*num_hidden, num_classes]))
+    "out": tf.Variable(tf.random_normal([2 * num_hidden, num_classes]))
 }
-biases = {
-    'out': tf.Variable(tf.random_normal([num_classes]))
-}
+biases = {"out": tf.Variable(tf.random_normal([num_classes]))}
 
 
 def BiRNN(x, weights, biases):
@@ -76,21 +75,25 @@ def BiRNN(x, weights, biases):
 
     # Get lstm cell output
     try:
-        outputs, _, _ = rnn.static_bidirectional_rnn(lstm_fw_cell, lstm_bw_cell, x,
-                                              dtype=tf.float32)
-    except Exception: # Old TensorFlow version only returns outputs not states
-        outputs = rnn.static_bidirectional_rnn(lstm_fw_cell, lstm_bw_cell, x,
-                                        dtype=tf.float32)
+        outputs, _, _ = rnn.static_bidirectional_rnn(
+            lstm_fw_cell, lstm_bw_cell, x, dtype=tf.float32
+        )
+    except Exception:  # Old TensorFlow version only returns outputs not states
+        outputs = rnn.static_bidirectional_rnn(
+            lstm_fw_cell, lstm_bw_cell, x, dtype=tf.float32
+        )
 
     # Linear activation, using rnn inner loop last output
-    return tf.matmul(outputs[-1], weights['out']) + biases['out']
+    return tf.matmul(outputs[-1], weights["out"]) + biases["out"]
+
 
 logits = BiRNN(X, weights, biases)
 prediction = tf.nn.softmax(logits)
 
 # Define loss and optimizer
-loss_op = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(
-    logits=logits, labels=Y))
+loss_op = tf.reduce_mean(
+    tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=Y)
+)
 optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
 train_op = optimizer.minimize(loss_op)
 
@@ -107,7 +110,7 @@ with tf.Session() as sess:
     # Run the initializer
     sess.run(init)
 
-    for step in range(1, training_steps+1):
+    for step in range(1, training_steps + 1):
         batch_x, batch_y = mnist.train.next_batch(batch_size)
         # Reshape data to get 28 seq of 28 elements
         batch_x = batch_x.reshape((batch_size, timesteps, num_input))
@@ -115,11 +118,17 @@ with tf.Session() as sess:
         sess.run(train_op, feed_dict={X: batch_x, Y: batch_y})
         if step % display_step == 0 or step == 1:
             # Calculate batch loss and accuracy
-            loss, acc = sess.run([loss_op, accuracy], feed_dict={X: batch_x,
-                                                                 Y: batch_y})
-            print("Step " + str(step) + ", Minibatch Loss= " + \
-                  "{:.4f}".format(loss) + ", Training Accuracy= " + \
-                  "{:.3f}".format(acc))
+            loss, acc = sess.run(
+                [loss_op, accuracy], feed_dict={X: batch_x, Y: batch_y}
+            )
+            print(
+                "Step "
+                + str(step)
+                + ", Minibatch Loss= "
+                + "{:.4f}".format(loss)
+                + ", Training Accuracy= "
+                + "{:.3f}".format(acc)
+            )
 
     print("Optimization Finished!")
 
@@ -127,5 +136,6 @@ with tf.Session() as sess:
     test_len = 128
     test_data = mnist.test.images[:test_len].reshape((-1, timesteps, num_input))
     test_label = mnist.test.labels[:test_len]
-    print("Testing Accuracy:", \
-        sess.run(accuracy, feed_dict={X: test_data, Y: test_label}))
+    print(
+        "Testing Accuracy:", sess.run(accuracy, feed_dict={X: test_data, Y: test_label})
+    )
