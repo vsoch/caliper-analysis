@@ -30,7 +30,7 @@ except:
 log_device_placement = True
 
 # Num of multiplications to perform
-n = 2
+n = 1
 
 """
 Example: compute A^n + B^n on 2 GPUs

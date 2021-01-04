@@ -33,7 +33,7 @@ we will then handle 28 sequences of 28 steps for every sample.
 
 # Parameters
 learning_rate = 0.001
-training_iters = 300
+training_iters = 100
 batch_size = 128
 display_step = 10
 

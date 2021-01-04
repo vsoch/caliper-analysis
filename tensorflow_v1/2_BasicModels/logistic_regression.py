@@ -24,8 +24,8 @@ mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
 
 # Parameters
 learning_rate = 0.01
-training_epochs = 3
-batch_size = 100
+training_epochs = 2
+batch_size = 300
 display_step = 1
 
 # tf Graph Input

@@ -24,7 +24,7 @@ except:
 
 # Parameters
 learning_rate = 0.001
-batch_size = 200
+batch_size = 300
 display_step = 1
 model_path = "/tmp/model.ckpt"
 

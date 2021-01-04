@@ -14,7 +14,10 @@ import tensorflow as tf
 
 # Set seeds for consistent results
 np.random.seed(1)
-tf.random.set_seed(1)
+try:
+    tf.random.set_seed(1)
+except:
+    tf.set_random_seed(1)
 
 # Import MNIST data
 from tensorflow.examples.tutorials.mnist import input_data
@@ -23,7 +26,7 @@ mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
 
 # In this example, we limit mnist data
 Xtr, Ytr = mnist.train.next_batch(5000)  # 5000 for training (nn candidates)
-Xte, Yte = mnist.test.next_batch(200)  # 200 for testing
+Xte, Yte = mnist.test.next_batch(10)  # 200 for testing
 
 # tf Graph Input
 xtr = tf.placeholder("float", [None, 784])

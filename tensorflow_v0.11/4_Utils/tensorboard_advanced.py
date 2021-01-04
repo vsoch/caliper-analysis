@@ -22,12 +22,11 @@ from tensorflow.examples.tutorials.mnist import input_data
 
 mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
 
-# Parameters
 learning_rate = 0.01
 training_epochs = 2
-batch_size = 200
+batch_size = 500
 display_step = 1
-logs_path = "/tmp/tensorflow_logs/example"
+logs_path = "/tmp/tensorflow_logs/example/"
 
 # Network Parameters
 n_hidden_1 = 256  # 1st layer number of features

@@ -35,8 +35,9 @@ handle 28 sequences of 28 steps for every sample.
 # Training Parameters
 learning_rate = 0.001
 training_steps = 100
-batch_size = 128
+batch_size = 256
 display_step = 200
+
 
 # Network Parameters
 num_input = 28  # MNIST data input (img shape: 28*28)

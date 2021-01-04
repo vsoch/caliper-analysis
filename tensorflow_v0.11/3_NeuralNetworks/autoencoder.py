@@ -33,6 +33,7 @@ batch_size = 256
 display_step = 1
 examples_to_show = 10
 
+
 # Network Parameters
 n_hidden_1 = 256  # 1st layer num features
 n_hidden_2 = 128  # 2nd layer num features
