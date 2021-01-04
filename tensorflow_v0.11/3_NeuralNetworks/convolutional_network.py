@@ -24,7 +24,7 @@ mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
 
 # Parameters
 learning_rate = 0.001
-training_iters = 10
+training_iters = 2
 batch_size = 128
 display_step = 10
 

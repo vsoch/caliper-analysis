@@ -26,7 +26,7 @@ except:
 
 # Training Parameters
 learning_rate = 0.001
-num_steps = 10
+num_steps = 2
 batch_size = 128
 
 # Network Parameters

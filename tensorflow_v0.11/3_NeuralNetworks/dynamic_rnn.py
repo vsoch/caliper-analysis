@@ -91,9 +91,9 @@ class ToySequenceData(object):
 
 # Parameters
 learning_rate = 0.01
-training_iters = 100
+training_iters = 10
 batch_size = 128
-display_step = 10
+display_step = 1
 
 # Network Parameters
 seq_max_len = 20  # Sequence max length

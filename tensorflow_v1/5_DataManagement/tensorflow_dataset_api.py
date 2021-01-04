@@ -23,9 +23,9 @@ mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
 
 # Parameters
 learning_rate = 0.001
-num_steps = 100
+num_steps = 10
 batch_size = 128
-display_step = 100
+display_step = 10
 
 # Network Parameters
 n_input = 784  # MNIST data input (img shape: 28*28)

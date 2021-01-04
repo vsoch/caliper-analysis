@@ -11,7 +11,6 @@ analysis:
     - tensorflow_v0.11/1_Introduction/helloworld.py
     - tensorflow_v0.11/4_Utils/tensorboard_advanced.py
     - tensorflow_v0.11/4_Utils/tensorboard_basic.py
-    - tensorflow_v0.11/4_Utils/save_restore_model.py
     - tensorflow_v0.11/2_BasicModels/logistic_regression.py
     - tensorflow_v0.11/2_BasicModels/linear_regression.py
     - tensorflow_v0.11/2_BasicModels/nearest_neighbor.py
@@ -27,7 +26,6 @@ analysis:
     - tensorflow_v1/1_Introduction/helloworld.py
     - tensorflow_v1/4_Utils/tensorboard_advanced.py
     - tensorflow_v1/4_Utils/tensorboard_basic.py
-    - tensorflow_v1/4_Utils/save_restore_model.py
     - tensorflow_v1/5_DataManagement/build_an_image_dataset.py
     - tensorflow_v1/5_DataManagement/tensorflow_dataset_api.py
     - tensorflow_v1/2_BasicModels/random_forest.py

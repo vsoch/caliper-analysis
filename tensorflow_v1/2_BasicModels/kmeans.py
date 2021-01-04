@@ -35,7 +35,7 @@ mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
 full_data_x = mnist.train.images
 
 # Parameters
-num_steps = 3  # Total steps to train
+num_steps = 2  # Total steps to train
 batch_size = 1024  # The number of samples per batch
 k = 25  # The number of clusters
 num_classes = 10  # The 10 digits

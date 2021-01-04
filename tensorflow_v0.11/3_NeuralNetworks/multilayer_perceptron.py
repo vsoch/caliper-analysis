@@ -24,7 +24,7 @@ except:
 
 # Parameters
 learning_rate = 0.001
-training_epochs = 2
+training_epochs = 1
 batch_size = 300
 display_step = 1
 

@@ -31,7 +31,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 mnist = input_data.read_data_sets("/tmp/data/", one_hot=False)
 
 # Parameters
-num_steps = 100  # Total steps to train
+num_steps = 10  # Total steps to train
 batch_size = 1024  # The number of samples per batch
 num_classes = 10  # The 10 digits
 num_features = 784  # Each image is 28x28 pixels

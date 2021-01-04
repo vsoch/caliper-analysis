@@ -34,9 +34,9 @@ except:
 # Training Parameters
 learning_rate = 0.1
 batch_size = 128
-num_steps = 1000
-display_step = 100
-eval_step = 2000
+num_steps = 10
+display_step = 1
+eval_step = 1
 
 # Evaluation Parameters
 eval_words = ["five", "of", "going", "hardware", "american", "britain"]
