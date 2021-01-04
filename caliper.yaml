@@ -49,8 +49,6 @@ analysis:
     - tensorflow_v1/3_NeuralNetworks/autoencoder.py
     - tensorflow_v1/3_NeuralNetworks/gan.py
     - tensorflow_v1/3_NeuralNetworks/recurrent_network.py
-    - tensorflow_v1/3_NeuralNetworks/dynamic_rnn.py
     - tensorflow_v1/3_NeuralNetworks/neural_network_raw.py
-    - tensorflow_v1/3_NeuralNetworks/dcgan.py
     - tensorflow_v1/3_NeuralNetworks/multilayer_perceptron.py
     - tensorflow_v1/3_NeuralNetworks/convolutional_network.py
