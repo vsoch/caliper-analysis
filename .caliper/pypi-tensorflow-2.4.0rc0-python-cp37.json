@@ -1,0 +1,828 @@
+{
+    "inputs": {
+        "dependency": "tensorflow",
+        "outfile": "/home/vanessa/Desktop/Code/caliper-analysis/.caliper/pypi-tensorflow-2.4.0rc0-python-cp37.json",
+        "dockerfile": "FROM python:3.7\nADD . /tmp/repo\nWORKDIR /tmp/repo\nENV LANG C.UTF-8\nENV SHELL /bin/bash\nRUN apt-get update && apt-get install -y wget ca-certificates gnupg2 git\nRUN /bin/bash -c \"wget https://files.pythonhosted.org/packages/57/bb/e690554331d46e35e47032ff0f7a231061cd71e82e3616dbd42ba1be9474/tensorflow-2.4.0rc0-cp37-cp37m-manylinux2010_x86_64.whl && pip install tensorflow-2.4.0rc0-cp37-cp37m-manylinux2010_x86_64.whl\"\n",
+        "force": false,
+        "exists": true,
+        "name": "pypi-tensorflow-2.4.0rc0-python-cp37",
+        "tests": "tensorflow_v0.11/5_MultiGPU/multigpu_basics.py\ntensorflow_v0.11/1_Introduction/basic_operations.py\ntensorflow_v0.11/1_Introduction/helloworld.py\ntensorflow_v0.11/4_Utils/tensorboard_advanced.py\ntensorflow_v0.11/4_Utils/tensorboard_basic.py\ntensorflow_v0.11/2_BasicModels/logistic_regression.py\ntensorflow_v0.11/2_BasicModels/linear_regression.py\ntensorflow_v0.11/2_BasicModels/nearest_neighbor.py\ntensorflow_v0.11/3_NeuralNetworks/bidirectional_rnn.py\ntensorflow_v0.11/3_NeuralNetworks/autoencoder.py\ntensorflow_v0.11/3_NeuralNetworks/recurrent_network.py\ntensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py\ntensorflow_v0.11/3_NeuralNetworks/multilayer_perceptron.py\ntensorflow_v0.11/3_NeuralNetworks/convolutional_network.py\ntensorflow_v1/1_Introduction/basic_eager_api.py\ntensorflow_v1/1_Introduction/basic_operations.py\ntensorflow_v1/1_Introduction/helloworld.py\ntensorflow_v1/4_Utils/tensorboard_advanced.py\ntensorflow_v1/4_Utils/tensorboard_basic.py\ntensorflow_v1/5_DataManagement/build_an_image_dataset.py\ntensorflow_v1/5_DataManagement/tensorflow_dataset_api.py\ntensorflow_v1/2_BasicModels/random_forest.py\ntensorflow_v1/2_BasicModels/gradient_boosted_decision_tree.py\ntensorflow_v1/2_BasicModels/logistic_regression.py\ntensorflow_v1/2_BasicModels/word2vec.py\ntensorflow_v1/2_BasicModels/linear_regression.py\ntensorflow_v1/2_BasicModels/logistic_regression_eager_api.py\ntensorflow_v1/2_BasicModels/nearest_neighbor.py\ntensorflow_v1/2_BasicModels/linear_regression_eager_api.py\ntensorflow_v1/2_BasicModels/kmeans.py\ntensorflow_v1/6_MultiGPU/multigpu_basics.py\ntensorflow_v1/6_MultiGPU/multigpu_cnn.py\ntensorflow_v1/3_NeuralNetworks/variational_autoencoder.py\ntensorflow_v1/3_NeuralNetworks/neural_network_eager_api.py\ntensorflow_v1/3_NeuralNetworks/neural_network.py\ntensorflow_v1/3_NeuralNetworks/bidirectional_rnn.py\ntensorflow_v1/3_NeuralNetworks/convolutional_network_raw.py\ntensorflow_v1/3_NeuralNetworks/autoencoder.py\ntensorflow_v1/3_NeuralNetworks/gan.py\ntensorflow_v1/3_NeuralNetworks/recurrent_network.py\ntensorflow_v1/3_NeuralNetworks/neural_network_raw.py\ntensorflow_v1/3_NeuralNetworks/multilayer_perceptron.py\ntensorflow_v1/3_NeuralNetworks/convolutional_network.py",
+        "cleanup": true,
+        "outdir": "/home/vanessa/Desktop/Code/caliper-analysis"
+    },
+    "tests": {
+        "build": {
+            "retval": 0
+        },
+        "tensorflow_v0.11/5_MultiGPU/multigpu_basics.py": {
+            "error": [
+                "2021-01-08 01:38:48.973991: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:38:48.974023: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-08 01:38:50.071298: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "2021-01-08 01:38:50.071509: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:38:50.071525: W tensorflow/stream_executor/cuda/cuda_driver.cc:326] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-08 01:38:50.071543: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (5f927fd3147b): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-08 01:38:50.071987: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/5_MultiGPU/multigpu_basics.py\", line 61, in <module>\n",
+                "    a = tf.placeholder(tf.float32, [1000, 1000])\n",
+                "AttributeError: module 'tensorflow' has no attribute 'placeholder'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7ff551a5c3b0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.13
+        },
+        "tensorflow_v0.11/1_Introduction/basic_operations.py": {
+            "error": [
+                "2021-01-08 01:38:50.962131: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:38:50.962163: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-08 01:38:52.171029: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "2021-01-08 01:38:52.171135: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:38:52.171148: W tensorflow/stream_executor/cuda/cuda_driver.cc:326] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-08 01:38:52.171167: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (3e97f8bbbaa6): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-08 01:38:52.171580: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/1_Introduction/basic_operations.py\", line 25, in <module>\n",
+                "    with tf.Session() as sess:\n",
+                "AttributeError: module 'tensorflow' has no attribute 'Session'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f6d0c397320>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.19
+        },
+        "tensorflow_v0.11/1_Introduction/helloworld.py": {
+            "error": [
+                "2021-01-08 01:38:53.192275: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:38:53.192306: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-08 01:38:54.372857: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "2021-01-08 01:38:54.372959: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:38:54.372971: W tensorflow/stream_executor/cuda/cuda_driver.cc:326] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-08 01:38:54.372988: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (8e87cde5dda9): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-08 01:38:54.373450: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/1_Introduction/helloworld.py\", line 28, in <module>\n",
+                "    sess = tf.Session()\n",
+                "AttributeError: module 'tensorflow' has no attribute 'Session'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f13ad8343b0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.13
+        },
+        "tensorflow_v0.11/4_Utils/tensorboard_advanced.py": {
+            "error": [
+                "2021-01-08 01:38:55.320385: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:38:55.320419: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/4_Utils/tensorboard_advanced.py\", line 21, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f178cb423b0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.17
+        },
+        "tensorflow_v0.11/4_Utils/tensorboard_basic.py": {
+            "error": [
+                "2021-01-08 01:38:57.461323: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:38:57.461357: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/4_Utils/tensorboard_basic.py\", line 21, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7fe24aee33b0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.12
+        },
+        "tensorflow_v0.11/2_BasicModels/logistic_regression.py": {
+            "error": [
+                "2021-01-08 01:38:59.632576: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:38:59.632607: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/2_BasicModels/logistic_regression.py\", line 21, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7fb063634320>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.18
+        },
+        "tensorflow_v0.11/2_BasicModels/linear_regression.py": {
+            "error": [
+                "2021-01-08 01:39:01.747909: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:01.747943: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/2_BasicModels/linear_regression.py\", line 73, in <module>\n",
+                "    X = tf.placeholder(\"float\")\n",
+                "AttributeError: module 'tensorflow' has no attribute 'placeholder'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f6c7f645320>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.14
+        },
+        "tensorflow_v0.11/2_BasicModels/nearest_neighbor.py": {
+            "error": [
+                "2021-01-08 01:39:04.076284: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:04.076318: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/2_BasicModels/nearest_neighbor.py\", line 23, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f3c8e101320>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.2
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/bidirectional_rnn.py": {
+            "error": [
+                "2021-01-08 01:39:06.185739: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:06.185773: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/bidirectional_rnn.py\", line 24, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7fd9ede7e440>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.18
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/autoencoder.py": {
+            "error": [
+                "2021-01-08 01:39:08.425660: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:08.425695: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/autoencoder.py\", line 25, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f22c39194d0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.27
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/recurrent_network.py": {
+            "error": [
+                "2021-01-08 01:39:10.610663: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:10.610696: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/recurrent_network.py\", line 22, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7fdea383a3b0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.14
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py": {
+            "error": [
+                "2021-01-08 01:39:12.748164: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:12.748196: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py\", line 107, in <module>\n",
+                "    x = tf.placeholder(\"float\", [None, seq_max_len, 1])\n",
+                "AttributeError: module 'tensorflow' has no attribute 'placeholder'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7fb12b4f78c0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.22
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/multilayer_perceptron.py": {
+            "error": [
+                "2021-01-08 01:39:14.944248: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:14.944289: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/multilayer_perceptron.py\", line 13, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f5b164bd5f0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.16
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/convolutional_network.py": {
+            "error": [
+                "2021-01-08 01:39:17.088656: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:17.088687: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/convolutional_network.py\", line 21, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f29e8df8560>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.17
+        },
+        "tensorflow_v1/1_Introduction/basic_eager_api.py": {
+            "error": [
+                "2021-01-08 01:39:19.385563: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:19.385592: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/1_Introduction/basic_eager_api.py\", line 23, in <module>\n",
+                "    import tensorflow.contrib.eager as tfe\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f55dbf4a320>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.13
+        },
+        "tensorflow_v1/1_Introduction/basic_operations.py": {
+            "error": [
+                "2021-01-08 01:39:21.400480: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:21.400515: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-08 01:39:22.610063: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "2021-01-08 01:39:22.610179: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:22.610192: W tensorflow/stream_executor/cuda/cuda_driver.cc:326] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-08 01:39:22.610212: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (41d1df4fab43): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-08 01:39:22.610691: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/1_Introduction/basic_operations.py\", line 25, in <module>\n",
+                "    with tf.Session() as sess:\n",
+                "AttributeError: module 'tensorflow' has no attribute 'Session'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f0960222320>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.2
+        },
+        "tensorflow_v1/1_Introduction/helloworld.py": {
+            "error": [
+                "2021-01-08 01:39:23.660849: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:23.660882: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-08 01:39:24.849257: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "2021-01-08 01:39:24.849360: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:24.849372: W tensorflow/stream_executor/cuda/cuda_driver.cc:326] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-08 01:39:24.849387: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (bef9837704c5): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-08 01:39:24.849836: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/1_Introduction/helloworld.py\", line 28, in <module>\n",
+                "    sess = tf.Session()\n",
+                "AttributeError: module 'tensorflow' has no attribute 'Session'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f7f6ba313b0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.21
+        },
+        "tensorflow_v1/4_Utils/tensorboard_advanced.py": {
+            "error": [
+                "2021-01-08 01:39:25.832195: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:25.832229: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/4_Utils/tensorboard_advanced.py\", line 20, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7ff1ac63e3b0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.13
+        },
+        "tensorflow_v1/4_Utils/tensorboard_basic.py": {
+            "error": [
+                "2021-01-08 01:39:27.948147: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:27.948180: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/4_Utils/tensorboard_basic.py\", line 20, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f02978503b0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.16
+        },
+        "tensorflow_v1/5_DataManagement/build_an_image_dataset.py": {
+            "error": [
+                "2021-01-08 01:39:30.058396: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:30.058430: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/5_DataManagement/build_an_image_dataset.py\", line 74, in read_images\n",
+                "    classes = sorted(os.walk(dataset_path).next()[1])\n",
+                "AttributeError: 'generator' object has no attribute 'next'\n",
+                "\n",
+                "During handling of the above exception, another exception occurred:\n",
+                "\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/5_DataManagement/build_an_image_dataset.py\", line 133, in <module>\n",
+                "    X, Y = read_images(DATASET_PATH, MODE, batch_size)\n",
+                "  File \"tensorflow_v1/5_DataManagement/build_an_image_dataset.py\", line 76, in read_images\n",
+                "    classes = sorted(os.walk(dataset_path).__next__()[1])\n",
+                "StopIteration\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7feea3def4d0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.15
+        },
+        "tensorflow_v1/5_DataManagement/tensorflow_dataset_api.py": {
+            "error": [
+                "2021-01-08 01:39:32.230135: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:32.230166: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/5_DataManagement/tensorflow_dataset_api.py\", line 20, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f1b9d3013b0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.16
+        },
+        "tensorflow_v1/2_BasicModels/random_forest.py": {
+            "error": [
+                "2021-01-08 01:39:34.420466: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:34.420505: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/random_forest.py\", line 14, in <module>\n",
+                "    from tensorflow.contrib.tensor_forest.python import tensor_forest\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f13a8a08320>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.1
+        },
+        "tensorflow_v1/2_BasicModels/gradient_boosted_decision_tree.py": {
+            "error": [
+                "2021-01-08 01:39:36.540860: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:36.540899: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/gradient_boosted_decision_tree.py\", line 17, in <module>\n",
+                "    from tensorflow.contrib.boosted_trees.estimator_batch.estimator import (\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7ff282657320>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.19
+        },
+        "tensorflow_v1/2_BasicModels/logistic_regression.py": {
+            "error": [
+                "2021-01-08 01:39:38.711590: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:38.711624: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/logistic_regression.py\", line 21, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f9a4bd52320>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.2
+        },
+        "tensorflow_v1/2_BasicModels/word2vec.py": {
+            "error": [
+                "2021-01-08 01:39:41.035832: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:41.035863: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/word2vec.py\", line 58, in <module>\n",
+                "    filename, _ = urllib.urlretrieve(url, data_path)\n",
+                "AttributeError: module 'urllib' has no attribute 'urlretrieve'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7fc1753c14d0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [
+                "Downloading the dataset... (It may take some time)\n"
+            ],
+            "retval": 1,
+            "seconds": 2.18
+        },
+        "tensorflow_v1/2_BasicModels/linear_regression.py": {
+            "error": [
+                "2021-01-08 01:39:43.109777: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:43.109811: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/linear_regression.py\", line 73, in <module>\n",
+                "    X = tf.placeholder(\"float\")\n",
+                "AttributeError: module 'tensorflow' has no attribute 'placeholder'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f339e8a2320>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.21
+        },
+        "tensorflow_v1/2_BasicModels/logistic_regression_eager_api.py": {
+            "error": [
+                "2021-01-08 01:39:45.375101: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:45.375137: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/logistic_regression_eager_api.py\", line 20, in <module>\n",
+                "    tf.enable_eager_execution()\n",
+                "AttributeError: module 'tensorflow' has no attribute 'enable_eager_execution'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f482a72e4d0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.18
+        },
+        "tensorflow_v1/2_BasicModels/nearest_neighbor.py": {
+            "error": [
+                "2021-01-08 01:39:47.560812: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:47.560845: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/nearest_neighbor.py\", line 23, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7fd5e5dea320>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.13
+        },
+        "tensorflow_v1/2_BasicModels/linear_regression_eager_api.py": {
+            "error": [
+                "2021-01-08 01:39:49.718156: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:49.718186: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/linear_regression_eager_api.py\", line 21, in <module>\n",
+                "    tf.enable_eager_execution()\n",
+                "AttributeError: module 'tensorflow' has no attribute 'enable_eager_execution'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f17f3307440>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.13
+        },
+        "tensorflow_v1/2_BasicModels/kmeans.py": {
+            "error": [
+                "2021-01-08 01:39:51.863004: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:51.863033: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/kmeans.py\", line 17, in <module>\n",
+                "    from tensorflow.contrib.factorization import KMeans\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7fdc5a1ca3b0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.12
+        },
+        "tensorflow_v1/6_MultiGPU/multigpu_basics.py": {
+            "error": [
+                "2021-01-08 01:39:53.977203: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:53.977239: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-08 01:39:55.092672: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "2021-01-08 01:39:55.092813: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:55.092825: W tensorflow/stream_executor/cuda/cuda_driver.cc:326] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-08 01:39:55.092845: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (bd553ffbda35): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-08 01:39:55.093333: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/6_MultiGPU/multigpu_basics.py\", line 61, in <module>\n",
+                "    a = tf.placeholder(tf.float32, [1000, 1000])\n",
+                "AttributeError: module 'tensorflow' has no attribute 'placeholder'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f14f14e13b0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.14
+        },
+        "tensorflow_v1/6_MultiGPU/multigpu_cnn.py": {
+            "error": [
+                "2021-01-08 01:39:56.059307: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:56.059340: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/6_MultiGPU/multigpu_cnn.py\", line 28, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f7e6f437710>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.12
+        },
+        "tensorflow_v1/3_NeuralNetworks/variational_autoencoder.py": {
+            "error": [
+                "2021-01-08 01:39:58.244855: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:39:58.244886: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/variational_autoencoder.py\", line 35, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7efe6c97b4d0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.23
+        },
+        "tensorflow_v1/3_NeuralNetworks/neural_network_eager_api.py": {
+            "error": [
+                "2021-01-08 01:40:00.379861: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:40:00.379895: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/neural_network_eager_api.py\", line 26, in <module>\n",
+                "    tf.enable_eager_execution()\n",
+                "AttributeError: module 'tensorflow' has no attribute 'enable_eager_execution'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f8ef126d5f0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.22
+        },
+        "tensorflow_v1/3_NeuralNetworks/neural_network.py": {
+            "error": [
+                "2021-01-08 01:40:02.561447: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:40:02.561478: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/neural_network.py\", line 20, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f2ec9968710>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.17
+        },
+        "tensorflow_v1/3_NeuralNetworks/bidirectional_rnn.py": {
+            "error": [
+                "2021-01-08 01:40:04.718047: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:40:04.718079: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/bidirectional_rnn.py\", line 18, in <module>\n",
+                "    from tensorflow.contrib import rnn\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7fa31be494d0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.12
+        },
+        "tensorflow_v1/3_NeuralNetworks/convolutional_network_raw.py": {
+            "error": [
+                "2021-01-08 01:40:06.796382: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:40:06.796411: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/convolutional_network_raw.py\", line 16, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f0d9aed9560>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.09
+        },
+        "tensorflow_v1/3_NeuralNetworks/autoencoder.py": {
+            "error": [
+                "2021-01-08 01:40:08.946987: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:40:08.947020: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/autoencoder.py\", line 30, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f3e12c704d0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.18
+        },
+        "tensorflow_v1/3_NeuralNetworks/gan.py": {
+            "error": [
+                "2021-01-08 01:40:11.375411: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:40:11.375446: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/gan.py\", line 35, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f7080e004d0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.28
+        },
+        "tensorflow_v1/3_NeuralNetworks/recurrent_network.py": {
+            "error": [
+                "2021-01-08 01:40:13.466895: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:40:13.466926: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/recurrent_network.py\", line 17, in <module>\n",
+                "    from tensorflow.contrib import rnn\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7fe8e9077440>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.17
+        },
+        "tensorflow_v1/3_NeuralNetworks/neural_network_raw.py": {
+            "error": [
+                "2021-01-08 01:40:15.596467: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:40:15.596497: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/neural_network_raw.py\", line 17, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7f65dcc155f0>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.22
+        },
+        "tensorflow_v1/3_NeuralNetworks/multilayer_perceptron.py": {
+            "error": [
+                "2021-01-08 01:40:17.780612: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:40:17.780648: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/multilayer_perceptron.py\", line 24, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7fb84886b560>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.17
+        },
+        "tensorflow_v1/3_NeuralNetworks/convolutional_network.py": {
+            "error": [
+                "2021-01-08 01:40:19.924882: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:40:19.924916: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/convolutional_network.py\", line 16, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n",
+                "Exception ignored in: <function Buckets.__del__ at 0x7fa9a21f6680>\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.7/site-packages/tensorflow/python/eager/monitoring.py\", line 407, in __del__\n",
+                "AttributeError: 'NoneType' object has no attribute 'TFE_MonitoringDeleteBuckets'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.14
+        }
+    },
+    "requirements.txt": [
+        "absl-py==0.11.0\n",
+        "astunparse==1.6.3\n",
+        "cachetools==4.2.0\n",
+        "certifi==2020.12.5\n",
+        "chardet==4.0.0\n",
+        "flatbuffers==1.12\n",
+        "gast==0.3.3\n",
+        "google-auth==1.24.0\n",
+        "google-auth-oauthlib==0.4.2\n",
+        "google-pasta==0.2.0\n",
+        "grpcio==1.32.0\n",
+        "h5py==2.10.0\n",
+        "idna==2.10\n",
+        "importlib-metadata==3.3.0\n",
+        "Keras-Preprocessing==1.1.2\n",
+        "Markdown==3.3.3\n",
+        "numpy==1.19.5\n",
+        "oauthlib==3.1.0\n",
+        "opt-einsum==3.3.0\n",
+        "protobuf==3.13.0\n",
+        "pyasn1==0.4.8\n",
+        "pyasn1-modules==0.2.8\n",
+        "requests==2.25.1\n",
+        "requests-oauthlib==1.3.0\n",
+        "rsa==4.6\n",
+        "six==1.15.0\n",
+        "tensorboard==2.4.0\n",
+        "tensorboard-plugin-wit==1.7.0\n",
+        "tensorflow @ file:///tmp/repo/tensorflow-2.4.0rc0-cp37-cp37m-manylinux2010_x86_64.whl\n",
+        "tensorflow-estimator==2.3.0\n",
+        "termcolor==1.1.0\n",
+        "typing-extensions==3.7.4.3\n",
+        "urllib3==1.26.2\n",
+        "Werkzeug==1.0.1\n",
+        "wrapt==1.12.1\n",
+        "zipp==3.4.0\n"
+    ]
+}

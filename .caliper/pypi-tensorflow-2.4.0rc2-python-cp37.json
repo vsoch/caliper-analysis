@@ -1,0 +1,656 @@
+{
+    "inputs": {
+        "dependency": "tensorflow",
+        "outfile": "/home/vanessa/Desktop/Code/caliper-analysis/.caliper/pypi-tensorflow-2.4.0rc2-python-cp37.json",
+        "dockerfile": "FROM python:3.7\nADD . /tmp/repo\nWORKDIR /tmp/repo\nENV LANG C.UTF-8\nENV SHELL /bin/bash\nRUN apt-get update && apt-get install -y wget ca-certificates gnupg2 git\nRUN /bin/bash -c \"wget https://files.pythonhosted.org/packages/f3/2d/0f3bdc9c1a3e7b45752e2c963c3b85f80d081c6b1c0b186922db9b88d18a/tensorflow-2.4.0rc2-cp37-cp37m-manylinux2010_x86_64.whl && pip install tensorflow-2.4.0rc2-cp37-cp37m-manylinux2010_x86_64.whl\"\n",
+        "force": false,
+        "exists": true,
+        "name": "pypi-tensorflow-2.4.0rc2-python-cp37",
+        "tests": "tensorflow_v0.11/5_MultiGPU/multigpu_basics.py\ntensorflow_v0.11/1_Introduction/basic_operations.py\ntensorflow_v0.11/1_Introduction/helloworld.py\ntensorflow_v0.11/4_Utils/tensorboard_advanced.py\ntensorflow_v0.11/4_Utils/tensorboard_basic.py\ntensorflow_v0.11/2_BasicModels/logistic_regression.py\ntensorflow_v0.11/2_BasicModels/linear_regression.py\ntensorflow_v0.11/2_BasicModels/nearest_neighbor.py\ntensorflow_v0.11/3_NeuralNetworks/bidirectional_rnn.py\ntensorflow_v0.11/3_NeuralNetworks/autoencoder.py\ntensorflow_v0.11/3_NeuralNetworks/recurrent_network.py\ntensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py\ntensorflow_v0.11/3_NeuralNetworks/multilayer_perceptron.py\ntensorflow_v0.11/3_NeuralNetworks/convolutional_network.py\ntensorflow_v1/1_Introduction/basic_eager_api.py\ntensorflow_v1/1_Introduction/basic_operations.py\ntensorflow_v1/1_Introduction/helloworld.py\ntensorflow_v1/4_Utils/tensorboard_advanced.py\ntensorflow_v1/4_Utils/tensorboard_basic.py\ntensorflow_v1/5_DataManagement/build_an_image_dataset.py\ntensorflow_v1/5_DataManagement/tensorflow_dataset_api.py\ntensorflow_v1/2_BasicModels/random_forest.py\ntensorflow_v1/2_BasicModels/gradient_boosted_decision_tree.py\ntensorflow_v1/2_BasicModels/logistic_regression.py\ntensorflow_v1/2_BasicModels/word2vec.py\ntensorflow_v1/2_BasicModels/linear_regression.py\ntensorflow_v1/2_BasicModels/logistic_regression_eager_api.py\ntensorflow_v1/2_BasicModels/nearest_neighbor.py\ntensorflow_v1/2_BasicModels/linear_regression_eager_api.py\ntensorflow_v1/2_BasicModels/kmeans.py\ntensorflow_v1/6_MultiGPU/multigpu_basics.py\ntensorflow_v1/6_MultiGPU/multigpu_cnn.py\ntensorflow_v1/3_NeuralNetworks/variational_autoencoder.py\ntensorflow_v1/3_NeuralNetworks/neural_network_eager_api.py\ntensorflow_v1/3_NeuralNetworks/neural_network.py\ntensorflow_v1/3_NeuralNetworks/bidirectional_rnn.py\ntensorflow_v1/3_NeuralNetworks/convolutional_network_raw.py\ntensorflow_v1/3_NeuralNetworks/autoencoder.py\ntensorflow_v1/3_NeuralNetworks/gan.py\ntensorflow_v1/3_NeuralNetworks/recurrent_network.py\ntensorflow_v1/3_NeuralNetworks/neural_network_raw.py\ntensorflow_v1/3_NeuralNetworks/multilayer_perceptron.py\ntensorflow_v1/3_NeuralNetworks/convolutional_network.py",
+        "cleanup": true,
+        "outdir": "/home/vanessa/Desktop/Code/caliper-analysis"
+    },
+    "tests": {
+        "build": {
+            "retval": 0
+        },
+        "tensorflow_v0.11/5_MultiGPU/multigpu_basics.py": {
+            "error": [
+                "2021-01-08 01:48:15.874654: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:15.874684: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-08 01:48:16.990477: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "2021-01-08 01:48:16.990675: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:16.990690: W tensorflow/stream_executor/cuda/cuda_driver.cc:326] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-08 01:48:16.990708: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (c2791c57c5db): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-08 01:48:16.991118: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/5_MultiGPU/multigpu_basics.py\", line 61, in <module>\n",
+                "    a = tf.placeholder(tf.float32, [1000, 1000])\n",
+                "AttributeError: module 'tensorflow' has no attribute 'placeholder'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.16
+        },
+        "tensorflow_v0.11/1_Introduction/basic_operations.py": {
+            "error": [
+                "2021-01-08 01:48:17.879643: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:17.879677: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-08 01:48:19.113874: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "2021-01-08 01:48:19.113995: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:19.114007: W tensorflow/stream_executor/cuda/cuda_driver.cc:326] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-08 01:48:19.114025: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (d09da93f6266): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-08 01:48:19.114491: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/1_Introduction/basic_operations.py\", line 25, in <module>\n",
+                "    with tf.Session() as sess:\n",
+                "AttributeError: module 'tensorflow' has no attribute 'Session'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.18
+        },
+        "tensorflow_v0.11/1_Introduction/helloworld.py": {
+            "error": [
+                "2021-01-08 01:48:20.034168: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:20.034200: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-08 01:48:21.204035: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "2021-01-08 01:48:21.204144: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:21.204158: W tensorflow/stream_executor/cuda/cuda_driver.cc:326] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-08 01:48:21.204177: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (335a95a6460e): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-08 01:48:21.204631: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/1_Introduction/helloworld.py\", line 28, in <module>\n",
+                "    sess = tf.Session()\n",
+                "AttributeError: module 'tensorflow' has no attribute 'Session'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.07
+        },
+        "tensorflow_v0.11/4_Utils/tensorboard_advanced.py": {
+            "error": [
+                "2021-01-08 01:48:22.119331: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:22.119362: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/4_Utils/tensorboard_advanced.py\", line 21, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.17
+        },
+        "tensorflow_v0.11/4_Utils/tensorboard_basic.py": {
+            "error": [
+                "2021-01-08 01:48:24.330058: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:24.330093: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/4_Utils/tensorboard_basic.py\", line 21, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.14
+        },
+        "tensorflow_v0.11/2_BasicModels/logistic_regression.py": {
+            "error": [
+                "2021-01-08 01:48:26.488204: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:26.488235: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/2_BasicModels/logistic_regression.py\", line 21, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.11
+        },
+        "tensorflow_v0.11/2_BasicModels/linear_regression.py": {
+            "error": [
+                "2021-01-08 01:48:28.509954: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:28.509984: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/2_BasicModels/linear_regression.py\", line 73, in <module>\n",
+                "    X = tf.placeholder(\"float\")\n",
+                "AttributeError: module 'tensorflow' has no attribute 'placeholder'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.12
+        },
+        "tensorflow_v0.11/2_BasicModels/nearest_neighbor.py": {
+            "error": [
+                "2021-01-08 01:48:30.816996: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:30.817042: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/2_BasicModels/nearest_neighbor.py\", line 23, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.16
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/bidirectional_rnn.py": {
+            "error": [
+                "2021-01-08 01:48:32.825643: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:32.825677: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/bidirectional_rnn.py\", line 24, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.17
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/autoencoder.py": {
+            "error": [
+                "2021-01-08 01:48:35.043276: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:35.043306: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/autoencoder.py\", line 25, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.14
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/recurrent_network.py": {
+            "error": [
+                "2021-01-08 01:48:37.156877: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:37.156910: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/recurrent_network.py\", line 22, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.11
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py": {
+            "error": [
+                "2021-01-08 01:48:39.259314: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:39.259347: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py\", line 107, in <module>\n",
+                "    x = tf.placeholder(\"float\", [None, seq_max_len, 1])\n",
+                "AttributeError: module 'tensorflow' has no attribute 'placeholder'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.11
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/multilayer_perceptron.py": {
+            "error": [
+                "2021-01-08 01:48:41.359048: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:41.359083: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/multilayer_perceptron.py\", line 13, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.14
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/convolutional_network.py": {
+            "error": [
+                "2021-01-08 01:48:43.486444: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:43.486476: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/convolutional_network.py\", line 21, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.17
+        },
+        "tensorflow_v1/1_Introduction/basic_eager_api.py": {
+            "error": [
+                "2021-01-08 01:48:45.838153: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:45.838197: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/1_Introduction/basic_eager_api.py\", line 23, in <module>\n",
+                "    import tensorflow.contrib.eager as tfe\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.12
+        },
+        "tensorflow_v1/1_Introduction/basic_operations.py": {
+            "error": [
+                "2021-01-08 01:48:47.887711: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:47.887749: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-08 01:48:49.097984: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "2021-01-08 01:48:49.098153: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:49.098173: W tensorflow/stream_executor/cuda/cuda_driver.cc:326] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-08 01:48:49.098200: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (68d3187a0055): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-08 01:48:49.098847: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/1_Introduction/basic_operations.py\", line 25, in <module>\n",
+                "    with tf.Session() as sess:\n",
+                "AttributeError: module 'tensorflow' has no attribute 'Session'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.25
+        },
+        "tensorflow_v1/1_Introduction/helloworld.py": {
+            "error": [
+                "2021-01-08 01:48:50.054515: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:50.054549: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-08 01:48:51.298553: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "2021-01-08 01:48:51.298661: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:51.298677: W tensorflow/stream_executor/cuda/cuda_driver.cc:326] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-08 01:48:51.298704: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (57a9b8bfd628): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-08 01:48:51.299095: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/1_Introduction/helloworld.py\", line 28, in <module>\n",
+                "    sess = tf.Session()\n",
+                "AttributeError: module 'tensorflow' has no attribute 'Session'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.19
+        },
+        "tensorflow_v1/4_Utils/tensorboard_advanced.py": {
+            "error": [
+                "2021-01-08 01:48:52.239388: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:52.239422: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/4_Utils/tensorboard_advanced.py\", line 20, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.16
+        },
+        "tensorflow_v1/4_Utils/tensorboard_basic.py": {
+            "error": [
+                "2021-01-08 01:48:54.408921: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:54.408952: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/4_Utils/tensorboard_basic.py\", line 20, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.18
+        },
+        "tensorflow_v1/5_DataManagement/build_an_image_dataset.py": {
+            "error": [
+                "2021-01-08 01:48:56.599965: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:56.600009: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/5_DataManagement/build_an_image_dataset.py\", line 74, in read_images\n",
+                "    classes = sorted(os.walk(dataset_path).next()[1])\n",
+                "AttributeError: 'generator' object has no attribute 'next'\n",
+                "\n",
+                "During handling of the above exception, another exception occurred:\n",
+                "\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/5_DataManagement/build_an_image_dataset.py\", line 133, in <module>\n",
+                "    X, Y = read_images(DATASET_PATH, MODE, batch_size)\n",
+                "  File \"tensorflow_v1/5_DataManagement/build_an_image_dataset.py\", line 76, in read_images\n",
+                "    classes = sorted(os.walk(dataset_path).__next__()[1])\n",
+                "StopIteration\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.23
+        },
+        "tensorflow_v1/5_DataManagement/tensorflow_dataset_api.py": {
+            "error": [
+                "2021-01-08 01:48:58.837352: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:48:58.837384: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/5_DataManagement/tensorflow_dataset_api.py\", line 20, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.21
+        },
+        "tensorflow_v1/2_BasicModels/random_forest.py": {
+            "error": [
+                "2021-01-08 01:49:01.024826: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:01.024861: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/random_forest.py\", line 14, in <module>\n",
+                "    from tensorflow.contrib.tensor_forest.python import tensor_forest\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.18
+        },
+        "tensorflow_v1/2_BasicModels/gradient_boosted_decision_tree.py": {
+            "error": [
+                "2021-01-08 01:49:03.292177: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:03.292208: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/gradient_boosted_decision_tree.py\", line 17, in <module>\n",
+                "    from tensorflow.contrib.boosted_trees.estimator_batch.estimator import (\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.21
+        },
+        "tensorflow_v1/2_BasicModels/logistic_regression.py": {
+            "error": [
+                "2021-01-08 01:49:05.365926: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:05.365961: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/logistic_regression.py\", line 21, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.18
+        },
+        "tensorflow_v1/2_BasicModels/word2vec.py": {
+            "error": [
+                "2021-01-08 01:49:07.760274: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:07.760304: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/word2vec.py\", line 58, in <module>\n",
+                "    filename, _ = urllib.urlretrieve(url, data_path)\n",
+                "AttributeError: module 'urllib' has no attribute 'urlretrieve'\n"
+            ],
+            "output": [
+                "Downloading the dataset... (It may take some time)\n"
+            ],
+            "retval": 1,
+            "seconds": 2.13
+        },
+        "tensorflow_v1/2_BasicModels/linear_regression.py": {
+            "error": [
+                "2021-01-08 01:49:09.732388: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:09.732419: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/linear_regression.py\", line 73, in <module>\n",
+                "    X = tf.placeholder(\"float\")\n",
+                "AttributeError: module 'tensorflow' has no attribute 'placeholder'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.16
+        },
+        "tensorflow_v1/2_BasicModels/logistic_regression_eager_api.py": {
+            "error": [
+                "2021-01-08 01:49:11.934244: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:11.934276: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/logistic_regression_eager_api.py\", line 20, in <module>\n",
+                "    tf.enable_eager_execution()\n",
+                "AttributeError: module 'tensorflow' has no attribute 'enable_eager_execution'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.24
+        },
+        "tensorflow_v1/2_BasicModels/nearest_neighbor.py": {
+            "error": [
+                "2021-01-08 01:49:14.249439: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:14.249473: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/nearest_neighbor.py\", line 23, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.18
+        },
+        "tensorflow_v1/2_BasicModels/linear_regression_eager_api.py": {
+            "error": [
+                "2021-01-08 01:49:16.455379: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:16.455416: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/linear_regression_eager_api.py\", line 21, in <module>\n",
+                "    tf.enable_eager_execution()\n",
+                "AttributeError: module 'tensorflow' has no attribute 'enable_eager_execution'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.21
+        },
+        "tensorflow_v1/2_BasicModels/kmeans.py": {
+            "error": [
+                "2021-01-08 01:49:18.674888: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:18.674923: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/kmeans.py\", line 17, in <module>\n",
+                "    from tensorflow.contrib.factorization import KMeans\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.3
+        },
+        "tensorflow_v1/6_MultiGPU/multigpu_basics.py": {
+            "error": [
+                "2021-01-08 01:49:20.939171: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:20.939202: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-08 01:49:22.062397: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "2021-01-08 01:49:22.062555: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:22.062570: W tensorflow/stream_executor/cuda/cuda_driver.cc:326] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-08 01:49:22.062599: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (db176fab28b0): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-08 01:49:22.062998: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/6_MultiGPU/multigpu_basics.py\", line 61, in <module>\n",
+                "    a = tf.placeholder(tf.float32, [1000, 1000])\n",
+                "AttributeError: module 'tensorflow' has no attribute 'placeholder'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.16
+        },
+        "tensorflow_v1/6_MultiGPU/multigpu_cnn.py": {
+            "error": [
+                "2021-01-08 01:49:23.070133: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:23.070165: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/6_MultiGPU/multigpu_cnn.py\", line 28, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.26
+        },
+        "tensorflow_v1/3_NeuralNetworks/variational_autoencoder.py": {
+            "error": [
+                "2021-01-08 01:49:25.377692: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:25.377725: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/variational_autoencoder.py\", line 35, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.17
+        },
+        "tensorflow_v1/3_NeuralNetworks/neural_network_eager_api.py": {
+            "error": [
+                "2021-01-08 01:49:27.449044: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:27.449073: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/neural_network_eager_api.py\", line 26, in <module>\n",
+                "    tf.enable_eager_execution()\n",
+                "AttributeError: module 'tensorflow' has no attribute 'enable_eager_execution'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.2
+        },
+        "tensorflow_v1/3_NeuralNetworks/neural_network.py": {
+            "error": [
+                "2021-01-08 01:49:29.697792: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:29.697819: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/neural_network.py\", line 20, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.28
+        },
+        "tensorflow_v1/3_NeuralNetworks/bidirectional_rnn.py": {
+            "error": [
+                "2021-01-08 01:49:31.895851: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:31.895886: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/bidirectional_rnn.py\", line 18, in <module>\n",
+                "    from tensorflow.contrib import rnn\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.17
+        },
+        "tensorflow_v1/3_NeuralNetworks/convolutional_network_raw.py": {
+            "error": [
+                "2021-01-08 01:49:34.049441: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:34.049477: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/convolutional_network_raw.py\", line 16, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.2
+        },
+        "tensorflow_v1/3_NeuralNetworks/autoencoder.py": {
+            "error": [
+                "2021-01-08 01:49:36.283016: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:36.283050: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/autoencoder.py\", line 30, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.15
+        },
+        "tensorflow_v1/3_NeuralNetworks/gan.py": {
+            "error": [
+                "2021-01-08 01:49:38.545963: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:38.545995: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/gan.py\", line 35, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.19
+        },
+        "tensorflow_v1/3_NeuralNetworks/recurrent_network.py": {
+            "error": [
+                "2021-01-08 01:49:40.617812: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:40.617853: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/recurrent_network.py\", line 17, in <module>\n",
+                "    from tensorflow.contrib import rnn\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.2
+        },
+        "tensorflow_v1/3_NeuralNetworks/neural_network_raw.py": {
+            "error": [
+                "2021-01-08 01:49:42.814218: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:42.814250: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/neural_network_raw.py\", line 17, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.26
+        },
+        "tensorflow_v1/3_NeuralNetworks/multilayer_perceptron.py": {
+            "error": [
+                "2021-01-08 01:49:45.044743: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:45.044773: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/multilayer_perceptron.py\", line 24, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.14
+        },
+        "tensorflow_v1/3_NeuralNetworks/convolutional_network.py": {
+            "error": [
+                "2021-01-08 01:49:47.208718: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory\n",
+                "2021-01-08 01:49:47.208752: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/convolutional_network.py\", line 16, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.22
+        }
+    },
+    "requirements.txt": [
+        "absl-py==0.11.0\n",
+        "astunparse==1.6.3\n",
+        "cachetools==4.2.0\n",
+        "certifi==2020.12.5\n",
+        "chardet==4.0.0\n",
+        "flatbuffers==1.12\n",
+        "gast==0.3.3\n",
+        "google-auth==1.24.0\n",
+        "google-auth-oauthlib==0.4.2\n",
+        "google-pasta==0.2.0\n",
+        "grpcio==1.32.0\n",
+        "h5py==2.10.0\n",
+        "idna==2.10\n",
+        "importlib-metadata==3.3.0\n",
+        "Keras-Preprocessing==1.1.2\n",
+        "Markdown==3.3.3\n",
+        "numpy==1.19.5\n",
+        "oauthlib==3.1.0\n",
+        "opt-einsum==3.3.0\n",
+        "protobuf==3.13.0\n",
+        "pyasn1==0.4.8\n",
+        "pyasn1-modules==0.2.8\n",
+        "requests==2.25.1\n",
+        "requests-oauthlib==1.3.0\n",
+        "rsa==4.6\n",
+        "six==1.15.0\n",
+        "tensorboard==2.4.0\n",
+        "tensorboard-plugin-wit==1.7.0\n",
+        "tensorflow @ file:///tmp/repo/tensorflow-2.4.0rc2-cp37-cp37m-manylinux2010_x86_64.whl\n",
+        "tensorflow-estimator==2.4.0\n",
+        "termcolor==1.1.0\n",
+        "typing-extensions==3.7.4.3\n",
+        "urllib3==1.26.2\n",
+        "Werkzeug==1.0.1\n",
+        "wrapt==1.12.1\n",
+        "zipp==3.4.0\n"
+    ]
+}

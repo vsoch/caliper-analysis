@@ -1,0 +1,797 @@
+{
+    "inputs": {
+        "dependency": "tensorflow",
+        "outfile": "/home/vanessa/Desktop/Code/caliper-analysis/.caliper/pypi-tensorflow-2.1.0rc0-python-cp36.json",
+        "dockerfile": "FROM python:3.6\nADD . /tmp/repo\nWORKDIR /tmp/repo\nENV LANG C.UTF-8\nENV SHELL /bin/bash\nRUN apt-get update && apt-get install -y wget ca-certificates gnupg2 git\nRUN /bin/bash -c \"wget https://files.pythonhosted.org/packages/4d/fd/7528e5ef327abde9b7425aea24198d8b139795c1233d1658c1279055d860/tensorflow-2.1.0rc0-cp36-cp36m-manylinux2010_x86_64.whl && pip install tensorflow-2.1.0rc0-cp36-cp36m-manylinux2010_x86_64.whl\"\n",
+        "force": false,
+        "exists": true,
+        "name": "pypi-tensorflow-2.1.0rc0-python-cp36",
+        "tests": "tensorflow_v0.11/5_MultiGPU/multigpu_basics.py\ntensorflow_v0.11/1_Introduction/basic_operations.py\ntensorflow_v0.11/1_Introduction/helloworld.py\ntensorflow_v0.11/4_Utils/tensorboard_advanced.py\ntensorflow_v0.11/4_Utils/tensorboard_basic.py\ntensorflow_v0.11/2_BasicModels/logistic_regression.py\ntensorflow_v0.11/2_BasicModels/linear_regression.py\ntensorflow_v0.11/2_BasicModels/nearest_neighbor.py\ntensorflow_v0.11/3_NeuralNetworks/bidirectional_rnn.py\ntensorflow_v0.11/3_NeuralNetworks/autoencoder.py\ntensorflow_v0.11/3_NeuralNetworks/recurrent_network.py\ntensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py\ntensorflow_v0.11/3_NeuralNetworks/multilayer_perceptron.py\ntensorflow_v0.11/3_NeuralNetworks/convolutional_network.py\ntensorflow_v1/1_Introduction/basic_eager_api.py\ntensorflow_v1/1_Introduction/basic_operations.py\ntensorflow_v1/1_Introduction/helloworld.py\ntensorflow_v1/4_Utils/tensorboard_advanced.py\ntensorflow_v1/4_Utils/tensorboard_basic.py\ntensorflow_v1/5_DataManagement/build_an_image_dataset.py\ntensorflow_v1/5_DataManagement/tensorflow_dataset_api.py\ntensorflow_v1/2_BasicModels/random_forest.py\ntensorflow_v1/2_BasicModels/gradient_boosted_decision_tree.py\ntensorflow_v1/2_BasicModels/logistic_regression.py\ntensorflow_v1/2_BasicModels/word2vec.py\ntensorflow_v1/2_BasicModels/linear_regression.py\ntensorflow_v1/2_BasicModels/logistic_regression_eager_api.py\ntensorflow_v1/2_BasicModels/nearest_neighbor.py\ntensorflow_v1/2_BasicModels/linear_regression_eager_api.py\ntensorflow_v1/2_BasicModels/kmeans.py\ntensorflow_v1/6_MultiGPU/multigpu_basics.py\ntensorflow_v1/6_MultiGPU/multigpu_cnn.py\ntensorflow_v1/3_NeuralNetworks/variational_autoencoder.py\ntensorflow_v1/3_NeuralNetworks/neural_network_eager_api.py\ntensorflow_v1/3_NeuralNetworks/neural_network.py\ntensorflow_v1/3_NeuralNetworks/bidirectional_rnn.py\ntensorflow_v1/3_NeuralNetworks/convolutional_network_raw.py\ntensorflow_v1/3_NeuralNetworks/autoencoder.py\ntensorflow_v1/3_NeuralNetworks/gan.py\ntensorflow_v1/3_NeuralNetworks/recurrent_network.py\ntensorflow_v1/3_NeuralNetworks/neural_network_raw.py\ntensorflow_v1/3_NeuralNetworks/multilayer_perceptron.py\ntensorflow_v1/3_NeuralNetworks/convolutional_network.py",
+        "cleanup": true,
+        "outdir": "/home/vanessa/Desktop/Code/caliper-analysis"
+    },
+    "tests": {
+        "build": {
+            "retval": 0
+        },
+        "tensorflow_v0.11/5_MultiGPU/multigpu_basics.py": {
+            "error": [
+                "2021-01-05 20:51:53.374732: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:51:53.374774: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:51:54.290866: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:51:54.291043: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:51:54.291065: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "2021-01-05 20:51:55.269139: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:51:55.269181: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-05 20:51:55.269205: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (55042ddc7ea3): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-05 20:51:55.269492: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA\n",
+                "2021-01-05 20:51:55.293587: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1999965000 Hz\n",
+                "2021-01-05 20:51:55.294103: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55d263614b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:\n",
+                "2021-01-05 20:51:55.294144: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/5_MultiGPU/multigpu_basics.py\", line 61, in <module>\n",
+                "    a = tf.placeholder(tf.float32, [1000, 1000])\n",
+                "AttributeError: module 'tensorflow' has no attribute 'placeholder'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.09
+        },
+        "tensorflow_v0.11/1_Introduction/basic_operations.py": {
+            "error": [
+                "2021-01-05 20:51:56.544445: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:51:56.544491: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:51:57.495919: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:51:57.496023: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:51:57.496040: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "2021-01-05 20:51:58.297790: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:51:58.297826: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-05 20:51:58.297850: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (478244d84295): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-05 20:51:58.298141: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA\n",
+                "2021-01-05 20:51:58.321671: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1999965000 Hz\n",
+                "2021-01-05 20:51:58.322134: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x557d3068fe90 initialized for platform Host (this does not guarantee that XLA will be used). Devices:\n",
+                "2021-01-05 20:51:58.322164: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/1_Introduction/basic_operations.py\", line 25, in <module>\n",
+                "    with tf.Session() as sess:\n",
+                "AttributeError: module 'tensorflow' has no attribute 'Session'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.2
+        },
+        "tensorflow_v0.11/1_Introduction/helloworld.py": {
+            "error": [
+                "2021-01-05 20:51:59.881119: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:51:59.881154: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:00.662431: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:00.662535: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:00.662553: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "2021-01-05 20:52:01.659125: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:01.659161: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-05 20:52:01.659186: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (573935d80ec0): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-05 20:52:01.659444: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA\n",
+                "2021-01-05 20:52:01.681653: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1999965000 Hz\n",
+                "2021-01-05 20:52:01.682129: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x559a78c6b200 initialized for platform Host (this does not guarantee that XLA will be used). Devices:\n",
+                "2021-01-05 20:52:01.682162: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/1_Introduction/helloworld.py\", line 28, in <module>\n",
+                "    sess = tf.Session()\n",
+                "AttributeError: module 'tensorflow' has no attribute 'Session'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.18
+        },
+        "tensorflow_v0.11/4_Utils/tensorboard_advanced.py": {
+            "error": [
+                "2021-01-05 20:52:02.827828: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:02.827864: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:03.781335: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:03.781477: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:03.781501: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/4_Utils/tensorboard_advanced.py\", line 21, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.98
+        },
+        "tensorflow_v0.11/4_Utils/tensorboard_basic.py": {
+            "error": [
+                "2021-01-05 20:52:06.003606: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:06.003651: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:06.850339: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:06.850443: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:06.850458: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/4_Utils/tensorboard_basic.py\", line 21, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.32
+        },
+        "tensorflow_v0.11/2_BasicModels/logistic_regression.py": {
+            "error": [
+                "2021-01-05 20:52:09.126537: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:09.126571: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:09.954632: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:09.954753: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:09.954775: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/2_BasicModels/logistic_regression.py\", line 21, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.96
+        },
+        "tensorflow_v0.11/2_BasicModels/linear_regression.py": {
+            "error": [
+                "2021-01-05 20:52:12.087128: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:12.087176: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:13.078867: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:13.078995: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:13.079019: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/2_BasicModels/linear_regression.py\", line 73, in <module>\n",
+                "    X = tf.placeholder(\"float\")\n",
+                "AttributeError: module 'tensorflow' has no attribute 'placeholder'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.1
+        },
+        "tensorflow_v0.11/2_BasicModels/nearest_neighbor.py": {
+            "error": [
+                "2021-01-05 20:52:15.523136: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:15.523181: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:16.331125: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:16.331233: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:16.331255: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/2_BasicModels/nearest_neighbor.py\", line 23, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.33
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/bidirectional_rnn.py": {
+            "error": [
+                "2021-01-05 20:52:18.517239: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:18.517277: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:19.476664: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:19.476773: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:19.476795: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/bidirectional_rnn.py\", line 24, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.91
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/autoencoder.py": {
+            "error": [
+                "2021-01-05 20:52:21.750064: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:21.750097: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:22.542513: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:22.542636: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:22.542660: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/autoencoder.py\", line 25, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.32
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/recurrent_network.py": {
+            "error": [
+                "2021-01-05 20:52:24.753774: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:24.753808: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:25.625257: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:25.625438: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:25.625459: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/recurrent_network.py\", line 22, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.08
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py": {
+            "error": [
+                "2021-01-05 20:52:27.883525: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:27.883564: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:28.840126: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:28.840234: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:28.840254: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py\", line 107, in <module>\n",
+                "    x = tf.placeholder(\"float\", [None, seq_max_len, 1])\n",
+                "AttributeError: module 'tensorflow' has no attribute 'placeholder'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.39
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/multilayer_perceptron.py": {
+            "error": [
+                "2021-01-05 20:52:31.366261: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:31.366296: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:32.222757: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:32.222873: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:32.222889: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/multilayer_perceptron.py\", line 13, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.23
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/convolutional_network.py": {
+            "error": [
+                "2021-01-05 20:52:34.481432: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:34.481473: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:35.531826: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:35.531952: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:35.531974: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/convolutional_network.py\", line 21, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.08
+        },
+        "tensorflow_v1/1_Introduction/basic_eager_api.py": {
+            "error": [
+                "2021-01-05 20:52:37.943085: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:37.943122: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:38.733669: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:38.733799: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:38.733821: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/1_Introduction/basic_eager_api.py\", line 23, in <module>\n",
+                "    import tensorflow.contrib.eager as tfe\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.37
+        },
+        "tensorflow_v1/1_Introduction/basic_operations.py": {
+            "error": [
+                "2021-01-05 20:52:40.904245: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:40.904281: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:41.994655: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:41.994791: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:41.994811: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "2021-01-05 20:52:42.938560: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:42.938598: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-05 20:52:42.938625: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (25c33f8e5b51): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-05 20:52:42.938918: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA\n",
+                "2021-01-05 20:52:42.961628: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1999965000 Hz\n",
+                "2021-01-05 20:52:42.962118: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55e546668680 initialized for platform Host (this does not guarantee that XLA will be used). Devices:\n",
+                "2021-01-05 20:52:42.962151: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/1_Introduction/basic_operations.py\", line 25, in <module>\n",
+                "    with tf.Session() as sess:\n",
+                "AttributeError: module 'tensorflow' has no attribute 'Session'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.2
+        },
+        "tensorflow_v1/1_Introduction/helloworld.py": {
+            "error": [
+                "2021-01-05 20:52:44.478269: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:44.478302: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:45.272993: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:45.273103: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:45.273121: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "2021-01-05 20:52:46.193544: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:46.193586: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-05 20:52:46.193625: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (c8dd9fe63696): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-05 20:52:46.193940: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA\n",
+                "2021-01-05 20:52:46.225585: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1999965000 Hz\n",
+                "2021-01-05 20:52:46.226084: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5586ecc4f2b0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:\n",
+                "2021-01-05 20:52:46.226117: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/1_Introduction/helloworld.py\", line 28, in <module>\n",
+                "    sess = tf.Session()\n",
+                "AttributeError: module 'tensorflow' has no attribute 'Session'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.37
+        },
+        "tensorflow_v1/4_Utils/tensorboard_advanced.py": {
+            "error": [
+                "2021-01-05 20:52:47.442269: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:47.442308: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:48.294046: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:48.294259: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:48.294278: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/4_Utils/tensorboard_advanced.py\", line 20, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.95
+        },
+        "tensorflow_v1/4_Utils/tensorboard_basic.py": {
+            "error": [
+                "2021-01-05 20:52:50.451917: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:50.451963: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:51.452022: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:51.452132: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:51.452150: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/4_Utils/tensorboard_basic.py\", line 20, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.05
+        },
+        "tensorflow_v1/5_DataManagement/build_an_image_dataset.py": {
+            "error": [
+                "2021-01-05 20:52:53.877953: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:53.877991: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:54.679433: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:54.679581: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:54.679611: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/5_DataManagement/build_an_image_dataset.py\", line 74, in read_images\n",
+                "    classes = sorted(os.walk(dataset_path).next()[1])\n",
+                "AttributeError: 'generator' object has no attribute 'next'\n",
+                "\n",
+                "During handling of the above exception, another exception occurred:\n",
+                "\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/5_DataManagement/build_an_image_dataset.py\", line 133, in <module>\n",
+                "    X, Y = read_images(DATASET_PATH, MODE, batch_size)\n",
+                "  File \"tensorflow_v1/5_DataManagement/build_an_image_dataset.py\", line 76, in read_images\n",
+                "    classes = sorted(os.walk(dataset_path).__next__()[1])\n",
+                "StopIteration\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.42
+        },
+        "tensorflow_v1/5_DataManagement/tensorflow_dataset_api.py": {
+            "error": [
+                "2021-01-05 20:52:56.910979: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:56.911018: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:52:57.834463: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:57.834588: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:52:57.834611: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/5_DataManagement/tensorflow_dataset_api.py\", line 20, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.1
+        },
+        "tensorflow_v1/2_BasicModels/random_forest.py": {
+            "error": [
+                "2021-01-05 20:53:00.094266: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:00.094331: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:01.067792: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:01.067909: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:01.067933: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/random_forest.py\", line 14, in <module>\n",
+                "    from tensorflow.contrib.tensor_forest.python import tensor_forest\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.33
+        },
+        "tensorflow_v1/2_BasicModels/gradient_boosted_decision_tree.py": {
+            "error": [
+                "2021-01-05 20:53:03.568200: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:03.568237: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:04.399458: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:04.399578: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:04.399597: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/gradient_boosted_decision_tree.py\", line 17, in <module>\n",
+                "    from tensorflow.contrib.boosted_trees.estimator_batch.estimator import (\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.28
+        },
+        "tensorflow_v1/2_BasicModels/logistic_regression.py": {
+            "error": [
+                "2021-01-05 20:53:06.636238: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:06.636278: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:07.670427: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:07.670551: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:07.670571: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/logistic_regression.py\", line 21, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.05
+        },
+        "tensorflow_v1/2_BasicModels/word2vec.py": {
+            "error": [
+                "2021-01-05 20:53:10.102433: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:10.102470: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:10.895203: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:10.895330: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:10.895356: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/word2vec.py\", line 58, in <module>\n",
+                "    filename, _ = urllib.urlretrieve(url, data_path)\n",
+                "AttributeError: module 'urllib' has no attribute 'urlretrieve'\n"
+            ],
+            "output": [
+                "Downloading the dataset... (It may take some time)\n"
+            ],
+            "retval": 1,
+            "seconds": 3.38
+        },
+        "tensorflow_v1/2_BasicModels/linear_regression.py": {
+            "error": [
+                "2021-01-05 20:53:13.062449: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:13.062485: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:13.935625: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:13.935752: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:13.935773: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/linear_regression.py\", line 73, in <module>\n",
+                "    X = tf.placeholder(\"float\")\n",
+                "AttributeError: module 'tensorflow' has no attribute 'placeholder'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.03
+        },
+        "tensorflow_v1/2_BasicModels/logistic_regression_eager_api.py": {
+            "error": [
+                "2021-01-05 20:53:16.118186: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:16.118228: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:17.098269: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:17.098406: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:17.098433: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/logistic_regression_eager_api.py\", line 20, in <module>\n",
+                "    tf.enable_eager_execution()\n",
+                "AttributeError: module 'tensorflow' has no attribute 'enable_eager_execution'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.28
+        },
+        "tensorflow_v1/2_BasicModels/nearest_neighbor.py": {
+            "error": [
+                "2021-01-05 20:53:19.535866: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:19.535908: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:20.389384: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:20.389542: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:20.389562: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/nearest_neighbor.py\", line 23, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.21
+        },
+        "tensorflow_v1/2_BasicModels/linear_regression_eager_api.py": {
+            "error": [
+                "2021-01-05 20:53:22.544129: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:22.544166: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:23.534626: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:23.534729: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:23.534746: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/linear_regression_eager_api.py\", line 21, in <module>\n",
+                "    tf.enable_eager_execution()\n",
+                "AttributeError: module 'tensorflow' has no attribute 'enable_eager_execution'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.03
+        },
+        "tensorflow_v1/2_BasicModels/kmeans.py": {
+            "error": [
+                "2021-01-05 20:53:25.995779: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:25.995826: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:26.784399: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:26.784548: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:26.784576: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/kmeans.py\", line 17, in <module>\n",
+                "    from tensorflow.contrib.factorization import KMeans\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.35
+        },
+        "tensorflow_v1/6_MultiGPU/multigpu_basics.py": {
+            "error": [
+                "2021-01-05 20:53:28.910848: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:28.910889: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:29.731711: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:29.731839: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:29.731861: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "2021-01-05 20:53:30.745592: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:30.745631: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)\n",
+                "2021-01-05 20:53:30.745658: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (d26cd445c3b9): /proc/driver/nvidia/version does not exist\n",
+                "2021-01-05 20:53:30.745938: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA\n",
+                "2021-01-05 20:53:30.773645: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1999965000 Hz\n",
+                "2021-01-05 20:53:30.774093: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x56223a57f960 initialized for platform Host (this does not guarantee that XLA will be used). Devices:\n",
+                "2021-01-05 20:53:30.774119: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/6_MultiGPU/multigpu_basics.py\", line 61, in <module>\n",
+                "    a = tf.placeholder(tf.float32, [1000, 1000])\n",
+                "AttributeError: module 'tensorflow' has no attribute 'placeholder'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.02
+        },
+        "tensorflow_v1/6_MultiGPU/multigpu_cnn.py": {
+            "error": [
+                "2021-01-05 20:53:32.014225: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:32.014271: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:33.096190: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:33.096306: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:33.096323: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/6_MultiGPU/multigpu_cnn.py\", line 28, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.41
+        },
+        "tensorflow_v1/3_NeuralNetworks/variational_autoencoder.py": {
+            "error": [
+                "2021-01-05 20:53:35.568001: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:35.568042: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:36.369629: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:36.369736: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:36.369755: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/variational_autoencoder.py\", line 35, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.15
+        },
+        "tensorflow_v1/3_NeuralNetworks/neural_network_eager_api.py": {
+            "error": [
+                "2021-01-05 20:53:38.467824: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:38.467859: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:39.476286: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:39.476393: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:39.476411: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/neural_network_eager_api.py\", line 26, in <module>\n",
+                "    tf.enable_eager_execution()\n",
+                "AttributeError: module 'tensorflow' has no attribute 'enable_eager_execution'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.04
+        },
+        "tensorflow_v1/3_NeuralNetworks/neural_network.py": {
+            "error": [
+                "2021-01-05 20:53:42.111702: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:42.111744: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:42.976435: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:42.976541: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:42.976558: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/neural_network.py\", line 20, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.58
+        },
+        "tensorflow_v1/3_NeuralNetworks/bidirectional_rnn.py": {
+            "error": [
+                "2021-01-05 20:53:45.119952: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:45.119991: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:46.121869: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:46.122048: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:46.122075: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/bidirectional_rnn.py\", line 18, in <module>\n",
+                "    from tensorflow.contrib import rnn\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.02
+        },
+        "tensorflow_v1/3_NeuralNetworks/convolutional_network_raw.py": {
+            "error": [
+                "2021-01-05 20:53:48.366274: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:48.366322: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:49.198952: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:49.199089: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:49.199115: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/convolutional_network_raw.py\", line 16, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.23
+        },
+        "tensorflow_v1/3_NeuralNetworks/autoencoder.py": {
+            "error": [
+                "2021-01-05 20:53:51.371560: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:51.371596: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:52.188987: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:52.189109: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:52.189129: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/autoencoder.py\", line 30, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.03
+        },
+        "tensorflow_v1/3_NeuralNetworks/gan.py": {
+            "error": [
+                "2021-01-05 20:53:54.440765: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:54.440803: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:55.466072: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:55.466182: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:55.466200: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/gan.py\", line 35, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.2
+        },
+        "tensorflow_v1/3_NeuralNetworks/recurrent_network.py": {
+            "error": [
+                "2021-01-05 20:53:57.931253: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:57.931296: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:53:58.767201: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:58.767365: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:53:58.767392: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/recurrent_network.py\", line 17, in <module>\n",
+                "    from tensorflow.contrib import rnn\n",
+                "ModuleNotFoundError: No module named 'tensorflow.contrib'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.36
+        },
+        "tensorflow_v1/3_NeuralNetworks/neural_network_raw.py": {
+            "error": [
+                "2021-01-05 20:54:00.954691: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:54:00.954729: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:54:01.948074: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:54:01.948185: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:54:01.948203: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/neural_network_raw.py\", line 17, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 2.99
+        },
+        "tensorflow_v1/3_NeuralNetworks/multilayer_perceptron.py": {
+            "error": [
+                "2021-01-05 20:54:04.341564: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:54:04.341599: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:54:05.151078: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:54:05.151189: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:54:05.151205: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/multilayer_perceptron.py\", line 24, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.31
+        },
+        "tensorflow_v1/3_NeuralNetworks/convolutional_network.py": {
+            "error": [
+                "2021-01-05 20:54:07.302540: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:54:07.302586: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.\n",
+                "2021-01-05 20:54:08.188381: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:54:08.188514: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory\n",
+                "2021-01-05 20:54:08.188535: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/convolutional_network.py\", line 16, in <module>\n",
+                "    from tensorflow.examples.tutorials.mnist import input_data\n",
+                "ModuleNotFoundError: No module named 'tensorflow.examples.tutorials'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 3.06
+        }
+    },
+    "requirements.txt": [
+        "absl-py==0.11.0\n",
+        "astor==0.8.1\n",
+        "cached-property==1.5.2\n",
+        "cachetools==4.2.0\n",
+        "certifi==2020.12.5\n",
+        "chardet==4.0.0\n",
+        "gast==0.2.2\n",
+        "google-auth==1.24.0\n",
+        "google-auth-oauthlib==0.4.2\n",
+        "google-pasta==0.2.0\n",
+        "grpcio==1.34.0\n",
+        "h5py==3.1.0\n",
+        "idna==2.10\n",
+        "importlib-metadata==3.3.0\n",
+        "Keras-Applications==1.0.8\n",
+        "Keras-Preprocessing==1.1.2\n",
+        "Markdown==3.3.3\n",
+        "numpy==1.19.5\n",
+        "oauthlib==3.1.0\n",
+        "opt-einsum==3.3.0\n",
+        "protobuf==3.14.0\n",
+        "pyasn1==0.4.8\n",
+        "pyasn1-modules==0.2.8\n",
+        "requests==2.25.1\n",
+        "requests-oauthlib==1.3.0\n",
+        "rsa==4.6\n",
+        "six==1.15.0\n",
+        "tensorboard==2.0.2\n",
+        "tensorflow @ file:///tmp/repo/tensorflow-2.1.0rc0-cp36-cp36m-manylinux2010_x86_64.whl\n",
+        "tensorflow-estimator==2.0.1\n",
+        "termcolor==1.1.0\n",
+        "typing-extensions==3.7.4.3\n",
+        "urllib3==1.26.2\n",
+        "Werkzeug==1.0.1\n",
+        "wrapt==1.12.1\n",
+        "zipp==3.4.0\n"
+    ]
+}

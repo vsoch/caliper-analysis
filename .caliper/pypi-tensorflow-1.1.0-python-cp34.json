@@ -1,0 +1,1062 @@
+{
+    "inputs": {
+        "dependency": "tensorflow",
+        "outfile": "/home/vanessa/Desktop/Code/caliper-analysis/.caliper/pypi-tensorflow-1.1.0-python-cp34.json",
+        "dockerfile": "FROM python:3.4\nADD . /tmp/repo\nWORKDIR /tmp/repo\nENV LANG C.UTF-8\nENV SHELL /bin/bash\nRUN apt-get update && apt-get install -y wget ca-certificates gnupg2 git\nRUN /bin/bash -c \"wget https://files.pythonhosted.org/packages/8e/8a/a51afecfe761314da24747c2d23e26b6fc3df02733e96c4551cc52556982/tensorflow-1.1.0-cp34-cp34m-manylinux1_x86_64.whl && pip install tensorflow-1.1.0-cp34-cp34m-manylinux1_x86_64.whl\"\n",
+        "force": false,
+        "exists": true,
+        "name": "pypi-tensorflow-1.1.0-python-cp34",
+        "tests": "tensorflow_v0.11/5_MultiGPU/multigpu_basics.py\ntensorflow_v0.11/1_Introduction/basic_operations.py\ntensorflow_v0.11/1_Introduction/helloworld.py\ntensorflow_v0.11/4_Utils/tensorboard_advanced.py\ntensorflow_v0.11/4_Utils/tensorboard_basic.py\ntensorflow_v0.11/2_BasicModels/logistic_regression.py\ntensorflow_v0.11/2_BasicModels/linear_regression.py\ntensorflow_v0.11/2_BasicModels/nearest_neighbor.py\ntensorflow_v0.11/3_NeuralNetworks/bidirectional_rnn.py\ntensorflow_v0.11/3_NeuralNetworks/autoencoder.py\ntensorflow_v0.11/3_NeuralNetworks/recurrent_network.py\ntensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py\ntensorflow_v0.11/3_NeuralNetworks/multilayer_perceptron.py\ntensorflow_v0.11/3_NeuralNetworks/convolutional_network.py\ntensorflow_v1/1_Introduction/basic_eager_api.py\ntensorflow_v1/1_Introduction/basic_operations.py\ntensorflow_v1/1_Introduction/helloworld.py\ntensorflow_v1/4_Utils/tensorboard_advanced.py\ntensorflow_v1/4_Utils/tensorboard_basic.py\ntensorflow_v1/5_DataManagement/build_an_image_dataset.py\ntensorflow_v1/5_DataManagement/tensorflow_dataset_api.py\ntensorflow_v1/2_BasicModels/random_forest.py\ntensorflow_v1/2_BasicModels/gradient_boosted_decision_tree.py\ntensorflow_v1/2_BasicModels/logistic_regression.py\ntensorflow_v1/2_BasicModels/word2vec.py\ntensorflow_v1/2_BasicModels/linear_regression.py\ntensorflow_v1/2_BasicModels/logistic_regression_eager_api.py\ntensorflow_v1/2_BasicModels/nearest_neighbor.py\ntensorflow_v1/2_BasicModels/linear_regression_eager_api.py\ntensorflow_v1/2_BasicModels/kmeans.py\ntensorflow_v1/6_MultiGPU/multigpu_basics.py\ntensorflow_v1/6_MultiGPU/multigpu_cnn.py\ntensorflow_v1/3_NeuralNetworks/variational_autoencoder.py\ntensorflow_v1/3_NeuralNetworks/neural_network_eager_api.py\ntensorflow_v1/3_NeuralNetworks/neural_network.py\ntensorflow_v1/3_NeuralNetworks/bidirectional_rnn.py\ntensorflow_v1/3_NeuralNetworks/convolutional_network_raw.py\ntensorflow_v1/3_NeuralNetworks/autoencoder.py\ntensorflow_v1/3_NeuralNetworks/gan.py\ntensorflow_v1/3_NeuralNetworks/recurrent_network.py\ntensorflow_v1/3_NeuralNetworks/neural_network_raw.py\ntensorflow_v1/3_NeuralNetworks/multilayer_perceptron.py\ntensorflow_v1/3_NeuralNetworks/convolutional_network.py",
+        "cleanup": true,
+        "outdir": "/home/vanessa/Desktop/Code/caliper-analysis"
+    },
+    "tests": {
+        "build": {
+            "retval": 0
+        },
+        "tensorflow_v0.11/5_MultiGPU/multigpu_basics.py": {
+            "error": [
+                "2021-01-06 20:34:05.789019: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:05.789041: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:05.789047: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:05.789051: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:05.789055: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:05.789437: I tensorflow/core/common_runtime/direct_session.cc:257] Device mapping:\n",
+                "\n",
+                "2021-01-06 20:34:05.792199: I tensorflow/core/common_runtime/simple_placer.cc:841] MatMul_1: (MatMul)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:34:05.792215: I tensorflow/core/common_runtime/simple_placer.cc:841] MatMul: (MatMul)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:34:05.792222: I tensorflow/core/common_runtime/simple_placer.cc:841] AddN: (AddN)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:34:05.792227: I tensorflow/core/common_runtime/simple_placer.cc:841] Placeholder_1: (Placeholder)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:34:05.792232: I tensorflow/core/common_runtime/simple_placer.cc:841] Placeholder: (Placeholder)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:34:05.842966: I tensorflow/core/common_runtime/direct_session.cc:257] Device mapping:\n",
+                "\n",
+                "2021-01-06 20:34:05.846861: I tensorflow/core/common_runtime/simple_placer.cc:841] MatMul_3: (MatMul)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:34:05.846877: I tensorflow/core/common_runtime/simple_placer.cc:841] MatMul_2: (MatMul)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:34:05.846884: I tensorflow/core/common_runtime/simple_placer.cc:841] AddN_1: (AddN)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:34:05.846889: I tensorflow/core/common_runtime/simple_placer.cc:841] MatMul_1: (MatMul)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:34:05.846894: I tensorflow/core/common_runtime/simple_placer.cc:841] MatMul: (MatMul)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:34:05.846898: I tensorflow/core/common_runtime/simple_placer.cc:841] AddN: (AddN)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:34:05.846903: I tensorflow/core/common_runtime/simple_placer.cc:841] Placeholder_3: (Placeholder)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:34:05.846908: I tensorflow/core/common_runtime/simple_placer.cc:841] Placeholder_2: (Placeholder)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:34:05.846913: I tensorflow/core/common_runtime/simple_placer.cc:841] Placeholder_1: (Placeholder)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:34:05.846921: I tensorflow/core/common_runtime/simple_placer.cc:841] Placeholder: (Placeholder)/job:localhost/replica:0/task:0/cpu:0\n"
+            ],
+            "output": [
+                "Single CPU computation time: 0:00:00.048640\n",
+                "Multi CPU computation time: 0:00:00.048883\n",
+                "Device mapping: no known devices.\n",
+                "MatMul_1: (MatMul): /job:localhost/replica:0/task:0/cpu:0\n",
+                "MatMul: (MatMul): /job:localhost/replica:0/task:0/cpu:0\n",
+                "AddN: (AddN): /job:localhost/replica:0/task:0/cpu:0\n",
+                "Placeholder_1: (Placeholder): /job:localhost/replica:0/task:0/cpu:0\n",
+                "Placeholder: (Placeholder): /job:localhost/replica:0/task:0/cpu:0\n",
+                "Device mapping: no known devices.\n",
+                "MatMul_3: (MatMul): /job:localhost/replica:0/task:0/cpu:0\n",
+                "MatMul_2: (MatMul): /job:localhost/replica:0/task:0/cpu:0\n",
+                "AddN_1: (AddN): /job:localhost/replica:0/task:0/cpu:0\n",
+                "MatMul_1: (MatMul): /job:localhost/replica:0/task:0/cpu:0\n",
+                "MatMul: (MatMul): /job:localhost/replica:0/task:0/cpu:0\n",
+                "AddN: (AddN): /job:localhost/replica:0/task:0/cpu:0\n",
+                "Placeholder_3: (Placeholder): /job:localhost/replica:0/task:0/cpu:0\n",
+                "Placeholder_2: (Placeholder): /job:localhost/replica:0/task:0/cpu:0\n",
+                "Placeholder_1: (Placeholder): /job:localhost/replica:0/task:0/cpu:0\n",
+                "Placeholder: (Placeholder): /job:localhost/replica:0/task:0/cpu:0\n"
+            ],
+            "retval": 0,
+            "seconds": 1.7
+        },
+        "tensorflow_v0.11/1_Introduction/basic_operations.py": {
+            "error": [
+                "2021-01-06 20:34:07.495636: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:07.495662: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:07.495668: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:07.495672: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:07.495676: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "a=2, b=3\n",
+                "Addition with constants: 5\n",
+                "Multiplication with constants: 6\n",
+                "Addition with variables: 5\n",
+                "Multiplication with variables: 6\n",
+                "[[12.]]\n"
+            ],
+            "retval": 0,
+            "seconds": 1.61
+        },
+        "tensorflow_v0.11/1_Introduction/helloworld.py": {
+            "error": [
+                "2021-01-06 20:34:09.024655: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:09.024682: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:09.024688: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:09.024692: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:09.024696: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "b'Hello, TensorFlow!'\n"
+            ],
+            "retval": 0,
+            "seconds": 1.49
+        },
+        "tensorflow_v0.11/4_Utils/tensorboard_advanced.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/4_Utils/tensorboard_advanced.py\", line 77, in <module>\n",
+                "    pred = multilayer_perceptron(x, weights, biases)\n",
+                "  File \"tensorflow_v0.11/4_Utils/tensorboard_advanced.py\", line 50, in multilayer_perceptron\n",
+                "    tf.histogram_summary(\"relu1\", layer_1)\n",
+                "AttributeError: 'module' object has no attribute 'histogram_summary'\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 11.01
+        },
+        "tensorflow_v0.11/4_Utils/tensorboard_basic.py": {
+            "error": [
+                "WARNING:tensorflow:From tensorflow_v0.11/4_Utils/tensorboard_basic.py:59: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.\n",
+                "Instructions for updating:\n",
+                "Use `tf.global_variables_initializer` instead.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/4_Utils/tensorboard_basic.py\", line 62, in <module>\n",
+                "    tf.scalar_summary(\"loss\", cost)\n",
+                "AttributeError: 'module' object has no attribute 'scalar_summary'\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 11.05
+        },
+        "tensorflow_v0.11/2_BasicModels/logistic_regression.py": {
+            "error": [
+                "WARNING:tensorflow:From tensorflow_v0.11/2_BasicModels/logistic_regression.py:48: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.\n",
+                "Instructions for updating:\n",
+                "Use `tf.global_variables_initializer` instead.\n",
+                "2021-01-06 20:34:41.511232: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:41.511253: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:41.511258: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:41.511261: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:34:41.511265: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Epoch: 0001 cost= 1.659547317\n",
+                "Epoch: 0002 cost= 1.054609312\n",
+                "Optimization Finished!\n",
+                "Accuracy: 0.8415\n"
+            ],
+            "retval": 0,
+            "seconds": 11.12
+        },
+        "tensorflow_v0.11/2_BasicModels/linear_regression.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/2_BasicModels/linear_regression.py\", line 81, in <module>\n",
+                "    pred = tf.add(tf.mul(X, W), b)\n",
+                "AttributeError: 'module' object has no attribute 'mul'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 1.46
+        },
+        "tensorflow_v0.11/2_BasicModels/nearest_neighbor.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/2_BasicModels/nearest_neighbor.py\", line 37, in <module>\n",
+                "    distance = tf.reduce_sum(tf.abs(tf.add(xtr, tf.neg(xte))), reduction_indices=1)\n",
+                "AttributeError: 'module' object has no attribute 'neg'\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 10.9
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/bidirectional_rnn.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/bidirectional_rnn.py\", line 13, in <module>\n",
+                "    from tensorflow.python.ops import rnn, rnn_cell\n",
+                "ImportError: cannot import name 'rnn_cell'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 1.39
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/autoencoder.py": {
+            "error": [
+                "WARNING:tensorflow:From tensorflow_v0.11/3_NeuralNetworks/autoencoder.py:99: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.\n",
+                "Instructions for updating:\n",
+                "Use `tf.global_variables_initializer` instead.\n",
+                "2021-01-06 20:35:06.474504: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:35:06.474527: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:35:06.474532: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:35:06.474536: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:35:06.474540: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Epoch: 0001 cost= 0.190693855\n",
+                "Optimization Finished!\n",
+                "[2.5573876e-05, 1.8688443e-08, 6.8510864e-09, 0.0022956785, 0.0050201137, 0.00763579, 0.0019347344, 3.8586553e-05, 0.004379997, 9.93982e-05, 2.581472e-05, 1.8972769e-10, 0.0016901465, 0.0006699318, 0.00016485798, 3.6937975e-09, 9.54227e-06, 0.0016276203, 0.99990463, 4.567746e-08, 4.500432e-05, 0.0004240246, 0.0049971794, 0.00063476973, 2.6587215e-09, 0.000446619, 0.000116182826, 9.8521545e-05, 0.99999976, 0.0041854284, 7.499633e-05, 0.0011153548, 0.011638356, 1.7191622e-05, 0.0006168084, 0.00093869277, 0.9999975, 0.0029624808, 0.00793323, 0.002240447, 0.0003371472, 0.0018206267, 0.004968295, 6.892298e-15, 2.0644004e-06, 0.002269323, 5.326104e-09, 0.009115557, 0.00070308807, 0.006563313, 0.0002110478, 4.2806328e-06, 0.9999999, 0.0029056158, 0.99991214, 0.0015182515, 0.00054038386, 1.0, 9.19938e-05, 5.7076282e-05, 0.0001743848, 0.005888394, 0.0116305435, 2.860544e-06, 0.000846905, 1.5206489e-07, 2.9917574e-12, 0.004837945, 0.99999976, 0.0027465143, 0.0014228331, 0.0014267571, 0.9999976, 2.8291026e-05, 2.5330408e-15, 0.0053297807, 0.999998, 0.0019515286, 1.0, 1.4936658e-05, 6.559993e-05, 0.003789061, 1.0, 0.005649827, 0.012060669, 1.0151049e-07, 0.99980325, 0.006718383, 0.002644438, 2.2389156e-06, 5.8323544e-06, 3.5492994e-07, 2.5263433e-05, 0.005544151, 9.248373e-05, 0.0025722722, 1.8140083e-06, 3.1383334e-07, 6.862958e-06, 5.6536628e-05, 4.0894744e-08, 1.3898446e-05, 0.034316063, 0.0009312566, 0.017163634, 2.372367e-05, 0.011236622, 0.0064768423, 0.0060980013, 7.472941e-06, 0.00010800609, 0.0001122356, 4.1302064e-05, 1.5081654e-05, 0.0028419, 0.002976828, 0.0020165308, 0.0002055869, 0.001494663, 0.0005871136, 0.0012282752, 0.028978884, 1.3551735e-07, 0.084449664, 0.0010751033, 0.0004988301, 0.9999634, 1.0, 0.99997497, 0.9999976, 1.828909e-06, 0.06960209, 0.04389624, 0.00283323, 2.7436636e-12, 5.0524995e-06, 0.0038762193, 9.3836166e-09, 7.9117524e-07, 0.99999917, 3.9763762e-07, 7.2541817e-09, 7.62253e-05, 0.00063463906, 0.99999964, 4.5848856e-06, 7.0852634e-12, 0.0010905099, 2.0250225e-05, 0.013142071, 0.0006084513, 0.31349108, 4.6035193e-06, 0.5041478, 0.16275181, 0.27447426, 0.46572825, 0.4774828, 0.25145128, 4.685964e-10, 0.08321373, 0.00043508084, 1.0, 1.0937528e-05, 0.00039137114, 0.0015204772, 0.00026492652, 1.0, 1.0, 7.0295e-06, 1.8168e-05, 1.0, 0.008364167, 0.0010653472, 1.5273868e-07, 0.00014627792, 9.9823705e-09, 0.059352916, 0.21842484, 4.284767e-16, 0.21679786, 0.29702163, 0.304425, 1.0, 0.63702905, 0.9999988, 0.45382243, 0.9998547, 0.027799217, 0.21657619, 0.00036929958, 0.04231518, 0.0032335557, 0.00015252411, 0.0028332786, 1.9496447e-06, 0.012564115, 1.4869639e-06, 3.4134134e-06, 1.0, 0.008232881, 2.0516588e-08, 0.99997985, 3.870858e-10, 1.0, 0.10155459, 8.25197e-09, 0.27440777, 0.151965, 0.9999963, 1.0, 0.9999999, 0.6418363, 0.3047644, 0.23326471, 0.08748585, 0.08908798, 0.030967804, 0.9999931, 0.0001697173, 0.026880391, 1.0, 1.0, 1.0, 0.005190508, 0.0016727716, 0.0025269468, 5.620506e-05, 0.9999999, 8.850356e-08, 0.00085279613, 0.07301488, 0.0006310425, 0.16247274, 0.17925216, 0.9999969, 0.26639348, 0.38350216, 0.3818719, 0.28788778, 0.9999993, 0.99998426, 0.28458712, 0.10194731, 0.23434784, 0.038650855, 9.148081e-06, 0.023744954, 1.0, 0.009444682, 0.005499817, 1.0, 7.1411787e-06, 0.99999964, 5.2298645e-07, 0.006286803, 0.0040118685, 4.9668568e-05, 0.057621766, 0.0003577041, 0.006143601, 2.023152e-05, 0.9999999, 0.22221768, 0.20741944, 0.99999666, 0.9999999, 6.325556e-09, 4.4586926e-08, 1.0, 0.17912495, 0.26146626, 0.3635517, 2.6313296e-06, 0.99999774, 1.0, 0.030451175, 0.00035291584, 1.4231151e-11, 0.003496992, 0.00032175204, 5.713855e-06, 0.008059434, 0.0021004756, 1.8136864e-08, 1.0, 0.99999845, 0.0004625758, 0.00072558667, 0.9998635, 0.18961708, 0.16386591, 3.6730576e-06, 1.0, 0.16617072, 0.00038118672, 3.2496772e-09, 2.4884392e-05, 0.16324934, 0.16171242, 0.08075605, 0.13619098, 0.06637697, 0.00055811676, 0.0046847677, 1.3126552e-09, 0.00035320365, 0.99999964, 0.0028794212, 0.011534737, 0.009183831, 2.1243577e-05, 3.5234538e-05, 0.008719652, 8.301983e-05, 2.123632e-08, 0.058619626, 1.0, 0.14790241, 0.10399885, 1.0, 2.7567065e-14, 0.25543284, 8.247767e-06, 0.08943408, 5.01418e-06, 0.53882515, 0.31332156, 1.0, 0.020652475, 0.10096349, 0.9999987, 0.00027993912, 0.0027851597, 0.0067307535, 0.0013117053, 0.0024965354, 0.009469589, 1.8834354e-06, 0.00051346264, 0.0004993815, 7.214432e-05, 2.8365646e-10, 8.461983e-08, 0.17679013, 0.0023782833, 0.0002547362, 1.8683746e-11, 0.38269612, 0.0009649815, 0.09072058, 0.25990054, 0.17606153, 0.5575002, 0.4420233, 0.13002041, 0.27149406, 0.14902581, 1.1169371e-07, 0.0006219252, 1.1355572e-10, 7.508965e-05, 0.00017017135, 0.009017084, 0.010086954, 0.0040721754, 0.011017175, 0.006453017, 0.0018860364, 5.514136e-05, 0.0018084748, 1.6742324e-10, 0.99996185, 0.00012329026, 1.7439113e-05, 0.098595515, 1.0, 1.0, 0.9999957, 1.0, 0.477517, 1.7293353e-06, 0.18892236, 0.32479247, 0.00164242, 0.1756717, 0.9999999, 0.9999968, 0.9999976, 1.246076e-11, 0.0071582086, 1.114807e-05, 0.0019472268, 0.99999356, 3.5986186e-11, 4.118884e-08, 0.011349781, 1.0047412e-08, 0.00020167878, 0.24224457, 0.15476167, 0.39813703, 0.4852599, 0.14194553, 6.739799e-07, 1.0, 0.24017991, 2.8191485e-05, 0.5693342, 0.3020905, 0.16068654, 0.17768635, 5.4277652e-06, 8.8067376e-05, 3.795642e-07, 0.04466225, 0.00064239244, 0.00034398717, 1.0, 0.00010468623, 3.3205106e-05, 0.0009956667, 0.0058344183, 0.008104421, 0.00021282728, 1.8594097e-05, 4.087072e-05, 1.0, 0.18141127, 0.3500562, 1.0, 0.36787722, 0.15564445, 0.507658, 0.99997413, 1.289918e-07, 0.6322515, 1.0, 0.10836276, 0.99999976, 0.13750696, 0.09840523, 0.00035725575, 0.00016099084, 0.0011550918, 0.00081534195, 1.1621564e-07, 0.0036180685, 1.7197554e-09, 0.008075731, 1.0, 0.99999976, 0.01181242, 0.0012941344, 0.9999999, 0.9998325, 0.99999034, 0.294896, 2.2053013e-09, 5.1297498e-06, 0.4093916, 0.3163932, 0.5570475, 0.3427977, 0.25675708, 0.32480136, 0.4566363, 0.35464078, 1.0, 0.023885516, 5.8905945e-05, 0.07760643, 0.00034381848, 1.0, 0.00027081178, 9.3552205e-07, 1.0, 2.6387243e-05, 0.0014511212, 5.1950656e-06, 0.0028079385, 9.899304e-07, 0.034994796, 0.09267164, 5.238725e-07, 0.1468357, 0.19577992, 0.33182397, 0.55386996, 6.693743e-07, 1.0, 0.5646766, 5.1902167e-09, 0.37581033, 0.4072763, 1.3793803e-07, 0.0003609264, 0.0002354847, 0.0046190443, 0.04869402, 0.00054702756, 1.0133658e-07, 1.0, 0.0012599577, 0.0051453244, 1.6981778e-05, 0.00022315473, 0.0066544577, 7.686696e-07, 8.2140026e-08, 4.1187366e-05, 0.022615094, 0.475648, 7.3391807e-11, 2.2336928e-14, 6.998799e-10, 0.2723793, 3.6254052e-05, 0.5007164, 3.6583114e-07, 0.3375077, 1.0128846e-11, 1.176914e-06, 0.0615236, 0.31920865, 0.06684386, 0.0024749802, 0.00071895274, 0.0011107769, 0.9999999, 8.377442e-06, 0.0023619225, 0.99999905, 8.722749e-05, 4.651222e-05, 0.0116800945, 1.0, 6.125749e-05, 0.028346248, 0.039580103, 1.3668656e-09, 0.0003757872, 0.43771124, 0.36046937, 6.067541e-08, 0.99924845, 0.25461245, 0.29975575, 0.46876574, 0.3199076, 1.6290784e-05, 0.5360911, 5.467736e-07, 0.0003830677, 0.08735925, 1.925616e-09, 0.99998236, 0.999995, 0.0007430317, 0.0045103193, 0.00014405203, 7.664339e-09, 4.9126606e-06, 0.00020874392, 0.00019294476, 0.07111631, 0.025880784, 2.471343e-05, 0.00033919764, 3.2437686e-07, 0.1095414, 0.17748353, 2.1278309e-07, 1.0, 0.71978736, 0.6650269, 0.42909223, 0.49403504, 0.31120393, 0.00094080355, 2.551949e-06, 0.06361374, 7.293275e-05, 0.00068162824, 0.00071871025, 0.011002072, 0.0098838825, 0.9999943, 0.00018147346, 0.000102943166, 0.9999956, 5.5916754e-08, 0.00075241225, 6.1624132e-06, 0.0055162334, 0.04793475, 1.0, 0.99998474, 0.21936467, 0.25570738, 0.34792194, 0.7110401, 0.7413287, 0.34047142, 0.33241656, 0.45190492, 0.3366965, 1.2307466e-05, 0.117455505, 0.0008136585, 0.009049489, 3.4109241e-06, 0.00034286335, 0.00881855, 0.0019168021, 0.0033672124, 2.6953412e-05, 0.00073435484, 0.0011098154, 0.0076763937, 6.9971557e-06, 0.00026797573, 1.0, 0.06877871, 0.00010581936, 0.28051662, 0.17988893, 0.1637525, 0.6711183, 0.20356901, 0.67820203, 0.999995, 1.0, 0.067816965, 8.1608584e-07, 0.11364017, 0.060818218, 0.03348016, 1.0, 0.00083483564, 0.005597954, 0.0022625863, 8.8549736e-05, 4.83076e-09, 1.0, 1.7806396e-05, 4.971951e-05, 0.0002679019, 1.1240853e-05, 0.00014119576, 2.4897614e-05, 0.00034065533, 0.067903526, 1.2318302e-09, 0.1050592, 0.08228354, 0.1893189, 0.17832446, 4.3749797e-06, 2.429169e-05, 1.4241352e-12, 0.06857186, 1.0, 1.0, 0.00023750344, 0.015623212, 1.0, 2.047501e-06, 5.34569e-06, 3.7067104e-05, 0.0034433242, 0.006014299, 0.004755168, 4.6815014e-08, 0.005933046, 0.004728798, 0.00020876204, 7.155051e-05, 0.9995865, 0.0011235436, 0.00027109025, 0.081976146, 0.016026907, 0.17439325, 0.9999454, 8.0761016e-11, 0.07647505, 0.10069155, 0.9999974, 0.00035392412, 1.9459202e-08, 0.00025626112, 3.6588832e-10, 0.014930428, 6.4993576e-05, 0.00027892596, 1.1441482e-08, 1.1797755e-05, 0.9994591, 0.00046464178, 0.0040204884, 2.0553305e-06, 3.1978443e-06, 0.0052519115, 0.008240255, 0.0010596944, 0.0041033886, 1.0, 0.9999999, 0.036004856, 0.005721077, 0.0011338828, 0.03978282, 0.99997854, 0.00017584329, 0.030350482, 1.7505442e-08, 3.9550687e-05, 0.001252143, 1.0607269e-05, 0.006068873, 0.0036469155, 0.007391513, 3.3506658e-05, 0.00012328167, 1.8013121e-07, 0.0009945381, 4.4173316e-06, 8.681584e-06, 0.0004935744, 0.0051967925, 0.00252962, 0.012225216, 1.0, 0.0007564858, 2.0610603e-08, 0.0046668635, 2.0276351e-05, 0.012900966, 6.914618e-11, 0.025757829, 0.007211061, 0.0004324935, 1.9906112e-05, 6.9489164e-05, 0.0023428593, 1.0, 0.013783679, 0.000990768, 2.672937e-10, 0.00093802216, 0.008991069, 0.9998772, 1.6526965e-09, 0.0025791812, 0.003287022, 0.013212573, 0.0061518867, 0.0013380782, 0.00077912846, 1.0, 1.0, 0.00011164904, 4.6958477e-05, 0.00093021727, 9.151521e-16, 0.0056284075, 0.0018195274, 0.00016825409, 0.007919458, 0.0060162293, 0.0056323265, 8.43172e-05, 3.2507355e-10, 0.00038372248, 0.00024299111, 1.0, 0.008033514, 0.0086665135, 1.2693627e-05, 0.0074780285, 0.00025227835, 0.0075323298, 0.00771925]\n"
+            ],
+            "retval": 0,
+            "seconds": 13.45
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/recurrent_network.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/recurrent_network.py\", line 13, in <module>\n",
+                "    from tensorflow.python.ops import rnn, rnn_cell\n",
+                "ImportError: cannot import name 'rnn_cell'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 1.46
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/op_def_library.py\", line 491, in apply_op\n",
+                "    preferred_dtype=default_dtype)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 704, in internal_convert_to_tensor\n",
+                "    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 577, in _TensorTensorConversionFunction\n",
+                "    % (dtype.name, t.dtype.name, str(t)))\n",
+                "ValueError: Tensor conversion requested dtype int32 for Tensor with dtype float32: 'Tensor(\"Reshape:0\", shape=(?, 1), dtype=float32)'\n",
+                "\n",
+                "During handling of the above exception, another exception occurred:\n",
+                "\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py\", line 160, in <module>\n",
+                "    pred = dynamicRNN(x, seqlen, weights, biases)\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py\", line 128, in dynamicRNN\n",
+                "    x = tf.split(0, seq_max_len, x)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/array_ops.py\", line 1198, in split\n",
+                "    split_dim=axis, num_split=num_or_size_splits, value=value, name=name)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/gen_array_ops.py\", line 3306, in _split\n",
+                "    num_split=num_split, name=name)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/op_def_library.py\", line 514, in apply_op\n",
+                "    (prefix, dtypes.as_dtype(input_arg.type).name))\n",
+                "TypeError: Input 'split_dim' of 'Split' Op has type float32 that does not match expected type of int32.\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 1.73
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/multilayer_perceptron.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/multilayer_perceptron.py\", line 71, in <module>\n",
+                "    cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(pred, y))\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/nn_ops.py\", line 1607, in softmax_cross_entropy_with_logits\n",
+                "    labels, logits)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/nn_ops.py\", line 1562, in _ensure_xent_args\n",
+                "    \"named arguments (labels=..., logits=..., ...)\" % name)\n",
+                "ValueError: Only call `softmax_cross_entropy_with_logits` with named arguments (labels=..., logits=..., ...)\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 11.44
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/convolutional_network.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/convolutional_network.py\", line 106, in <module>\n",
+                "    cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(pred, y))\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/nn_ops.py\", line 1607, in softmax_cross_entropy_with_logits\n",
+                "    labels, logits)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/nn_ops.py\", line 1562, in _ensure_xent_args\n",
+                "    \"named arguments (labels=..., logits=..., ...)\" % name)\n",
+                "ValueError: Only call `softmax_cross_entropy_with_logits` with named arguments (labels=..., logits=..., ...)\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 10.91
+        },
+        "tensorflow_v1/1_Introduction/basic_eager_api.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/1_Introduction/basic_eager_api.py\", line 23, in <module>\n",
+                "    import tensorflow.contrib.eager as tfe\n",
+                "ImportError: No module named 'tensorflow.contrib.eager'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 1.81
+        },
+        "tensorflow_v1/1_Introduction/basic_operations.py": {
+            "error": [
+                "2021-01-06 20:35:38.158979: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:35:38.159003: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:35:38.159009: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:35:38.159012: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:35:38.159016: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "a=2, b=3\n",
+                "Addition with constants: 5\n",
+                "Multiplication with constants: 6\n",
+                "Addition with variables: 5\n",
+                "Multiplication with variables: 6\n",
+                "[[12.]]\n"
+            ],
+            "retval": 0,
+            "seconds": 1.51
+        },
+        "tensorflow_v1/1_Introduction/helloworld.py": {
+            "error": [
+                "2021-01-06 20:35:39.692337: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:35:39.692360: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:35:39.692366: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:35:39.692370: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:35:39.692373: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "b'Hello, TensorFlow!'\n"
+            ],
+            "retval": 0,
+            "seconds": 1.45
+        },
+        "tensorflow_v1/4_Utils/tensorboard_advanced.py": {
+            "error": [
+                "2021-01-06 20:35:49.595930: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:35:49.595958: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:35:49.595964: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:35:49.595967: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:35:49.595971: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Epoch: 0001 cost= 148.214060038\n",
+                "Optimization Finished!\n",
+                "Accuracy: 0.8412\n",
+                "Run the command line:\n",
+                "--> tensorboard --logdir=/tmp/tensorflow_logs \n",
+                "Then open http://0.0.0.0:6006/ into your web browser\n"
+            ],
+            "retval": 0,
+            "seconds": 13.36
+        },
+        "tensorflow_v1/4_Utils/tensorboard_basic.py": {
+            "error": [
+                "2021-01-06 20:36:03.573078: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:03.573101: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:03.573106: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:03.573109: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:03.573113: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Epoch: 0001 cost= 1.659732139\n",
+                "Optimization Finished!\n",
+                "Accuracy: 0.8146\n",
+                "Run the command line:\n",
+                "--> tensorboard --logdir=/tmp/tensorflow_logs \n",
+                "Then open http://0.0.0.0:6006/ into your web browser\n"
+            ],
+            "retval": 0,
+            "seconds": 11.14
+        },
+        "tensorflow_v1/5_DataManagement/build_an_image_dataset.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/5_DataManagement/build_an_image_dataset.py\", line 74, in read_images\n",
+                "    classes = sorted(os.walk(dataset_path).next()[1])\n",
+                "AttributeError: 'generator' object has no attribute 'next'\n",
+                "\n",
+                "During handling of the above exception, another exception occurred:\n",
+                "\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/5_DataManagement/build_an_image_dataset.py\", line 133, in <module>\n",
+                "    X, Y = read_images(DATASET_PATH, MODE, batch_size)\n",
+                "  File \"tensorflow_v1/5_DataManagement/build_an_image_dataset.py\", line 76, in read_images\n",
+                "    classes = sorted(os.walk(dataset_path).__next__()[1])\n",
+                "StopIteration\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 1.41
+        },
+        "tensorflow_v1/5_DataManagement/tensorflow_dataset_api.py": {
+            "error": [
+                "2021-01-06 20:36:15.875045: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:15.875075: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:15.875082: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:15.875086: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:15.875090: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/5_DataManagement/tensorflow_dataset_api.py\", line 38, in <module>\n",
+                "    dataset = tf.data.Dataset.from_tensor_slices((mnist.train.images, mnist.train.labels))\n",
+                "AttributeError: 'module' object has no attribute 'data'\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 10.36
+        },
+        "tensorflow_v1/2_BasicModels/random_forest.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/random_forest.py\", line 61, in <module>\n",
+                "    infer_op, _, _ = forest_graph.inference_graph(X)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 504, in __iter__\n",
+                "    raise TypeError(\"'Tensor' object is not iterable.\")\n",
+                "TypeError: 'Tensor' object is not iterable.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 14.39
+        },
+        "tensorflow_v1/2_BasicModels/gradient_boosted_decision_tree.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/gradient_boosted_decision_tree.py\", line 17, in <module>\n",
+                "    from tensorflow.contrib.boosted_trees.estimator_batch.estimator import (\n",
+                "ImportError: No module named 'tensorflow.contrib.boosted_trees'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 1.88
+        },
+        "tensorflow_v1/2_BasicModels/logistic_regression.py": {
+            "error": [
+                "2021-01-06 20:36:41.926697: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:41.926725: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:41.926730: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:41.926733: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:41.926737: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Epoch: 0001 cost= 1.659532032\n",
+                "Epoch: 0002 cost= 1.054898028\n",
+                "Optimization Finished!\n",
+                "Accuracy: 0.8407\n"
+            ],
+            "retval": 0,
+            "seconds": 10.39
+        },
+        "tensorflow_v1/2_BasicModels/word2vec.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/word2vec.py\", line 58, in <module>\n",
+                "    filename, _ = urllib.urlretrieve(url, data_path)\n",
+                "AttributeError: 'module' object has no attribute 'urlretrieve'\n"
+            ],
+            "output": [
+                "Downloading the dataset... (It may take some time)\n"
+            ],
+            "retval": 1,
+            "seconds": 1.44
+        },
+        "tensorflow_v1/2_BasicModels/linear_regression.py": {
+            "error": [
+                "2021-01-06 20:36:45.657413: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:45.657444: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:45.657451: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:45.657457: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:45.657463: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "Epoch: 0050 cost= 0.213137478 W= 0.4558863 b= -0.6825888\n",
+                "Epoch: 0100 cost= 0.197407037 W= 0.443617 b= -0.5943239\n",
+                "Optimization Finished!\n",
+                "Training cost= 0.19740704 W= 0.443617 b= -0.5943239 \n",
+                "\n"
+            ],
+            "retval": 0,
+            "seconds": 2.04
+        },
+        "tensorflow_v1/2_BasicModels/logistic_regression_eager_api.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/logistic_regression_eager_api.py\", line 20, in <module>\n",
+                "    tf.enable_eager_execution()\n",
+                "AttributeError: 'module' object has no attribute 'enable_eager_execution'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 1.47
+        },
+        "tensorflow_v1/2_BasicModels/nearest_neighbor.py": {
+            "error": [
+                "2021-01-06 20:36:59.491698: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:59.491729: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:59.491738: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:59.491749: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:36:59.491758: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Test 0 Prediction: 6 True Class: 6\n",
+                "Test 1 Prediction: 9 True Class: 9\n",
+                "Test 2 Prediction: 6 True Class: 6\n",
+                "Test 3 Prediction: 6 True Class: 6\n",
+                "Test 4 Prediction: 7 True Class: 7\n",
+                "Test 5 Prediction: 1 True Class: 1\n",
+                "Test 6 Prediction: 6 True Class: 6\n",
+                "Test 7 Prediction: 1 True Class: 2\n",
+                "Test 8 Prediction: 8 True Class: 8\n",
+                "Test 9 Prediction: 0 True Class: 0\n",
+                "Done!\n",
+                "Accuracy: 0.8999999999999999\n"
+            ],
+            "retval": 0,
+            "seconds": 12.18
+        },
+        "tensorflow_v1/2_BasicModels/linear_regression_eager_api.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/linear_regression_eager_api.py\", line 21, in <module>\n",
+                "    tf.enable_eager_execution()\n",
+                "AttributeError: 'module' object has no attribute 'enable_eager_execution'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 1.41
+        },
+        "tensorflow_v1/2_BasicModels/kmeans.py": {
+            "error": [
+                "2021-01-06 20:37:11.870270: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:11.870302: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:11.870308: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:11.870312: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:11.870316: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1, Avg Distance: 0.330741\n",
+                "Test Accuracy: 0.6297\n"
+            ],
+            "retval": 0,
+            "seconds": 12.15
+        },
+        "tensorflow_v1/6_MultiGPU/multigpu_basics.py": {
+            "error": [
+                "2021-01-06 20:37:14.808066: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:14.808086: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:14.808091: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:14.808095: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:14.808104: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:14.808444: I tensorflow/core/common_runtime/direct_session.cc:257] Device mapping:\n",
+                "\n",
+                "2021-01-06 20:37:14.810759: I tensorflow/core/common_runtime/simple_placer.cc:841] MatMul_1: (MatMul)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:37:14.810774: I tensorflow/core/common_runtime/simple_placer.cc:841] MatMul: (MatMul)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:37:14.810779: I tensorflow/core/common_runtime/simple_placer.cc:841] AddN: (AddN)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:37:14.810786: I tensorflow/core/common_runtime/simple_placer.cc:841] Placeholder_1: (Placeholder)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:37:14.810791: I tensorflow/core/common_runtime/simple_placer.cc:841] Placeholder: (Placeholder)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:37:14.857058: I tensorflow/core/common_runtime/direct_session.cc:257] Device mapping:\n",
+                "\n",
+                "2021-01-06 20:37:14.861022: I tensorflow/core/common_runtime/simple_placer.cc:841] MatMul_3: (MatMul)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:37:14.861057: I tensorflow/core/common_runtime/simple_placer.cc:841] MatMul_2: (MatMul)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:37:14.861063: I tensorflow/core/common_runtime/simple_placer.cc:841] AddN_1: (AddN)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:37:14.861067: I tensorflow/core/common_runtime/simple_placer.cc:841] MatMul_1: (MatMul)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:37:14.861071: I tensorflow/core/common_runtime/simple_placer.cc:841] MatMul: (MatMul)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:37:14.861075: I tensorflow/core/common_runtime/simple_placer.cc:841] AddN: (AddN)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:37:14.861080: I tensorflow/core/common_runtime/simple_placer.cc:841] Placeholder_3: (Placeholder)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:37:14.861084: I tensorflow/core/common_runtime/simple_placer.cc:841] Placeholder_2: (Placeholder)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:37:14.861089: I tensorflow/core/common_runtime/simple_placer.cc:841] Placeholder_1: (Placeholder)/job:localhost/replica:0/task:0/cpu:0\n",
+                "2021-01-06 20:37:14.861093: I tensorflow/core/common_runtime/simple_placer.cc:841] Placeholder: (Placeholder)/job:localhost/replica:0/task:0/cpu:0\n"
+            ],
+            "output": [
+                "Single CPU computation time: 0:00:00.044023\n",
+                "Multi CPU computation time: 0:00:00.047797\n",
+                "Device mapping: no known devices.\n",
+                "MatMul_1: (MatMul): /job:localhost/replica:0/task:0/cpu:0\n",
+                "MatMul: (MatMul): /job:localhost/replica:0/task:0/cpu:0\n",
+                "AddN: (AddN): /job:localhost/replica:0/task:0/cpu:0\n",
+                "Placeholder_1: (Placeholder): /job:localhost/replica:0/task:0/cpu:0\n",
+                "Placeholder: (Placeholder): /job:localhost/replica:0/task:0/cpu:0\n",
+                "Device mapping: no known devices.\n",
+                "MatMul_3: (MatMul): /job:localhost/replica:0/task:0/cpu:0\n",
+                "MatMul_2: (MatMul): /job:localhost/replica:0/task:0/cpu:0\n",
+                "AddN_1: (AddN): /job:localhost/replica:0/task:0/cpu:0\n",
+                "MatMul_1: (MatMul): /job:localhost/replica:0/task:0/cpu:0\n",
+                "MatMul: (MatMul): /job:localhost/replica:0/task:0/cpu:0\n",
+                "AddN: (AddN): /job:localhost/replica:0/task:0/cpu:0\n",
+                "Placeholder_3: (Placeholder): /job:localhost/replica:0/task:0/cpu:0\n",
+                "Placeholder_2: (Placeholder): /job:localhost/replica:0/task:0/cpu:0\n",
+                "Placeholder_1: (Placeholder): /job:localhost/replica:0/task:0/cpu:0\n",
+                "Placeholder: (Placeholder): /job:localhost/replica:0/task:0/cpu:0\n"
+            ],
+            "retval": 0,
+            "seconds": 1.61
+        },
+        "tensorflow_v1/6_MultiGPU/multigpu_cnn.py": {
+            "error": [
+                "2021-01-06 20:37:26.059128: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:26.059156: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:26.059163: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:26.059169: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:26.059175: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/client/session.py\", line 1039, in _do_call\n",
+                "    return fn(*args)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/client/session.py\", line 1017, in _run_fn\n",
+                "    self._extend_graph()\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/client/session.py\", line 1066, in _extend_graph\n",
+                "    self._session, graph_def.SerializeToString(), status)\n",
+                "  File \"/usr/local/lib/python3.4/contextlib.py\", line 66, in __exit__\n",
+                "    next(self.gen)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/errors_impl.py\", line 466, in raise_exception_on_not_ok_status\n",
+                "    pywrap_tensorflow.TF_GetCode(status))\n",
+                "tensorflow.python.framework.errors_impl.InvalidArgumentError: Cannot assign a device to node 'gradients_1/Mean_2_grad/Prod_1': Could not satisfy explicit device specification '/device:GPU:1' because no devices matching that specification are registered in this process; available devices: /job:localhost/replica:0/task:0/cpu:0\n",
+                "\t [[Node: gradients_1/Mean_2_grad/Prod_1 = Prod[T=DT_INT32, Tidx=DT_INT32, keep_dims=false, _device=\"/device:GPU:1\"](gradients_1/Mean_2_grad/Shape_2, gradients_1/Mean_2_grad/Const_1)]]\n",
+                "\n",
+                "During handling of the above exception, another exception occurred:\n",
+                "\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/6_MultiGPU/multigpu_cnn.py\", line 186, in <module>\n",
+                "    sess.run(init)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/client/session.py\", line 778, in run\n",
+                "    run_metadata_ptr)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/client/session.py\", line 982, in _run\n",
+                "    feed_dict_string, options, run_metadata)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/client/session.py\", line 1032, in _do_run\n",
+                "    target_list, options, run_metadata)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/client/session.py\", line 1052, in _do_call\n",
+                "    raise type(e)(node_def, op, message)\n",
+                "tensorflow.python.framework.errors_impl.InvalidArgumentError: Cannot assign a device to node 'gradients_1/Mean_2_grad/Prod_1': Could not satisfy explicit device specification '/device:GPU:1' because no devices matching that specification are registered in this process; available devices: /job:localhost/replica:0/task:0/cpu:0\n",
+                "\t [[Node: gradients_1/Mean_2_grad/Prod_1 = Prod[T=DT_INT32, Tidx=DT_INT32, keep_dims=false, _device=\"/device:GPU:1\"](gradients_1/Mean_2_grad/Shape_2, gradients_1/Mean_2_grad/Const_1)]]\n",
+                "\n",
+                "Caused by op 'gradients_1/Mean_2_grad/Prod_1', defined at:\n",
+                "  File \"tensorflow_v1/6_MultiGPU/multigpu_cnn.py\", line 165, in <module>\n",
+                "    grads = optimizer.compute_gradients(loss_op)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/training/optimizer.py\", line 386, in compute_gradients\n",
+                "    colocate_gradients_with_ops=colocate_gradients_with_ops)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/gradients_impl.py\", line 560, in gradients\n",
+                "    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/gradients_impl.py\", line 368, in _MaybeCompile\n",
+                "    return grad_fn()  # Exit early\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/gradients_impl.py\", line 560, in <lambda>\n",
+                "    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/math_grad.py\", line 98, in _MeanGrad\n",
+                "    math_ops.reduce_prod(input_shape), math_ops.reduce_prod(output_shape))\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/math_ops.py\", line 1377, in reduce_prod\n",
+                "    name=name)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/gen_math_ops.py\", line 1555, in _prod\n",
+                "    keep_dims=keep_dims, name=name)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/op_def_library.py\", line 768, in apply_op\n",
+                "    op_def=op_def)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 2336, in create_op\n",
+                "    original_op=self._default_original_op, op_def=op_def)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 1228, in __init__\n",
+                "    self._traceback = _extract_stack()\n",
+                "\n",
+                "...which was originally created as op 'Mean_2', defined at:\n",
+                "  File \"tensorflow_v1/6_MultiGPU/multigpu_cnn.py\", line 162, in <module>\n",
+                "    tf.nn.softmax_cross_entropy_with_logits(logits=logits_train, labels=_y)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/math_ops.py\", line 1340, in reduce_mean\n",
+                "    name=name)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/gen_math_ops.py\", line 1342, in _mean\n",
+                "    keep_dims=keep_dims, name=name)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/op_def_library.py\", line 768, in apply_op\n",
+                "    op_def=op_def)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 2336, in create_op\n",
+                "    original_op=self._default_original_op, op_def=op_def)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 1228, in __init__\n",
+                "    self._traceback = _extract_stack()\n",
+                "\n",
+                "InvalidArgumentError (see above for traceback): Cannot assign a device to node 'gradients_1/Mean_2_grad/Prod_1': Could not satisfy explicit device specification '/device:GPU:1' because no devices matching that specification are registered in this process; available devices: /job:localhost/replica:0/task:0/cpu:0\n",
+                "\t [[Node: gradients_1/Mean_2_grad/Prod_1 = Prod[T=DT_INT32, Tidx=DT_INT32, keep_dims=false, _device=\"/device:GPU:1\"](gradients_1/Mean_2_grad/Shape_2, gradients_1/Mean_2_grad/Const_1)]]\n",
+                "\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 11.74
+        },
+        "tensorflow_v1/3_NeuralNetworks/variational_autoencoder.py": {
+            "error": [
+                "2021-01-06 20:37:37.609123: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:37.609151: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:37.609157: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:37.609161: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:37.609167: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1, Loss: 648.534546\n",
+                "[[0.025606496259570122, 0.007210054434835911, 0.013558188453316689, 0.015389066189527512, 0.010895886458456516, 0.013439674861729145, 0.01943385787308216, 0.010382164269685745, 0.004587533418089151, 0.00977369025349617, 0.01609499566257, 0.022312933579087257, 0.016392942517995834, 0.009340482763946056, 0.015428904443979263, 0.00753355585038662, 0.017502250149846077, 0.01711968146264553, 0.02001960575580597, 0.017690079286694527, 0.03564085438847542, 0.008441127836704254, 0.010411743074655533, 0.008934969082474709, 0.011149158701300621, 0.002385165076702833, 0.01854533515870571, 0.009053437039256096], [0.020025238394737244, 0.011758106760680676, 0.01957753859460354, 0.01023094356060028, 0.01566820777952671, 0.0018144050845876336, 0.010284330695867538, 0.012053966522216797, 0.022358562797307968, 0.012804796919226646, 0.01059479359537363, 0.01752486266195774, 0.009209160692989826, 0.02008506841957569, 0.015501391142606735, 0.013024020940065384, 0.009953484870493412, 0.03649481385946274, 0.01304442249238491, 0.0086669921875, 0.007104234304279089, 0.00650420505553484, 0.017873574048280716, 0.005898655392229557, 0.02028459869325161, 0.019732793793082237, 0.012640967033803463, 0.015089591965079308], [0.02739391289651394, 0.04525543376803398, 0.017611565068364143, 0.008683526888489723, 0.009227709844708443, 0.010464458726346493, 0.007707278709858656, 0.006666151806712151, 0.024942167103290558, 0.016022898256778717, 0.024609452113509178, 0.01886366680264473, 0.045863740146160126, 0.059239454567432404, 0.07379680871963501, 0.02712375856935978, 0.03303922340273857, 0.022930443286895752, 0.03843208774924278, 0.044274695217609406, 0.038902293890714645, 0.032718148082494736, 0.013882657513022423, 0.008843726478517056, 0.01571289449930191, 0.007084141951054335, 0.015592382289469242, 0.00920955277979374], [0.00489612715318799, 0.016718721017241478, 0.02548818103969097, 0.033186737447977066, 0.007719545625150204, 0.023874396458268166, 0.011430137790739536, 0.031625740230083466, 0.05755889043211937, 0.09376988559961319, 0.07532506436109543, 0.12240433692932129, 0.09064138680696487, 0.12454776465892792, 0.08974640816450119, 0.14766907691955566, 0.05347389355301857, 0.0925775021314621, 0.03433685377240181, 0.03766520693898201, 0.04100250452756882, 0.05607506260275841, 0.037361323833465576, 0.01173409540206194, 0.011844422668218613, 0.00873283576220274, 0.013469542376697063, 0.011444738134741783], [0.02020631730556488, 0.019243305549025536, 0.02861744724214077, 0.01803278923034668, 0.013570438139140606, 0.037856895476579666, 0.04781482368707657, 0.0559983104467392, 0.07334718853235245, 0.10328371077775955, 0.15035253763198853, 0.2110188752412796, 0.44406452775001526, 0.3767681419849396, 0.18645212054252625, 0.25542113184928894, 0.19865773618221283, 0.22487881779670715, 0.19408740103244781, 0.08817414939403534, 0.03625243529677391, 0.06754697114229202, 0.06224142760038376, 0.0420236699283123, 0.018645863980054855, 0.013507486321032047, 0.018499791622161865, 0.017661049962043762], [0.014435553923249245, 0.015334703959524632, 0.006362271029502153, 0.013580156490206718, 0.04323004186153412, 0.10104042291641235, 0.20900075137615204, 0.30538302659988403, 0.49161916971206665, 0.3036789894104004, 0.30135074257850647, 0.3362037241458893, 0.28257861733436584, 0.38646578788757324, 0.3864907920360565, 0.6535575985908508, 0.2391251027584076, 0.37227916717529297, 0.20016375184059143, 0.24115115404129028, 0.10470198839902878, 0.09489978104829788, 0.09817039221525192, 0.04115493968129158, 0.04408439248800278, 0.028198666870594025, 0.021849356591701508, 0.01912742853164673], [0.018526151776313782, 0.00685293972492218, 0.011200083419680595, 0.03287028893828392, 0.07829705625772476, 0.22457560896873474, 0.454298198223114, 0.45713943243026733, 0.4029196798801422, 0.36933478713035583, 0.3781149089336395, 0.39033353328704834, 0.36855757236480713, 0.5343239307403564, 0.6369801163673401, 0.6074903011322021, 0.5576037168502808, 0.3865697979927063, 0.2412053346633911, 0.1381371170282364, 0.12391430884599686, 0.18502740561962128, 0.038817569613456726, 0.06426950544118881, 0.04087332636117935, 0.018204426392912865, 0.020835382863879204, 0.011791491881012917], [0.03609604388475418, 0.018329212442040443, 0.01202620193362236, 0.02710307389497757, 0.08497203886508942, 0.12506087124347687, 0.3448697030544281, 0.2438737154006958, 0.2411835789680481, 0.20744560658931732, 0.23785264790058136, 0.3122042715549469, 0.43461793661117554, 0.6556753516197205, 0.4628588855266571, 0.8067721128463745, 0.7763887047767639, 0.6868489384651184, 0.27486690878868103, 0.34145277738571167, 0.061916425824165344, 0.0754626914858818, 0.06130360811948776, 0.10298261791467667, 0.029963769018650055, 0.02311188355088234, 0.01833781599998474, 0.010141233913600445], [0.019368883222341537, 0.009196995757520199, 0.016044368967413902, 0.045489903539419174, 0.10756326466798782, 0.3292700946331024, 0.16625697910785675, 0.1986674666404724, 0.18917694687843323, 0.23090070486068726, 0.3174569308757782, 0.36989080905914307, 0.24746502935886383, 0.3003741502761841, 0.22594600915908813, 0.5858448147773743, 0.6498047709465027, 0.4715472161769867, 0.49490731954574585, 0.2577785551548004, 0.04916730150580406, 0.06555575877428055, 0.034454040229320526, 0.05259169638156891, 0.0355282761156559, 0.039545126259326935, 0.009725821204483509, 0.006423301994800568], [0.011780290864408016, 0.009827726520597935, 0.019983280450105667, 0.035853784531354904, 0.10101856291294098, 0.2433231920003891, 0.12706506252288818, 0.1767217069864273, 0.16130070388317108, 0.1332324743270874, 0.229598730802536, 0.2310524880886078, 0.2565150260925293, 0.25415119528770447, 0.46020281314849854, 0.5258958339691162, 0.4177107810974121, 0.6498942971229553, 0.4973532259464264, 0.2887505292892456, 0.09474007040262222, 0.03673363849520683, 0.09599759429693222, 0.06073537841439247, 0.025766009464859962, 0.06653238832950592, 0.05834855139255524, 0.005612595938146114], [0.006879416760057211, 0.010378353297710419, 0.010856485925614834, 0.026739483699202538, 0.06476371735334396, 0.0746510773897171, 0.04274176433682442, 0.21149232983589172, 0.0654464140534401, 0.19125060737133026, 0.09475953876972198, 0.19160330295562744, 0.1446499526500702, 0.20519042015075684, 0.46488499641418457, 0.7637673616409302, 0.8658633828163147, 0.6930694580078125, 0.4604935348033905, 0.19673804938793182, 0.050863806158304214, 0.08379986137151718, 0.07278459519147873, 0.014163521118462086, 0.033259373158216476, 0.03825826197862625, 0.01019435003399849, 0.020632639527320862], [0.012285438366234303, 0.012161706574261189, 0.030674844980239868, 0.05471350997686386, 0.07815493643283844, 0.09442860633134842, 0.15006409585475922, 0.06875084340572357, 0.14086228609085083, 0.11635644733905792, 0.16559486091136932, 0.2705056369304657, 0.22024300694465637, 0.358633428812027, 0.7273773550987244, 0.7339387536048889, 0.7296099662780762, 0.7287147641181946, 0.45766356587409973, 0.22005833685398102, 0.07497945427894592, 0.04531717672944069, 0.019312573596835136, 0.011119889095425606, 0.011628443375229836, 0.030243411660194397, 0.017605848610401154, 0.0065138875506818295], [0.010262008756399155, 0.02784033678472042, 0.0274371188133955, 0.03042791038751602, 0.08110634982585907, 0.07128690928220749, 0.0894593745470047, 0.028628969565033913, 0.059250183403491974, 0.1834821254014969, 0.10657433420419693, 0.4130842685699463, 0.2824578583240509, 0.5937308073043823, 0.8227794170379639, 0.7215484976768494, 0.6042489409446716, 0.4289373755455017, 0.24761079251766205, 0.1367565393447876, 0.03998802602291107, 0.03202357143163681, 0.012150649912655354, 0.013956097885966301, 0.021209534257650375, 0.01489973533898592, 0.013795034028589725, 0.011739515699446201], [0.005135314539074898, 0.006530473008751869, 0.02648470737040043, 0.022704511880874634, 0.012098874896764755, 0.065648652613163, 0.01965610682964325, 0.04631743207573891, 0.08456264436244965, 0.15530245006084442, 0.37189266085624695, 0.34303802251815796, 0.5424612760543823, 0.7106226682662964, 0.8333659172058105, 0.8643447160720825, 0.6146292686462402, 0.5164180994033813, 0.2993597984313965, 0.13959452509880066, 0.0465984083712101, 0.06650623679161072, 0.01142529584467411, 0.022756654769182205, 0.0427740141749382, 0.01271432638168335, 0.014688203111290932, 0.025853333994746208], [0.03465547785162926, 0.018406648188829422, 0.016981767490506172, 0.03053261525928974, 0.02646777033805847, 0.016037210822105408, 0.031290337443351746, 0.037373170256614685, 0.19597823917865753, 0.23597228527069092, 0.4751550257205963, 0.2540416121482849, 0.45933765172958374, 0.7087023258209229, 0.7638351321220398, 0.825279176235199, 0.505048930644989, 0.5832626223564148, 0.18823985755443573, 0.14857713878154755, 0.06380220502614975, 0.07456262409687042, 0.05364253371953964, 0.030154438689351082, 0.05187526345252991, 0.020482337102293968, 0.02633952908217907, 0.01047408115118742], [0.011824253015220165, 0.005839329678565264, 0.010515290312469006, 0.017715709283947945, 0.01578097604215145, 0.02367413602769375, 0.051576439291238785, 0.07996273785829544, 0.04546548053622246, 0.12207955867052078, 0.24427872896194458, 0.3824726343154907, 0.5272772908210754, 0.6198817491531372, 0.6348716020584106, 0.5019702911376953, 0.4734112024307251, 0.22095713019371033, 0.13478028774261475, 0.28447067737579346, 0.11662603169679642, 0.0529300682246685, 0.07962740212678909, 0.03965013474225998, 0.030902573838829994, 0.028087347745895386, 0.027160795405507088, 0.006552713457494974], [0.019355246797204018, 0.013976776041090488, 0.007982475683093071, 0.009875965304672718, 0.05492489039897919, 0.003795366268604994, 0.03960772231221199, 0.02041137032210827, 0.10107937455177307, 0.2289196103811264, 0.23978155851364136, 0.2299700379371643, 0.38645675778388977, 0.5553461313247681, 0.4611999988555908, 0.25064587593078613, 0.32859066128730774, 0.3485725522041321, 0.41277194023132324, 0.14812274277210236, 0.12267659604549408, 0.10208681225776672, 0.03135725483298302, 0.03333192318677902, 0.029135139659047127, 0.028491627424955368, 0.010354080237448215, 0.007746133487671614], [0.016822855919599533, 0.01530143991112709, 0.010766650550067425, 0.007226531859487295, 0.010395449586212635, 0.024012533947825432, 0.01995214633643627, 0.022157082334160805, 0.05811748653650284, 0.0541277676820755, 0.15517844259738922, 0.2895452678203583, 0.24952413141727448, 0.4881894886493683, 0.30940210819244385, 0.34197184443473816, 0.32886558771133423, 0.2452656775712967, 0.2947402894496918, 0.18647344410419464, 0.26301437616348267, 0.15451467037200928, 0.07191959023475647, 0.03596806526184082, 0.05313108488917351, 0.02778484672307968, 0.008928599767386913, 0.01064955722540617], [0.014039401896297932, 0.012990717776119709, 0.016422761604189873, 0.013516372069716454, 0.03306484967470169, 0.047936271876096725, 0.08929555863142014, 0.05021486058831215, 0.0705437883734703, 0.1520300954580307, 0.2531062364578247, 0.31637269258499146, 0.504327654838562, 0.26941126585006714, 0.36653149127960205, 0.21305035054683685, 0.3097383975982666, 0.3973557651042938, 0.20729945600032806, 0.18639446794986725, 0.3262081444263458, 0.1469523310661316, 0.21058711409568787, 0.06159627065062523, 0.05442628264427185, 0.015360848046839237, 0.004761642310768366, 0.020486364141106606], [0.01503443531692028, 0.01229518000036478, 0.016687341034412384, 0.07562123239040375, 0.03272300213575363, 0.0580919124186039, 0.08803524076938629, 0.12076058238744736, 0.208969384431839, 0.3305390477180481, 0.4627930819988251, 0.42118483781814575, 0.42521700263023376, 0.33834323287010193, 0.23461206257343292, 0.27277132868766785, 0.36801081895828247, 0.36036184430122375, 0.3806403875350952, 0.1688072681427002, 0.18998034298419952, 0.2329285889863968, 0.2128380835056305, 0.1358886957168579, 0.06024148315191269, 0.03275676816701889, 0.007285617291927338, 0.010827244259417057], [0.009898670949041843, 0.013650720939040184, 0.019754352048039436, 0.0323297418653965, 0.06239796057343483, 0.07861191034317017, 0.04324737936258316, 0.09062273055315018, 0.22222639620304108, 0.2640761435031891, 0.4931413233280182, 0.39677998423576355, 0.4143001139163971, 0.2937353551387787, 0.22630688548088074, 0.5278192162513733, 0.4401741027832031, 0.3419625461101532, 0.3847055733203888, 0.3069867491722107, 0.40652474761009216, 0.4536287486553192, 0.19309242069721222, 0.14370056986808777, 0.10070754587650299, 0.01801757887005806, 0.02165389247238636, 0.017601924017071724], [0.010809849016368389, 0.02523631416261196, 0.007453803438693285, 0.020182419568300247, 0.0721328929066658, 0.07623082399368286, 0.07055699825286865, 0.20035913586616516, 0.25876089930534363, 0.4291819632053375, 0.3803163170814514, 0.550151526927948, 0.41046127676963806, 0.6453708410263062, 0.6361172199249268, 0.3935779631137848, 0.4750332236289978, 0.3312273621559143, 0.5181049704551697, 0.404936283826828, 0.21550419926643372, 0.16950474679470062, 0.23975665867328644, 0.11280898749828339, 0.05487177520990372, 0.02052524872124195, 0.006266302429139614, 0.016479702666401863], [0.011795304715633392, 0.007354339584708214, 0.02019401639699936, 0.01949145644903183, 0.06196412444114685, 0.0676150918006897, 0.1348094493150711, 0.08617857098579407, 0.3567793667316437, 0.256271094083786, 0.35231897234916687, 0.6903464198112488, 0.4050624370574951, 0.48451244831085205, 0.555453360080719, 0.36384347081184387, 0.27970370650291443, 0.1746140867471695, 0.27331364154815674, 0.257292777299881, 0.1261797547340393, 0.06148526072502136, 0.07696258276700974, 0.04326469078660011, 0.026836030185222626, 0.005220677703619003, 0.01396225392818451, 0.009224611334502697], [0.02139968052506447, 0.02079196646809578, 0.029083801433444023, 0.00853441096842289, 0.040554121136665344, 0.05513063073158264, 0.08725105226039886, 0.10889328271150589, 0.28925663232803345, 0.3009853661060333, 0.4917292594909668, 0.25725001096725464, 0.30964165925979614, 0.2845863103866577, 0.5681201219558716, 0.35425809025764465, 0.24745365977287292, 0.1855439394712448, 0.18409188091754913, 0.1878369152545929, 0.1376078575849533, 0.056400153785943985, 0.040220241993665695, 0.029659589752554893, 0.015492363832890987, 0.013070029206573963, 0.016993241384625435, 0.006596629973500967], [0.021270232275128365, 0.00600875448435545, 0.015285584144294262, 0.003686924697831273, 0.029469136148691177, 0.04115026444196701, 0.03698599338531494, 0.07273195683956146, 0.09079916775226593, 0.18740101158618927, 0.3654323220252991, 0.27447617053985596, 0.2701820731163025, 0.40243929624557495, 0.2577446699142456, 0.26911070942878723, 0.16683998703956604, 0.0932137668132782, 0.1672818660736084, 0.10448314249515533, 0.051649678498506546, 0.048631515353918076, 0.019775530323386192, 0.03112741746008396, 0.013664115220308304, 0.004672364331781864, 0.01925395429134369, 0.027277646586298943], [0.011519291438162327, 0.013326514512300491, 0.008871259167790413, 0.01400654949247837, 0.025926578789949417, 0.019066451117396355, 0.014266905374825, 0.04398542270064354, 0.08131113648414612, 0.05230668932199478, 0.12467139959335327, 0.1073949784040451, 0.06296875327825546, 0.19621369242668152, 0.15392208099365234, 0.19751890003681183, 0.17321562767028809, 0.1811131089925766, 0.1282169669866562, 0.11880523711442947, 0.030628470703959465, 0.016529828310012817, 0.0114728519693017, 0.007340637501329184, 0.01342973206192255, 0.014875732362270355, 0.009522081352770329, 0.028422782197594643], [0.015068615786731243, 0.007615950424224138, 0.008950280025601387, 0.011609064415097237, 0.021156512200832367, 0.014278953894972801, 0.01682732068002224, 0.04359279200434685, 0.03711516037583351, 0.059168893843889236, 0.029087712988257408, 0.0789826512336731, 0.16207438707351685, 0.14800173044204712, 0.07397888600826263, 0.04924748092889786, 0.09285087883472443, 0.055223118513822556, 0.09310117363929749, 0.047249507158994675, 0.014092543162405491, 0.026476528495550156, 0.024239445105195045, 0.01368037611246109, 0.02288271114230156, 0.018329307436943054, 0.012765358202159405, 0.014871101826429367], [0.018241891637444496, 0.023232530802488327, 0.014494872651994228, 0.007734513375908136, 0.016657961532473564, 0.016711480915546417, 0.021385222673416138, 0.01657012291252613, 0.015147130936384201, 0.0337335541844368, 0.03625696897506714, 0.02364823780953884, 0.022755343466997147, 0.04306209459900856, 0.025729473680257797, 0.020782746374607086, 0.029120834544301033, 0.023361608386039734, 0.01815836690366268, 0.01500557642430067, 0.013049831613898277, 0.007865074090659618, 0.013838564977049828, 0.008222188800573349, 0.008027710020542145, 0.015539825893938541, 0.01426350511610508, 0.0076292636804282665]]\n"
+            ],
+            "retval": 0,
+            "seconds": 12.1
+        },
+        "tensorflow_v1/3_NeuralNetworks/neural_network_eager_api.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/neural_network_eager_api.py\", line 26, in <module>\n",
+                "    tf.enable_eager_execution()\n",
+                "AttributeError: 'module' object has no attribute 'enable_eager_execution'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 1.51
+        },
+        "tensorflow_v1/3_NeuralNetworks/neural_network.py": {
+            "error": [
+                "WARNING:tensorflow:Using temporary folder as model directory: /tmp/tmpgj_b0rno\n",
+                "2021-01-06 20:37:55.781255: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:55.781278: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:55.781284: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:55.781288: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:37:55.781292: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "WARNING:tensorflow:Skipping summary for global_step, must be a float or np.float32.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Testing Accuracy: 0.8924\n"
+            ],
+            "retval": 0,
+            "seconds": 17.89
+        },
+        "tensorflow_v1/3_NeuralNetworks/bidirectional_rnn.py": {
+            "error": [
+                "2021-01-06 20:38:11.787552: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:38:11.787579: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:38:11.787585: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:38:11.787589: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:38:11.787592: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1, Minibatch Loss= 3.1763, Training Accuracy= 0.102\n",
+                "Step 2, Minibatch Loss= 2.8279, Training Accuracy= 0.125\n",
+                "Step 3, Minibatch Loss= 2.7174, Training Accuracy= 0.125\n",
+                "Step 4, Minibatch Loss= 2.8216, Training Accuracy= 0.094\n",
+                "Step 5, Minibatch Loss= 2.8119, Training Accuracy= 0.156\n",
+                "Step 6, Minibatch Loss= 2.7837, Training Accuracy= 0.047\n",
+                "Step 7, Minibatch Loss= 2.5837, Training Accuracy= 0.156\n",
+                "Step 8, Minibatch Loss= 2.6767, Training Accuracy= 0.094\n",
+                "Step 9, Minibatch Loss= 2.8020, Training Accuracy= 0.125\n",
+                "Step 10, Minibatch Loss= 2.6320, Training Accuracy= 0.125\n",
+                "Optimization Finished!\n",
+                "Testing Accuracy: 0.1171875\n"
+            ],
+            "retval": 0,
+            "seconds": 15.86
+        },
+        "tensorflow_v1/3_NeuralNetworks/convolutional_network_raw.py": {
+            "error": [
+                "2021-01-06 20:38:24.896555: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:38:24.896580: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:38:24.896586: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:38:24.896590: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:38:24.896594: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1, Minibatch Loss= 65272.3906, Training Accuracy= 0.125\n",
+                "Optimization Finished!\n",
+                "Testing Accuracy: 0.1640625\n"
+            ],
+            "retval": 0,
+            "seconds": 11.85
+        },
+        "tensorflow_v1/3_NeuralNetworks/autoencoder.py": {
+            "error": [
+                "2021-01-06 20:38:35.924140: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:38:35.924171: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:38:35.924176: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:38:35.924180: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:38:35.924184: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1: Minibatch Loss: 0.433541\n",
+                "Reconstructed Image\n",
+                "[[3.99529017158784e-06, 0.0261320061981678, 0.0023660610895603895, 0.8249847292900085, 0.028743963688611984, 0.0028024243656545877, 0.999984860420227, 0.002065904438495636, 0.0004061042272951454, 0.9999996423721313, 0.05233243852853775, 0.00028910848777741194, 0.9940133690834045, 3.3367184641974745e-06, 0.9999996423721313, 9.203743502439465e-06, 0.00561723904684186, 5.217831130721606e-06, 0.999987006187439, 0.133796826004982, 0.27520203590393066, 0.023394394665956497, 0.5025284290313721, 0.21985763311386108, 8.868885625901157e-10, 0.9916362762451172, 0.03040008433163166, 0.6560229659080505], [0.9999986886978149, 7.443084905389696e-05, 0.9996193647384644, 0.13624264299869537, 0.3942449986934662, 0.01160629652440548, 0.9621391892433167, 0.06377992033958435, 0.9999995231628418, 0.9922371506690979, 0.9999995231628418, 0.9941148161888123, 0.9856508374214172, 0.0001362202747259289, 0.5231460332870483, 2.2666071764713275e-13, 1.816198533788338e-07, 0.9999990463256836, 1.8254883116242127e-06, 0.22680607438087463, 0.9999996423721313, 0.7020386457443237, 0.46333491802215576, 5.2845777531729254e-08, 0.9928396940231323, 0.9805518984794617, 0.9999920129776001, 0.44768309593200684], [0.9479835629463196, 1.0, 0.13819289207458496, 0.6969490647315979, 0.00017957077943719923, 0.005317055154591799, 0.5457980632781982, 7.056891263346188e-06, 0.7073504328727722, 1.057882627719664e-06, 1.2529408933981134e-13, 0.0006080692983232439, 1.0, 0.7779490947723389, 0.7460985779762268, 6.821434972437146e-09, 0.9999995231628418, 0.9939501285552979, 6.774842595562089e-14, 0.012254254892468452, 0.9998281002044678, 0.9629340767860413, 0.9999881982803345, 0.0004545203992165625, 0.015897728502750397, 0.0007680649287067354, 0.9999915361404419, 0.9999886751174927], [0.9994613528251648, 2.9687541314160626e-07, 0.9999823570251465, 0.003839890705421567, 0.9999786615371704, 0.9879276156425476, 0.25993096828460693, 9.664690159283396e-10, 0.9995456337928772, 0.9999938011169434, 0.09993066638708115, 0.9202601909637451, 0.2055172622203827, 2.6030004818267116e-08, 0.04294157773256302, 1.8020824427367188e-05, 3.592165285226656e-06, 2.59523322970745e-11, 0.9994070529937744, 0.016407234594225883, 0.9227760434150696, 0.18061861395835876, 0.9997172951698303, 0.9824808239936829, 0.0034867546055465937, 0.004128802567720413, 0.0011869684094563127, 0.9704502820968628], [0.004418856464326382, 0.8837338089942932, 0.9304239153862, 0.0007315765833482146, 0.9999986886978149, 0.9583937525749207, 0.0008748364634811878, 0.9130998253822327, 5.53120844415389e-06, 3.874529284075834e-06, 0.8826609253883362, 0.999093770980835, 0.028541522100567818, 0.3631252348423004, 0.9999973773956299, 1.0, 0.9997931122779846, 0.9535626769065857, 0.9718855023384094, 1.0484412086952943e-05, 0.012101919390261173, 0.6278946399688721, 2.6283977164892613e-13, 0.00010072792792925611, 0.9934067726135254, 0.9039716124534607, 0.0026158762630075216, 0.9999994039535522], [0.00015522018657065928, 0.9760702252388, 0.0009763383422978222, 0.059134457260370255, 0.9999358654022217, 0.99997878074646, 0.0009278998477384448, 1.0, 0.9979109168052673, 0.00036681501660495996, 1.1460357995929371e-07, 0.04243578761816025, 0.00017777580069378018, 1.4123379799002578e-07, 0.9929068088531494, 0.9991818070411682, 0.8140713572502136, 0.0013592313043773174, 0.003079185029491782, 1.4823559467913583e-05, 0.3830583095550537, 0.16562752425670624, 0.9994183778762817, 0.0026009082794189453, 1.4448107322095893e-05, 0.8300513029098511, 0.9989902377128601, 1.0], [0.9999998807907104, 0.7424811124801636, 0.00018496630946174264, 1.0, 0.002645077183842659, 0.8801296353340149, 0.01111450046300888, 1.1520936823217198e-05, 6.585120004842793e-09, 0.999790608882904, 0.27778780460357666, 8.955918553424022e-14, 0.9996664524078369, 0.17586438357830048, 0.004122764337807894, 0.9967934489250183, 0.7435481548309326, 0.9999126195907593, 0.26309341192245483, 0.9999842643737793, 0.9194128513336182, 0.9987899661064148, 0.9963052272796631, 0.0023056757636368275, 0.07898365706205368, 0.9930986762046814, 0.019558364525437355, 2.060932274616789e-06], [0.9999994039535522, 0.9892808794975281, 0.24783289432525635, 1.0, 0.7210088968276978, 4.286149390964056e-08, 0.9999908208847046, 1.9472477106319275e-06, 0.9999462366104126, 0.002747038146480918, 0.010401651263237, 0.026930071413517, 0.9998183846473694, 0.9999079704284668, 0.9999862909317017, 1.0, 1.9322321520576224e-08, 0.999737560749054, 0.8932721614837646, 0.9749548435211182, 0.8603063225746155, 0.9990878105163574, 0.9999911785125732, 0.051289260387420654, 0.9999995231628418, 1.0, 1.0, 1.0], [0.04758886620402336, 0.0011080412659794092, 0.9999858140945435, 0.9996151924133301, 1.0, 5.047525419854537e-08, 0.9999163150787354, 0.9975903034210205, 0.4825170338153839, 0.16846883296966553, 0.0006697062053717673, 0.9996862411499023, 0.024129468947649002, 0.9990707635879517, 0.9999921321868896, 0.9957696199417114, 0.9999992847442627, 0.9999980926513672, 1.0, 0.9999994039535522, 0.0028905263170599937, 0.9874300360679626, 8.5264091467252e-06, 0.9999181032180786, 0.9756126403808594, 0.9999343156814575, 0.055368922650814056, 0.9999994039535522], [0.38804304599761963, 0.9999620914459229, 0.8900327086448669, 0.004401396028697491, 0.9994307160377502, 0.6439469456672668, 8.563867481825582e-07, 0.9677608609199524, 0.9999549388885498, 4.731759428722171e-10, 0.9999998807907104, 1.248342050530482e-05, 1.0, 0.9971400499343872, 1.0, 2.070188638569892e-12, 1.4628942153649405e-05, 0.9999792575836182, 0.9106464385986328, 0.002120414050295949, 0.9989392161369324, 2.1321087842807174e-05, 0.999717652797699, 1.0, 0.9999998807907104, 3.112573904218152e-05, 2.75931682836017e-07, 0.039893411099910736], [0.7915890216827393, 7.159193377015427e-11, 0.018461037427186966, 4.781331313097326e-07, 0.022623980417847633, 1.0, 0.2497618943452835, 0.6837388873100281, 0.82144695520401, 0.9999908208847046, 0.8300533294677734, 0.8840325474739075, 7.630118489032611e-06, 1.0, 0.9999665021896362, 1.0629608368617482e-05, 2.076507410464501e-09, 0.00020663850591517985, 0.022686071693897247, 0.9998331069946289, 0.9533747434616089, 7.2143534453061875e-06, 0.011089743115007877, 0.9998012185096741, 0.9986956715583801, 2.3956456516316393e-06, 0.00014883876428939402, 1.0], [0.9999980926513672, 0.9906917214393616, 1.0, 0.6497343182563782, 4.224799340590835e-06, 0.17757579684257507, 0.9189550876617432, 6.563116983215878e-08, 0.03188828378915787, 1.0, 0.9999731779098511, 0.9853217005729675, 0.9999998807907104, 4.4122766150369447e-14, 0.9982885718345642, 8.783157312564072e-08, 0.9729448556900024, 3.4591241274029016e-05, 0.004220715258270502, 1.0, 1.0, 0.9999582767486572, 1.368765634168767e-08, 0.9999978542327881, 0.024198386818170547, 0.44002488255500793, 1.7859898434835486e-05, 0.9998196959495544], [0.7930580377578735, 0.999998927116394, 0.0030116874258965254, 0.0026738604065030813, 0.4284456670284271, 0.9995415210723877, 7.949326459311123e-07, 1.206614683724183e-07, 0.918756902217865, 0.0009892366360872984, 2.8949477837159066e-06, 2.437419084344583e-07, 2.3183718440122902e-05, 9.497702194494195e-06, 0.9999963045120239, 0.9986286163330078, 8.998120756587014e-05, 0.9049890041351318, 0.988902747631073, 0.9768632650375366, 0.0002001111424760893, 0.9999812841415405, 0.00019794530817307532, 0.0004895623424090445, 2.368882860537269e-06, 0.08599483966827393, 0.8314290046691895, 0.9159513115882874], [0.0024084041360765696, 0.9973389506340027, 0.9999827146530151, 0.08612972497940063, 0.8291547298431396, 0.05681012198328972, 0.9997716546058655, 9.10917078726925e-05, 0.999988317489624, 0.9876998662948608, 0.049046337604522705, 0.0005907706799916923, 0.9999998807907104, 1.0, 1.0, 0.9999998807907104, 0.0015047809574753046, 3.892922095793949e-10, 0.001750353490933776, 0.9823282957077026, 0.9767590761184692, 0.7157496213912964, 0.9179725050926208, 0.9954854846000671, 1.0, 1.4855060292973121e-08, 0.9676889181137085, 6.1118616834221484e-09], [0.9495890736579895, 0.995733916759491, 5.566828349401476e-06, 1.8061169612337835e-05, 0.4227791130542755, 0.9954028129577637, 0.9999208450317383, 0.8424539566040039, 1.3927118743595202e-05, 0.9998737573623657, 1.5513463949901052e-05, 2.5163815735140815e-05, 0.0027222626376897097, 0.9999955892562866, 0.37400421500205994, 0.0012795208021998405, 6.059420684323413e-06, 0.06104196980595589, 0.0003808815963566303, 0.9639450907707214, 9.178736945614219e-06, 0.013647325336933136, 3.916845181528572e-10, 0.0012129436945542693, 1.3615052921522874e-05, 0.7365047335624695, 0.9999741315841675, 0.8717231750488281], [0.4233502745628357, 0.005177226848900318, 0.9988669157028198, 0.9924817681312561, 0.8067886233329773, 6.24486233391508e-07, 0.7400412559509277, 0.9999994039535522, 0.9127906560897827, 0.9997773766517639, 0.9967251420021057, 0.9922831654548645, 0.7095038890838623, 0.12361790239810944, 0.9999953508377075, 1.574830150730122e-07, 0.18581561744213104, 0.9999994039535522, 7.385202934528934e-06, 0.9999613761901855, 0.9634709358215332, 0.001297255395911634, 0.8585283756256104, 0.9913759827613831, 0.07747654616832733, 0.004695897921919823, 3.6515665158276533e-08, 0.9999990463256836], [2.6583931500567815e-08, 0.9924564361572266, 0.9867047071456909, 1.0, 0.0014737879391759634, 0.9138253927230835, 0.9999992847442627, 0.9999998807907104, 1.0, 0.999752938747406, 1.6140535080921836e-05, 8.635154517833143e-05, 0.0001873688743216917, 0.771399736404419, 0.00011775638995459303, 0.4763505160808563, 0.043289780616760254, 0.9189768433570862, 0.7596604228019714, 9.463691164057764e-09, 1.0, 0.7307462096214294, 0.8055739998817444, 0.9708705544471741, 0.9771952033042908, 0.9999998807907104, 6.2061803873803e-06, 0.00031974329613149166], [0.9999997615814209, 0.001306666643358767, 0.003691996680572629, 0.28786322474479675, 0.38325682282447815, 5.794885873910971e-05, 0.9997891783714294, 0.9934793710708618, 0.21540679037570953, 5.764262027696532e-07, 0.9997089505195618, 0.0001330843078903854, 0.9991961121559143, 4.759471323723119e-07, 0.9997112154960632, 0.006325501017272472, 1.0074747286425989e-10, 0.9520089626312256, 0.0011642184108495712, 5.616277221065502e-09, 0.26322391629219055, 0.9853613972663879, 0.9655207991600037, 2.4399145104325726e-07, 3.142422792734578e-05, 5.270331726592303e-09, 0.9999998807907104, 0.999570906162262], [0.9934321641921997, 0.4194360077381134, 6.961061444599181e-06, 0.6205689907073975, 0.24989502131938934, 0.318449467420578, 7.009003866187413e-07, 0.6336982846260071, 1.0, 6.013103643481843e-12, 7.233774468318188e-09, 9.894700269796886e-06, 0.006031626835465431, 0.9999871253967285, 0.4466307461261749, 0.00011654755508061498, 0.004699600860476494, 7.104250828837266e-15, 1.732289511835461e-08, 0.22940407693386078, 0.7003828883171082, 0.972515881061554, 0.03827521950006485, 1.2244132449268363e-05, 0.8672516942024231, 0.9999891519546509, 0.12892630696296692, 0.711466908454895], [0.9999669790267944, 0.08356434851884842, 0.3359931409358978, 0.9996753931045532, 1.0, 0.004267671145498753, 0.0024394383653998375, 5.181038886803435e-06, 6.565539223402084e-10, 0.03522508591413498, 0.5611995458602905, 0.830352783203125, 4.352253654360538e-06, 0.9986209869384766, 0.9954906105995178, 0.9999804496765137, 0.8998032212257385, 0.9998526573181152, 0.02420528419315815, 0.9999995231628418, 0.9992048144340515, 0.0004455826710909605, 6.93381080054678e-05, 0.00032797959283925593, 1.0, 1.0, 0.9999444484710693, 0.9999947547912598], [0.026690999045968056, 6.379525530064711e-07, 0.0027660485357046127, 0.8875409960746765, 0.14272725582122803, 0.9782465696334839, 0.9959421753883362, 0.9491736888885498, 1.4461121509157238e-06, 0.10387033224105835, 0.9999998807907104, 0.925125002861023, 0.002201599068939686, 1.0, 0.0026040668599307537, 0.7729759812355042, 0.9755134582519531, 0.9984083771705627, 0.9224628806114197, 2.344991798963747e-06, 4.656205783248879e-05, 0.9996159076690674, 0.00028249426395632327, 7.93731214798754e-06, 0.06827085465192795, 0.9999922513961792, 0.18417999148368835, 0.9999994039535522], [1.5744774373160908e-06, 0.7271158695220947, 0.9999983310699463, 0.0004233099170960486, 0.9652616381645203, 0.015377956442534924, 0.966424822807312, 0.007541699800640345, 0.9999997615814209, 0.9999945163726807, 0.9968631267547607, 0.9999998807907104, 0.195561483502388, 0.2760961055755615, 0.5975208878517151, 0.04758455604314804, 0.916585385799408, 0.9978955984115601, 0.978359043598175, 2.854942431440577e-05, 0.00013505740207619965, 0.34856700897216797, 0.007643519435077906, 5.917405360378325e-05, 0.9483938217163086, 0.0002552121877670288, 0.22781150043010712, 0.0034018217120319605], [1.524938952890409e-09, 0.7787874937057495, 0.8204519152641296, 0.00040366180473938584, 0.9999971389770508, 0.136221781373024, 0.9999998807907104, 0.9235677719116211, 5.084119948151056e-06, 0.9548680186271667, 0.9999948740005493, 3.7382146729214583e-06, 0.9999996423721313, 0.9710317254066467, 0.9997867941856384, 1.0, 0.9999995231628418, 0.9999451637268066, 2.7652619749574114e-08, 0.9999992847442627, 1.0, 0.013248349539935589, 1.0, 4.59506104277807e-08, 0.00010046767420135438, 0.7353084683418274, 0.5261244773864746, 8.152584030085563e-08], [1.0, 0.000820118875708431, 0.8903592824935913, 0.0017016471829265356, 4.925970529257029e-07, 5.9558265093073715e-06, 0.8602567911148071, 0.9948192238807678, 0.48986929655075073, 2.7838113965117373e-05, 0.002522993367165327, 0.13212338089942932, 0.8731653094291687, 0.000543333706445992, 0.0008550964412279427, 0.03465886786580086, 1.7102927147433222e-12, 0.9988008737564087, 1.0, 0.9673269391059875, 0.9991710186004639, 0.9459899067878723, 0.9999933242797852, 0.8398438096046448, 0.7402151226997375, 8.254547719843686e-05, 6.48797197300155e-07, 0.9132936596870422], [0.9999750852584839, 7.5330885920266155e-06, 0.0007279429119080305, 0.9666163325309753, 0.9999991655349731, 0.9996106028556824, 0.9999954700469971, 0.0001107802745536901, 0.010455510579049587, 0.9828824996948242, 0.9238961338996887, 1.2337308064047647e-08, 0.711133599281311, 7.225247600217699e-07, 0.9394553303718567, 0.9999998807907104, 0.9998701810836792, 0.9964991807937622, 0.0001671540958341211, 1.8657278388900522e-08, 2.439207724691528e-09, 0.9630468487739563, 0.9106748104095459, 0.09851574897766113, 1.1361513951868574e-09, 0.027490679174661636, 1.0, 0.8393417596817017], [0.001589421764947474, 6.480305728473468e-06, 0.13063737750053406, 0.0064207399263978004, 0.9598194360733032, 7.686867320444435e-05, 0.456310510635376, 1.0, 0.9999964237213135, 0.04435116797685623, 0.9999915361404419, 0.09731355309486389, 1.6494683222845197e-05, 0.9999899864196777, 0.3547878563404083, 0.6962698101997375, 3.338131326913185e-09, 3.7709128264395986e-07, 0.7670813202857971, 0.3644779920578003, 0.9977259039878845, 0.9689082503318787, 0.670567512512207, 0.004074994008988142, 0.014606950804591179, 1.1825844694612897e-06, 0.33391764760017395, 0.039597928524017334], [0.3877788186073303, 0.9999027252197266, 0.2079557627439499, 0.9741413593292236, 0.9988742470741272, 1.0, 0.8178932070732117, 0.00015615021402481943, 0.13502608239650726, 0.9545412659645081, 2.484909771283128e-07, 2.5213832941517467e-06, 0.00650762626901269, 0.999723494052887, 6.16000615991652e-05, 0.0034957476891577244, 0.983528733253479, 0.9939408302307129, 0.999996542930603, 0.29989609122276306, 0.9738981127738953, 0.0019041389459744096, 0.01355501264333725, 0.999700665473938, 0.9997808337211609, 1.0427830687831374e-07, 0.9998621940612793, 0.07896313071250916], [0.9999409914016724, 0.005769702605903149, 5.847542183801124e-07, 0.8995268940925598, 0.9890402555465698, 1.0, 0.1995312124490738, 1.0576878821666469e-06, 0.9991236329078674, 2.731205669612158e-12, 0.007856776937842369, 0.43489542603492737, 0.0004454157897271216, 0.9999011754989624, 0.999254047870636, 0.9985758066177368, 0.10641466081142426, 1.6499310504514142e-06, 0.00023246108321473002, 0.9892838597297668, 0.9999983310699463, 9.600368278128713e-10, 0.0013982673408463597, 0.9828790426254272, 0.02745770663022995, 0.0007821103208698332, 0.00010325491894036531, 0.9981250166893005]]\n"
+            ],
+            "retval": 0,
+            "seconds": 10.39
+        },
+        "tensorflow_v1/3_NeuralNetworks/gan.py": {
+            "error": [
+                "2021-01-06 20:38:47.597802: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:38:47.597829: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:38:47.597835: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:38:47.597838: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:38:47.597842: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1: Generator Loss: 0.930344, Discriminator Loss: 1.323045\n"
+            ],
+            "retval": 0,
+            "seconds": 12.57
+        },
+        "tensorflow_v1/3_NeuralNetworks/recurrent_network.py": {
+            "error": [
+                "2021-01-06 20:39:02.300651: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:39:02.300676: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:39:02.300681: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:39:02.300685: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:39:02.300688: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1, Minibatch Loss= 2.8747, Training Accuracy= 0.113\n",
+                "Step 2, Minibatch Loss= 2.9162, Training Accuracy= 0.055\n",
+                "Step 3, Minibatch Loss= 2.8386, Training Accuracy= 0.098\n",
+                "Step 4, Minibatch Loss= 2.8444, Training Accuracy= 0.102\n",
+                "Step 5, Minibatch Loss= 2.8213, Training Accuracy= 0.090\n",
+                "Step 6, Minibatch Loss= 2.7990, Training Accuracy= 0.109\n",
+                "Step 7, Minibatch Loss= 2.7133, Training Accuracy= 0.113\n",
+                "Step 8, Minibatch Loss= 2.6957, Training Accuracy= 0.109\n",
+                "Step 9, Minibatch Loss= 2.7802, Training Accuracy= 0.117\n",
+                "Step 10, Minibatch Loss= 2.7504, Training Accuracy= 0.098\n",
+                "Optimization Finished!\n",
+                "Testing Accuracy: 0.1171875\n"
+            ],
+            "retval": 0,
+            "seconds": 15.86
+        },
+        "tensorflow_v1/3_NeuralNetworks/neural_network_raw.py": {
+            "error": [
+                "2021-01-06 20:39:15.511948: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:39:15.511973: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:39:15.511979: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:39:15.511983: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:39:15.511987: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1, Minibatch Loss= 8497.8584, Training Accuracy= 0.352\n",
+                "Step 100, Minibatch Loss= 158.8860, Training Accuracy= 0.891\n",
+                "Step 200, Minibatch Loss= 59.6766, Training Accuracy= 0.883\n",
+                "Step 300, Minibatch Loss= 74.6665, Training Accuracy= 0.867\n",
+                "Optimization Finished!\n",
+                "Testing Accuracy: 0.838\n"
+            ],
+            "retval": 0,
+            "seconds": 12.24
+        },
+        "tensorflow_v1/3_NeuralNetworks/multilayer_perceptron.py": {
+            "error": [
+                "2021-01-06 20:39:27.646766: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:39:27.646794: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:39:27.646801: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:39:27.646810: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:39:27.646817: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Epoch: 0001 cost=507.817330324\n",
+                "Optimization Finished!\n",
+                "Accuracy: 0.8184\n"
+            ],
+            "retval": 0,
+            "seconds": 12.55
+        },
+        "tensorflow_v1/3_NeuralNetworks/convolutional_network.py": {
+            "error": [
+                "WARNING:tensorflow:Using temporary folder as model directory: /tmp/tmpf5ijuz2b\n",
+                "2021-01-06 20:39:40.743823: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:39:40.743846: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:39:40.743852: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:39:40.743855: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "2021-01-06 20:39:40.743859: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.\n",
+                "WARNING:tensorflow:Skipping summary for global_step, must be a float or np.float32.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Testing Accuracy: 0.2132\n"
+            ],
+            "retval": 0,
+            "seconds": 17.02
+        }
+    },
+    "requirements.txt": [
+        "numpy==1.16.6\n",
+        "protobuf==3.14.0\n",
+        "six==1.15.0\n",
+        "tensorflow==1.1.0\n",
+        "Werkzeug==0.16.1\n"
+    ]
+}

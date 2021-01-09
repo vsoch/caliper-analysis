@@ -24,6 +24,8 @@ For each of the above, to ensure some reproducibility and headless-ness across r
 
 ## Usage
 
+### Generate Data
+
 Caliper is currently intended for Python packages, as we are going to use a PypiManager.
 You can first create a virtual environment just for doing the analysis (the analysis
 itself will be done within containers built on the fly).
@@ -47,3 +49,8 @@ working directory) that will have a json dump of tensorflow versions matched to 
 that can build them, and then test results (output, error, and return code) for each.
 To learn more about the format of the `caliper.yaml` you should see the [caliper](https://github.com/vsoch/caliper)
 repository.
+
+### Parse Data
+
+To develop functions to create combined files for visualization, there is an example
+[parse_analysis.py](parse_analysis.py) script example provided.

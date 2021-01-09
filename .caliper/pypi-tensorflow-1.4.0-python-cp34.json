@@ -1,0 +1,1041 @@
+{
+    "inputs": {
+        "dependency": "tensorflow",
+        "outfile": "/home/vanessa/Desktop/Code/caliper-analysis/.caliper/pypi-tensorflow-1.4.0-python-cp34.json",
+        "dockerfile": "FROM python:3.4\nADD . /tmp/repo\nWORKDIR /tmp/repo\nENV LANG C.UTF-8\nENV SHELL /bin/bash\nRUN apt-get update && apt-get install -y wget ca-certificates gnupg2 git\nRUN /bin/bash -c \"wget https://files.pythonhosted.org/packages/05/f7/ccf4f218f448c1194df0d52743691bcd835e0fb665a3b7876d929f5218d4/tensorflow-1.4.0-cp34-cp34m-manylinux1_x86_64.whl && pip install tensorflow-1.4.0-cp34-cp34m-manylinux1_x86_64.whl\"\n",
+        "force": false,
+        "exists": true,
+        "name": "pypi-tensorflow-1.4.0-python-cp34",
+        "tests": "tensorflow_v0.11/5_MultiGPU/multigpu_basics.py\ntensorflow_v0.11/1_Introduction/basic_operations.py\ntensorflow_v0.11/1_Introduction/helloworld.py\ntensorflow_v0.11/4_Utils/tensorboard_advanced.py\ntensorflow_v0.11/4_Utils/tensorboard_basic.py\ntensorflow_v0.11/2_BasicModels/logistic_regression.py\ntensorflow_v0.11/2_BasicModels/linear_regression.py\ntensorflow_v0.11/2_BasicModels/nearest_neighbor.py\ntensorflow_v0.11/3_NeuralNetworks/bidirectional_rnn.py\ntensorflow_v0.11/3_NeuralNetworks/autoencoder.py\ntensorflow_v0.11/3_NeuralNetworks/recurrent_network.py\ntensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py\ntensorflow_v0.11/3_NeuralNetworks/multilayer_perceptron.py\ntensorflow_v0.11/3_NeuralNetworks/convolutional_network.py\ntensorflow_v1/1_Introduction/basic_eager_api.py\ntensorflow_v1/1_Introduction/basic_operations.py\ntensorflow_v1/1_Introduction/helloworld.py\ntensorflow_v1/4_Utils/tensorboard_advanced.py\ntensorflow_v1/4_Utils/tensorboard_basic.py\ntensorflow_v1/5_DataManagement/build_an_image_dataset.py\ntensorflow_v1/5_DataManagement/tensorflow_dataset_api.py\ntensorflow_v1/2_BasicModels/random_forest.py\ntensorflow_v1/2_BasicModels/gradient_boosted_decision_tree.py\ntensorflow_v1/2_BasicModels/logistic_regression.py\ntensorflow_v1/2_BasicModels/word2vec.py\ntensorflow_v1/2_BasicModels/linear_regression.py\ntensorflow_v1/2_BasicModels/logistic_regression_eager_api.py\ntensorflow_v1/2_BasicModels/nearest_neighbor.py\ntensorflow_v1/2_BasicModels/linear_regression_eager_api.py\ntensorflow_v1/2_BasicModels/kmeans.py\ntensorflow_v1/6_MultiGPU/multigpu_basics.py\ntensorflow_v1/6_MultiGPU/multigpu_cnn.py\ntensorflow_v1/3_NeuralNetworks/variational_autoencoder.py\ntensorflow_v1/3_NeuralNetworks/neural_network_eager_api.py\ntensorflow_v1/3_NeuralNetworks/neural_network.py\ntensorflow_v1/3_NeuralNetworks/bidirectional_rnn.py\ntensorflow_v1/3_NeuralNetworks/convolutional_network_raw.py\ntensorflow_v1/3_NeuralNetworks/autoencoder.py\ntensorflow_v1/3_NeuralNetworks/gan.py\ntensorflow_v1/3_NeuralNetworks/recurrent_network.py\ntensorflow_v1/3_NeuralNetworks/neural_network_raw.py\ntensorflow_v1/3_NeuralNetworks/multilayer_perceptron.py\ntensorflow_v1/3_NeuralNetworks/convolutional_network.py",
+        "cleanup": true,
+        "outdir": "/home/vanessa/Desktop/Code/caliper-analysis"
+    },
+    "tests": {
+        "build": {
+            "retval": 0
+        },
+        "tensorflow_v0.11/5_MultiGPU/multigpu_basics.py": {
+            "error": [
+                "2021-01-07 06:18:22.310917: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n",
+                "2021-01-07 06:18:22.311324: I tensorflow/core/common_runtime/direct_session.cc:299] Device mapping:\n",
+                "\n",
+                "2021-01-07 06:18:22.313808: I tensorflow/core/common_runtime/placer.cc:874] MatMul_1: (MatMul)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:18:22.313824: I tensorflow/core/common_runtime/placer.cc:874] MatMul: (MatMul)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:18:22.313830: I tensorflow/core/common_runtime/placer.cc:874] AddN: (AddN)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:18:22.313835: I tensorflow/core/common_runtime/placer.cc:874] Placeholder_1: (Placeholder)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:18:22.313839: I tensorflow/core/common_runtime/placer.cc:874] Placeholder: (Placeholder)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:18:22.358034: I tensorflow/core/common_runtime/direct_session.cc:299] Device mapping:\n",
+                "\n",
+                "2021-01-07 06:18:22.361858: I tensorflow/core/common_runtime/placer.cc:874] MatMul_3: (MatMul)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:18:22.361874: I tensorflow/core/common_runtime/placer.cc:874] MatMul_2: (MatMul)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:18:22.361887: I tensorflow/core/common_runtime/placer.cc:874] AddN_1: (AddN)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:18:22.361893: I tensorflow/core/common_runtime/placer.cc:874] MatMul_1: (MatMul)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:18:22.361901: I tensorflow/core/common_runtime/placer.cc:874] MatMul: (MatMul)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:18:22.361910: I tensorflow/core/common_runtime/placer.cc:874] AddN: (AddN)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:18:22.361915: I tensorflow/core/common_runtime/placer.cc:874] Placeholder_3: (Placeholder)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:18:22.361934: I tensorflow/core/common_runtime/placer.cc:874] Placeholder_2: (Placeholder)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:18:22.361939: I tensorflow/core/common_runtime/placer.cc:874] Placeholder_1: (Placeholder)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:18:22.361945: I tensorflow/core/common_runtime/placer.cc:874] Placeholder: (Placeholder)/job:localhost/replica:0/task:0/device:CPU:0\n"
+            ],
+            "output": [
+                "Single CPU computation time: 0:00:00.041857\n",
+                "Multi CPU computation time: 0:00:00.043315\n",
+                "Device mapping: no known devices.\n",
+                "MatMul_1: (MatMul): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "MatMul: (MatMul): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "AddN: (AddN): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "Placeholder_1: (Placeholder): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "Placeholder: (Placeholder): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "Device mapping: no known devices.\n",
+                "MatMul_3: (MatMul): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "MatMul_2: (MatMul): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "AddN_1: (AddN): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "MatMul_1: (MatMul): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "MatMul: (MatMul): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "AddN: (AddN): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "Placeholder_3: (Placeholder): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "Placeholder_2: (Placeholder): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "Placeholder_1: (Placeholder): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "Placeholder: (Placeholder): /job:localhost/replica:0/task:0/device:CPU:0\n"
+            ],
+            "retval": 0,
+            "seconds": 1.53
+        },
+        "tensorflow_v0.11/1_Introduction/basic_operations.py": {
+            "error": [
+                "2021-01-07 06:18:23.835880: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "a=2, b=3\n",
+                "Addition with constants: 5\n",
+                "Multiplication with constants: 6\n",
+                "Addition with variables: 5\n",
+                "Multiplication with variables: 6\n",
+                "[[12.]]\n"
+            ],
+            "retval": 0,
+            "seconds": 1.46
+        },
+        "tensorflow_v0.11/1_Introduction/helloworld.py": {
+            "error": [
+                "2021-01-07 06:18:25.313948: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "b'Hello, TensorFlow!'\n"
+            ],
+            "retval": 0,
+            "seconds": 1.43
+        },
+        "tensorflow_v0.11/4_Utils/tensorboard_advanced.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/4_Utils/tensorboard_advanced.py\", line 77, in <module>\n",
+                "    pred = multilayer_perceptron(x, weights, biases)\n",
+                "  File \"tensorflow_v0.11/4_Utils/tensorboard_advanced.py\", line 50, in multilayer_perceptron\n",
+                "    tf.histogram_summary(\"relu1\", layer_1)\n",
+                "AttributeError: 'module' object has no attribute 'histogram_summary'\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 9.81
+        },
+        "tensorflow_v0.11/4_Utils/tensorboard_basic.py": {
+            "error": [
+                "WARNING:tensorflow:From /usr/local/lib/python3.4/site-packages/tensorflow/python/util/tf_should_use.py:107: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.\n",
+                "Instructions for updating:\n",
+                "Use `tf.global_variables_initializer` instead.\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/4_Utils/tensorboard_basic.py\", line 62, in <module>\n",
+                "    tf.scalar_summary(\"loss\", cost)\n",
+                "AttributeError: 'module' object has no attribute 'scalar_summary'\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 9.34
+        },
+        "tensorflow_v0.11/2_BasicModels/logistic_regression.py": {
+            "error": [
+                "WARNING:tensorflow:From /usr/local/lib/python3.4/site-packages/tensorflow/python/util/tf_should_use.py:107: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.\n",
+                "Instructions for updating:\n",
+                "Use `tf.global_variables_initializer` instead.\n",
+                "2021-01-07 06:18:56.785121: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Epoch: 0001 cost= 1.659455665\n",
+                "Epoch: 0002 cost= 1.054772121\n",
+                "Optimization Finished!\n",
+                "Accuracy: 0.8407\n"
+            ],
+            "retval": 0,
+            "seconds": 13.25
+        },
+        "tensorflow_v0.11/2_BasicModels/linear_regression.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/2_BasicModels/linear_regression.py\", line 81, in <module>\n",
+                "    pred = tf.add(tf.mul(X, W), b)\n",
+                "AttributeError: 'module' object has no attribute 'mul'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 1.43
+        },
+        "tensorflow_v0.11/2_BasicModels/nearest_neighbor.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/2_BasicModels/nearest_neighbor.py\", line 37, in <module>\n",
+                "    distance = tf.reduce_sum(tf.abs(tf.add(xtr, tf.neg(xte))), reduction_indices=1)\n",
+                "AttributeError: 'module' object has no attribute 'neg'\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 9.37
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/bidirectional_rnn.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/op_def_library.py\", line 510, in _apply_op_helper\n",
+                "    preferred_dtype=default_dtype)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 926, in internal_convert_to_tensor\n",
+                "    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 774, in _TensorTensorConversionFunction\n",
+                "    (dtype.name, t.dtype.name, str(t)))\n",
+                "ValueError: Tensor conversion requested dtype int32 for Tensor with dtype float32: 'Tensor(\"Reshape:0\", shape=(?, 28), dtype=float32)'\n",
+                "\n",
+                "During handling of the above exception, another exception occurred:\n",
+                "\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/bidirectional_rnn.py\", line 89, in <module>\n",
+                "    pred = BiRNN(x, weights, biases)\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/bidirectional_rnn.py\", line 69, in BiRNN\n",
+                "    x = tf.split(0, n_steps, x)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/array_ops.py\", line 1265, in split\n",
+                "    split_dim=axis, num_split=num_or_size_splits, value=value, name=name)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/gen_array_ops.py\", line 5094, in _split\n",
+                "    name=name)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/op_def_library.py\", line 533, in _apply_op_helper\n",
+                "    (prefix, dtypes.as_dtype(input_arg.type).name))\n",
+                "TypeError: Input 'split_dim' of 'Split' Op has type float32 that does not match expected type of int32.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 9.07
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/autoencoder.py": {
+            "error": [
+                "WARNING:tensorflow:From /usr/local/lib/python3.4/site-packages/tensorflow/python/util/tf_should_use.py:107: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.\n",
+                "Instructions for updating:\n",
+                "Use `tf.global_variables_initializer` instead.\n",
+                "2021-01-07 06:19:27.106888: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Epoch: 0001 cost= 0.190749407\n",
+                "Optimization Finished!\n",
+                "[2.5555179e-05, 1.87273e-08, 6.8782287e-09, 0.0022964748, 0.0050245, 0.0076171393, 0.0019310501, 3.8796796e-05, 0.004369871, 9.920039e-05, 2.5771991e-05, 1.8950672e-10, 0.0016800298, 0.00066989294, 0.0001651955, 3.6975125e-09, 9.5651385e-06, 0.0016280536, 0.99990475, 4.548532e-08, 4.519433e-05, 0.0004225812, 0.005001561, 0.00063449086, 2.646599e-09, 0.00044754424, 0.000116114046, 9.883187e-05, 0.99999976, 0.004179937, 7.4959724e-05, 0.0011166342, 0.011657262, 1.7177003e-05, 0.0006175561, 0.0009402349, 0.9999975, 0.0029655658, 0.007895991, 0.0022390946, 0.00033679447, 0.0018167297, 0.004976845, 6.878719e-15, 2.065458e-06, 0.002262301, 5.3370766e-09, 0.009115063, 0.00070487603, 0.0065440093, 0.00021061118, 4.2898037e-06, 0.9999999, 0.0029100592, 0.99991214, 0.0015181293, 0.0005411864, 1.0, 9.205514e-05, 5.7155914e-05, 0.00017474167, 0.0058839573, 0.011612879, 2.8618592e-06, 0.0008489742, 1.5175456e-07, 2.992123e-12, 0.0048363474, 0.99999976, 0.002751084, 0.0014199594, 0.0014219858, 0.9999976, 2.8406004e-05, 2.5388256e-15, 0.005315749, 0.999998, 0.0019494903, 1.0, 1.4933268e-05, 6.551079e-05, 0.0037846917, 1.0, 0.0056449645, 0.012052326, 1.0159242e-07, 0.99980325, 0.0067158695, 0.00264785, 2.239646e-06, 5.8458413e-06, 3.5565776e-07, 2.5307318e-05, 0.005537034, 9.297643e-05, 0.0025731702, 1.8132284e-06, 3.1428323e-07, 6.861649e-06, 5.6627006e-05, 4.0928455e-08, 1.3903456e-05, 0.034287747, 0.0009321585, 0.017200343, 2.3706913e-05, 0.011223453, 0.0064787753, 0.0060954182, 7.462885e-06, 0.00010754967, 0.000112237096, 4.1297728e-05, 1.5063299e-05, 0.0028429597, 0.0029739507, 0.0020193693, 0.00020559553, 0.0014917799, 0.00058671366, 0.0012266331, 0.02903547, 1.3574513e-07, 0.084410414, 0.0010744982, 0.0004982936, 0.9999634, 1.0, 0.9999751, 0.9999976, 1.8276605e-06, 0.06971972, 0.044023987, 0.002836225, 2.7423714e-12, 5.0628314e-06, 0.0038727114, 9.356862e-09, 7.9213174e-07, 0.99999917, 3.9667523e-07, 7.237266e-09, 7.6108794e-05, 0.0006345163, 0.99999964, 4.578e-06, 7.0979364e-12, 0.0010917464, 2.0273972e-05, 0.0131662795, 0.0006077338, 0.31269497, 4.6075866e-06, 0.5042304, 0.1735206, 0.27454764, 0.46545166, 0.24479099, 0.251174, 4.6844445e-10, 0.08409352, 0.00043673156, 1.0, 1.0948799e-05, 0.00039314473, 0.0015246819, 0.00026507938, 1.0, 1.0, 7.020724e-06, 1.8195187e-05, 1.0, 0.0083541665, 0.0010671442, 1.5266033e-07, 0.0001458502, 1.0005091e-08, 0.059111204, 0.21642642, 4.291457e-16, 0.21749833, 0.29698378, 0.3053497, 1.0, 0.63755643, 0.9999988, 0.45348886, 0.99985504, 0.027677435, 0.21637233, 0.00036948075, 0.04234284, 0.0032314567, 0.00015243542, 0.0028278802, 1.9510285e-06, 0.012589098, 1.4897431e-06, 3.4191348e-06, 1.0, 0.008194515, 2.0472417e-08, 0.99997985, 3.8723572e-10, 1.0, 0.09853474, 8.272772e-09, 0.27672544, 0.15232174, 0.9999963, 1.0, 0.9999999, 0.64396423, 0.3046385, 0.23403782, 0.08731962, 0.08864948, 0.030969566, 0.9999931, 0.00016959937, 0.026730055, 1.0, 1.0, 1.0, 0.005190092, 0.0016751247, 0.0025375385, 5.634529e-05, 0.9999999, 8.8544425e-08, 0.0008521882, 0.07306374, 0.0006322954, 0.16340646, 0.17795244, 0.9999969, 0.26719776, 0.38347208, 0.3827144, 0.2882503, 0.9999993, 0.99998426, 0.28494403, 0.101829045, 0.2929405, 0.03847224, 9.1299e-06, 0.023663614, 1.0, 0.009437421, 0.0054935403, 1.0, 7.1353784e-06, 0.99999964, 5.222657e-07, 0.0062872116, 0.0040219966, 4.9561448e-05, 0.057565723, 0.00035756087, 0.0061359024, 2.0217962e-05, 0.9999999, 0.22179963, 0.20726408, 0.99999666, 0.9999999, 6.3294063e-09, 4.442657e-08, 1.0, 0.17890775, 0.2618902, 0.3632144, 2.627518e-06, 0.99999774, 1.0, 0.03050459, 0.00035324084, 1.4178238e-11, 0.003493725, 0.0003221861, 5.7166785e-06, 0.008048245, 0.0020978204, 1.8148908e-08, 1.0, 0.99999845, 0.0004624834, 0.00072723906, 0.9998629, 0.18890986, 0.16415124, 3.6794906e-06, 1.0, 0.16780895, 0.0003810973, 3.2487166e-09, 2.49338e-05, 0.16311084, 0.16191457, 0.08100152, 0.13613872, 0.06629922, 0.0005577057, 0.0046986155, 1.313374e-09, 0.0003533057, 0.99999964, 0.002883726, 0.011501896, 0.009185093, 2.1310821e-05, 3.522903e-05, 0.00871299, 8.308921e-05, 2.1135499e-08, 0.058764223, 1.0, 0.14769292, 0.10355863, 1.0, 2.7522775e-14, 0.25500077, 8.227578e-06, 0.08919568, 5.006936e-06, 0.539626, 0.3138642, 1.0, 0.02074708, 0.10059357, 0.9999987, 0.00027921653, 0.0027791325, 0.0066984165, 0.0013168124, 0.0024905151, 0.009449385, 1.8859303e-06, 0.00051378383, 0.00050013105, 7.226592e-05, 2.843173e-10, 8.486552e-08, 0.17760774, 0.0023762262, 0.00025453468, 1.8627665e-11, 0.3668883, 0.0009640446, 0.09093658, 0.25977272, 0.17582424, 0.5584157, 0.44123435, 0.12626085, 0.27252203, 0.14922926, 1.1175763e-07, 0.0006209222, 1.1294636e-10, 7.524204e-05, 0.00017020105, 0.009015682, 0.010092925, 0.0040644067, 0.011012812, 0.0064533283, 0.0018915327, 5.5196706e-05, 0.0018084974, 1.6763861e-10, 0.99996185, 0.00012325028, 1.7506216e-05, 0.09871199, 1.0, 1.0, 0.9999957, 1.0, 0.4796395, 1.7315648e-06, 0.18948276, 0.3257728, 0.0016386557, 0.17539707, 0.9999999, 0.9999968, 0.9999976, 1.2466631e-11, 0.007157528, 1.1180299e-05, 0.0019406647, 0.99999356, 3.6045403e-11, 4.105629e-08, 0.011381496, 1.001204e-08, 0.00020141146, 0.24262322, 0.15307285, 0.42416835, 0.48514393, 0.1422377, 6.74585e-07, 1.0, 0.23991239, 2.8201679e-05, 0.5676494, 0.30200648, 0.16057803, 0.18056494, 5.4284174e-06, 8.79732e-05, 3.7829759e-07, 0.044686783, 0.00064172916, 0.00034532018, 1.0, 0.0001049513, 3.3197823e-05, 0.0009991013, 0.005835491, 0.008113426, 0.000212081, 1.8579067e-05, 4.0970852e-05, 1.0, 0.18085535, 0.34299773, 1.0, 0.36716047, 0.15651977, 0.50726366, 0.99997413, 1.2948556e-07, 0.6318096, 1.0, 0.10826268, 0.99999976, 0.13642034, 0.09896002, 0.00035918338, 0.00016081869, 0.0011546056, 0.0008171379, 1.16263536e-07, 0.0036114464, 1.7218824e-09, 0.008079662, 1.0, 0.99999976, 0.011814651, 0.0012955318, 0.9999999, 0.9998323, 0.99999034, 0.29609972, 2.203359e-09, 5.1384013e-06, 0.410713, 0.31661195, 0.5564333, 0.34259975, 0.2564237, 0.32412878, 0.45795134, 0.353012, 1.0, 0.023953293, 5.8732683e-05, 0.077548794, 0.00034467372, 1.0, 0.00027082599, 9.3745655e-07, 1.0, 2.6351183e-05, 0.0014471889, 5.198019e-06, 0.002806238, 9.910555e-07, 0.035107795, 0.09322963, 5.225233e-07, 0.1470769, 0.19773448, 0.3308577, 0.5564498, 6.696424e-07, 1.0, 0.5649281, 5.1908007e-09, 0.3764827, 0.4074431, 1.3766535e-07, 0.00036281292, 0.0002352217, 0.0046185227, 0.048740573, 0.0005478661, 1.01441394e-07, 1.0, 0.0012646097, 0.005142484, 1.7001012e-05, 0.00022355402, 0.006653641, 7.708205e-07, 8.227142e-08, 4.1130927e-05, 0.02260887, 0.4742167, 7.328256e-11, 2.2287305e-14, 6.991113e-10, 0.272704, 3.6321046e-05, 0.5010376, 3.6683872e-07, 0.33768296, 1.01312795e-11, 1.1798853e-06, 0.061383527, 0.31887743, 0.06828739, 0.0024690763, 0.00072125514, 0.0011100438, 0.9999999, 8.381678e-06, 0.0023572957, 0.99999905, 8.722075e-05, 4.636731e-05, 0.011697789, 1.0, 6.133962e-05, 0.02831311, 0.039156653, 1.3683576e-09, 0.00037532102, 0.43803272, 0.35980237, 6.0472644e-08, 0.99924785, 0.25487822, 0.29877728, 0.4697273, 0.32126978, 1.6321246e-05, 0.5351554, 5.4624616e-07, 0.0003830089, 0.08710547, 1.9250175e-09, 0.99998224, 0.999995, 0.0007434003, 0.0045066425, 0.00014396716, 7.650319e-09, 4.9329838e-06, 0.00020856825, 0.00019282447, 0.07127109, 0.025635239, 2.4742554e-05, 0.00033842374, 3.251369e-07, 0.10904176, 0.17674017, 2.1272346e-07, 1.0, 0.71977204, 0.66449124, 0.4296256, 0.49427867, 0.3085572, 0.0009418569, 2.5529641e-06, 0.06376217, 7.283017e-05, 0.00068270095, 0.000717069, 0.01097878, 0.009890001, 0.9999943, 0.00018079918, 0.000103178245, 0.9999957, 5.5777527e-08, 0.00075167837, 6.174867e-06, 0.0055269944, 0.047937296, 1.0, 0.99998474, 0.21956816, 0.25556472, 0.34837198, 0.71211636, 0.74185926, 0.34129095, 0.33326855, 0.45149416, 0.33587348, 1.2293109e-05, 0.11760766, 0.00081204233, 0.009050807, 3.417198e-06, 0.00034255133, 0.008850127, 0.001918168, 0.0033622445, 2.695511e-05, 0.00073382317, 0.0011089499, 0.007674505, 7.0078536e-06, 0.00026843397, 1.0, 0.068431, 0.000105942134, 0.27467084, 0.18085971, 0.16377345, 0.6711976, 0.20395364, 0.67873996, 0.999995, 1.0, 0.06794788, 8.154347e-07, 0.11407902, 0.060822867, 0.03356307, 1.0, 0.0008320585, 0.0055835037, 0.0022592945, 8.8654415e-05, 4.835406e-09, 1.0, 1.7872882e-05, 4.9664923e-05, 0.0002677367, 1.1234572e-05, 0.00014139517, 2.4898252e-05, 0.00034044767, 0.06819894, 1.2326552e-09, 0.10474316, 0.08083361, 0.18942966, 0.17810641, 4.380666e-06, 2.4294795e-05, 1.4277226e-12, 0.0686176, 1.0, 1.0, 0.00023736809, 0.015608033, 1.0, 2.04305e-06, 5.3389854e-06, 3.713918e-05, 0.0034452786, 0.00601213, 0.0047521363, 4.6730527e-08, 0.0059348964, 0.0047303243, 0.00020865815, 7.1724164e-05, 0.99958724, 0.0011201884, 0.00027052016, 0.08258885, 0.016055875, 0.17500892, 0.9999454, 8.0996584e-11, 0.076174445, 0.1015916, 0.9999974, 0.00035379457, 1.951235e-08, 0.00025649776, 3.6531508e-10, 0.014918987, 6.49787e-05, 0.00027874412, 1.1452049e-08, 1.1803202e-05, 0.99946016, 0.00046433718, 0.004024928, 2.0561265e-06, 3.2015184e-06, 0.0052494733, 0.008264478, 0.0010594225, 0.004099314, 1.0, 0.9999999, 0.036014233, 0.0057040164, 0.0011319855, 0.039889183, 0.99997866, 0.00017598202, 0.030310066, 1.749089e-08, 3.9504775e-05, 0.0012527222, 1.058734e-05, 0.00607116, 0.0036477474, 0.007392139, 3.3504773e-05, 0.00012341177, 1.8052951e-07, 0.0009966651, 4.4148383e-06, 8.690473e-06, 0.0004932866, 0.0051947297, 0.0025362256, 0.012246304, 1.0, 0.0007555247, 2.0604588e-08, 0.0046692295, 2.0280702e-05, 0.0128996065, 6.908857e-11, 0.025908448, 0.0072205374, 0.00043321025, 1.995867e-05, 6.9552945e-05, 0.0023369575, 1.0, 0.013827924, 0.000987576, 2.6735386e-10, 0.00093619316, 0.00897513, 0.9998776, 1.6516188e-09, 0.0025685166, 0.0032978202, 0.013216103, 0.0061797453, 0.001340909, 0.00078121683, 1.0, 1.0, 0.00011147521, 4.675111e-05, 0.0009275144, 9.132828e-16, 0.005626393, 0.001814658, 0.00016815626, 0.007905153, 0.006018816, 0.005632249, 8.399283e-05, 3.249781e-10, 0.00038326182, 0.00024225918, 1.0, 0.00801561, 0.008658021, 1.2743283e-05, 0.0074897883, 0.00025165136, 0.007530708, 0.007700667]\n"
+            ],
+            "retval": 0,
+            "seconds": 12.45
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/recurrent_network.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/op_def_library.py\", line 510, in _apply_op_helper\n",
+                "    preferred_dtype=default_dtype)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 926, in internal_convert_to_tensor\n",
+                "    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 774, in _TensorTensorConversionFunction\n",
+                "    (dtype.name, t.dtype.name, str(t)))\n",
+                "ValueError: Tensor conversion requested dtype int32 for Tensor with dtype float32: 'Tensor(\"Reshape:0\", shape=(?, 28), dtype=float32)'\n",
+                "\n",
+                "During handling of the above exception, another exception occurred:\n",
+                "\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/recurrent_network.py\", line 76, in <module>\n",
+                "    pred = RNN(x, weights, biases)\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/recurrent_network.py\", line 64, in RNN\n",
+                "    x = tf.split(0, n_steps, x)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/array_ops.py\", line 1265, in split\n",
+                "    split_dim=axis, num_split=num_or_size_splits, value=value, name=name)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/gen_array_ops.py\", line 5094, in _split\n",
+                "    name=name)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/op_def_library.py\", line 533, in _apply_op_helper\n",
+                "    (prefix, dtypes.as_dtype(input_arg.type).name))\n",
+                "TypeError: Input 'split_dim' of 'Split' Op has type float32 that does not match expected type of int32.\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 9.65
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/op_def_library.py\", line 510, in _apply_op_helper\n",
+                "    preferred_dtype=default_dtype)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 926, in internal_convert_to_tensor\n",
+                "    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 774, in _TensorTensorConversionFunction\n",
+                "    (dtype.name, t.dtype.name, str(t)))\n",
+                "ValueError: Tensor conversion requested dtype int32 for Tensor with dtype float32: 'Tensor(\"Reshape:0\", shape=(?, 1), dtype=float32)'\n",
+                "\n",
+                "During handling of the above exception, another exception occurred:\n",
+                "\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py\", line 160, in <module>\n",
+                "    pred = dynamicRNN(x, seqlen, weights, biases)\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/dynamic_rnn.py\", line 128, in dynamicRNN\n",
+                "    x = tf.split(0, seq_max_len, x)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/array_ops.py\", line 1265, in split\n",
+                "    split_dim=axis, num_split=num_or_size_splits, value=value, name=name)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/gen_array_ops.py\", line 5094, in _split\n",
+                "    name=name)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/op_def_library.py\", line 533, in _apply_op_helper\n",
+                "    (prefix, dtypes.as_dtype(input_arg.type).name))\n",
+                "TypeError: Input 'split_dim' of 'Split' Op has type float32 that does not match expected type of int32.\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 1.39
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/multilayer_perceptron.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/multilayer_perceptron.py\", line 71, in <module>\n",
+                "    cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(pred, y))\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/nn_ops.py\", line 1744, in softmax_cross_entropy_with_logits\n",
+                "    labels, logits)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/nn_ops.py\", line 1698, in _ensure_xent_args\n",
+                "    \"named arguments (labels=..., logits=..., ...)\" % name)\n",
+                "ValueError: Only call `softmax_cross_entropy_with_logits` with named arguments (labels=..., logits=..., ...)\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 9.42
+        },
+        "tensorflow_v0.11/3_NeuralNetworks/convolutional_network.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v0.11/3_NeuralNetworks/convolutional_network.py\", line 106, in <module>\n",
+                "    cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(pred, y))\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/nn_ops.py\", line 1744, in softmax_cross_entropy_with_logits\n",
+                "    labels, logits)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/nn_ops.py\", line 1698, in _ensure_xent_args\n",
+                "    \"named arguments (labels=..., logits=..., ...)\" % name)\n",
+                "ValueError: Only call `softmax_cross_entropy_with_logits` with named arguments (labels=..., logits=..., ...)\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 9.14
+        },
+        "tensorflow_v1/1_Introduction/basic_eager_api.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/1_Introduction/basic_eager_api.py\", line 34, in <module>\n",
+                "    tfe.enable_eager_execution()\n",
+                "AttributeError: 'module' object has no attribute 'enable_eager_execution'\n"
+            ],
+            "output": [
+                "Setting Eager mode...\n"
+            ],
+            "retval": 1,
+            "seconds": 1.63
+        },
+        "tensorflow_v1/1_Introduction/basic_operations.py": {
+            "error": [
+                "2021-01-07 06:20:02.608435: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "a=2, b=3\n",
+                "Addition with constants: 5\n",
+                "Multiplication with constants: 6\n",
+                "Addition with variables: 5\n",
+                "Multiplication with variables: 6\n",
+                "[[12.]]\n"
+            ],
+            "retval": 0,
+            "seconds": 1.36
+        },
+        "tensorflow_v1/1_Introduction/helloworld.py": {
+            "error": [
+                "2021-01-07 06:20:03.931865: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "b'Hello, TensorFlow!'\n"
+            ],
+            "retval": 0,
+            "seconds": 1.31
+        },
+        "tensorflow_v1/4_Utils/tensorboard_advanced.py": {
+            "error": [
+                "2021-01-07 06:20:13.341775: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Epoch: 0001 cost= 152.066085573\n",
+                "Optimization Finished!\n",
+                "Accuracy: 0.8415\n",
+                "Run the command line:\n",
+                "--> tensorboard --logdir=/tmp/tensorflow_logs \n",
+                "Then open http://0.0.0.0:6006/ into your web browser\n"
+            ],
+            "retval": 0,
+            "seconds": 12.82
+        },
+        "tensorflow_v1/4_Utils/tensorboard_basic.py": {
+            "error": [
+                "2021-01-07 06:20:26.274240: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Epoch: 0001 cost= 1.659455665\n",
+                "Optimization Finished!\n",
+                "Accuracy: 0.8169\n",
+                "Run the command line:\n",
+                "--> tensorboard --logdir=/tmp/tensorflow_logs \n",
+                "Then open http://0.0.0.0:6006/ into your web browser\n"
+            ],
+            "retval": 0,
+            "seconds": 10.28
+        },
+        "tensorflow_v1/5_DataManagement/build_an_image_dataset.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/5_DataManagement/build_an_image_dataset.py\", line 74, in read_images\n",
+                "    classes = sorted(os.walk(dataset_path).next()[1])\n",
+                "AttributeError: 'generator' object has no attribute 'next'\n",
+                "\n",
+                "During handling of the above exception, another exception occurred:\n",
+                "\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/5_DataManagement/build_an_image_dataset.py\", line 133, in <module>\n",
+                "    X, Y = read_images(DATASET_PATH, MODE, batch_size)\n",
+                "  File \"tensorflow_v1/5_DataManagement/build_an_image_dataset.py\", line 76, in read_images\n",
+                "    classes = sorted(os.walk(dataset_path).__next__()[1])\n",
+                "StopIteration\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 1.31
+        },
+        "tensorflow_v1/5_DataManagement/tensorflow_dataset_api.py": {
+            "error": [
+                "2021-01-07 06:20:37.726098: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1, Minibatch Loss= 2.2442, Training Accuracy= 0.258\n",
+                "Step 10, Minibatch Loss= 0.8898, Training Accuracy= 0.828\n",
+                "Optimization Finished!\n"
+            ],
+            "retval": 0,
+            "seconds": 11.32
+        },
+        "tensorflow_v1/2_BasicModels/random_forest.py": {
+            "error": [
+                "2021-01-07 06:20:49.582107: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1, Loss: -1.000000, Acc: 0.407227\n",
+                "Test Accuracy: 0.7626\n"
+            ],
+            "retval": 0,
+            "seconds": 10.33
+        },
+        "tensorflow_v1/2_BasicModels/gradient_boosted_decision_tree.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/gradient_boosted_decision_tree.py\", line 89, in <module>\n",
+                "    gbdt_model.fit(input_fn=input_fn, max_steps=max_steps)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/util/deprecation.py\", line 316, in new_func\n",
+                "    return func(*args, **kwargs)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/contrib/learn/python/learn/estimators/estimator.py\", line 480, in fit\n",
+                "    loss = self._train_model(input_fn=input_fn, hooks=hooks)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/contrib/learn/python/learn/estimators/estimator.py\", line 986, in _train_model\n",
+                "    model_fn_ops = self._get_train_ops(features, labels)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/contrib/learn/python/learn/estimators/estimator.py\", line 1202, in _get_train_ops\n",
+                "    return self._call_model_fn(features, labels, model_fn_lib.ModeKeys.TRAIN)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/contrib/learn/python/learn/estimators/estimator.py\", line 1166, in _call_model_fn\n",
+                "    model_fn_results = self._model_fn(features, labels, **kwargs)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/contrib/boosted_trees/estimator_batch/model.py\", line 96, in model_builder\n",
+                "    features=features)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/contrib/boosted_trees/python/training/functions/gbdt_batch.py\", line 332, in __init__\n",
+                "    sparse_int_shapes) = extract_features(features, self._feature_columns)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/contrib/boosted_trees/python/training/functions/gbdt_batch.py\", line 211, in extract_features\n",
+                "    for i in xrange(len(unstacked)):\n",
+                "NameError: name 'xrange' is not defined\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 10.57
+        },
+        "tensorflow_v1/2_BasicModels/logistic_regression.py": {
+            "error": [
+                "2021-01-07 06:21:09.591457: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Epoch: 0001 cost= 1.659455665\n",
+                "Epoch: 0002 cost= 1.054772121\n",
+                "Optimization Finished!\n",
+                "Accuracy: 0.8407\n"
+            ],
+            "retval": 0,
+            "seconds": 9.81
+        },
+        "tensorflow_v1/2_BasicModels/word2vec.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/word2vec.py\", line 58, in <module>\n",
+                "    filename, _ = urllib.urlretrieve(url, data_path)\n",
+                "AttributeError: 'module' object has no attribute 'urlretrieve'\n"
+            ],
+            "output": [
+                "Downloading the dataset... (It may take some time)\n"
+            ],
+            "retval": 1,
+            "seconds": 1.37
+        },
+        "tensorflow_v1/2_BasicModels/linear_regression.py": {
+            "error": [
+                "2021-01-07 06:21:13.202759: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Epoch: 0050 cost= 0.213137478 W= 0.4558863 b= -0.6825888\n",
+                "Epoch: 0100 cost= 0.197407037 W= 0.443617 b= -0.5943239\n",
+                "Optimization Finished!\n",
+                "Training cost= 0.19740704 W= 0.443617 b= -0.5943239 \n",
+                "\n"
+            ],
+            "retval": 0,
+            "seconds": 1.98
+        },
+        "tensorflow_v1/2_BasicModels/logistic_regression_eager_api.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/logistic_regression_eager_api.py\", line 20, in <module>\n",
+                "    tf.enable_eager_execution()\n",
+                "AttributeError: 'module' object has no attribute 'enable_eager_execution'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 1.33
+        },
+        "tensorflow_v1/2_BasicModels/nearest_neighbor.py": {
+            "error": [
+                "WARNING:tensorflow:From tensorflow_v1/2_BasicModels/nearest_neighbor.py:39: arg_min (from tensorflow.python.ops.gen_math_ops) is deprecated and will be removed in a future version.\n",
+                "Instructions for updating:\n",
+                "Use `argmin` instead\n",
+                "2021-01-07 06:21:24.506845: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Test 0 Prediction: 6 True Class: 6\n",
+                "Test 1 Prediction: 9 True Class: 9\n",
+                "Test 2 Prediction: 6 True Class: 6\n",
+                "Test 3 Prediction: 6 True Class: 6\n",
+                "Test 4 Prediction: 7 True Class: 7\n",
+                "Test 5 Prediction: 1 True Class: 1\n",
+                "Test 6 Prediction: 6 True Class: 6\n",
+                "Test 7 Prediction: 1 True Class: 2\n",
+                "Test 8 Prediction: 8 True Class: 8\n",
+                "Test 9 Prediction: 0 True Class: 0\n",
+                "Done!\n",
+                "Accuracy: 0.8999999999999999\n"
+            ],
+            "retval": 0,
+            "seconds": 9.72
+        },
+        "tensorflow_v1/2_BasicModels/linear_regression_eager_api.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/2_BasicModels/linear_regression_eager_api.py\", line 21, in <module>\n",
+                "    tf.enable_eager_execution()\n",
+                "AttributeError: 'module' object has no attribute 'enable_eager_execution'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 1.35
+        },
+        "tensorflow_v1/2_BasicModels/kmeans.py": {
+            "error": [
+                "2021-01-07 06:21:35.640151: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1, Avg Distance: 0.330741\n",
+                "Test Accuracy: 0.6297\n"
+            ],
+            "retval": 0,
+            "seconds": 10.62
+        },
+        "tensorflow_v1/6_MultiGPU/multigpu_basics.py": {
+            "error": [
+                "2021-01-07 06:21:38.126435: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n",
+                "2021-01-07 06:21:38.126805: I tensorflow/core/common_runtime/direct_session.cc:299] Device mapping:\n",
+                "\n",
+                "2021-01-07 06:21:38.129042: I tensorflow/core/common_runtime/placer.cc:874] MatMul_1: (MatMul)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:21:38.129057: I tensorflow/core/common_runtime/placer.cc:874] MatMul: (MatMul)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:21:38.129062: I tensorflow/core/common_runtime/placer.cc:874] AddN: (AddN)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:21:38.129066: I tensorflow/core/common_runtime/placer.cc:874] Placeholder_1: (Placeholder)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:21:38.129070: I tensorflow/core/common_runtime/placer.cc:874] Placeholder: (Placeholder)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:21:38.167831: I tensorflow/core/common_runtime/direct_session.cc:299] Device mapping:\n",
+                "\n",
+                "2021-01-07 06:21:38.171237: I tensorflow/core/common_runtime/placer.cc:874] MatMul_3: (MatMul)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:21:38.171251: I tensorflow/core/common_runtime/placer.cc:874] MatMul_2: (MatMul)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:21:38.171256: I tensorflow/core/common_runtime/placer.cc:874] AddN_1: (AddN)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:21:38.171260: I tensorflow/core/common_runtime/placer.cc:874] MatMul_1: (MatMul)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:21:38.171264: I tensorflow/core/common_runtime/placer.cc:874] MatMul: (MatMul)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:21:38.171267: I tensorflow/core/common_runtime/placer.cc:874] AddN: (AddN)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:21:38.171271: I tensorflow/core/common_runtime/placer.cc:874] Placeholder_3: (Placeholder)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:21:38.171275: I tensorflow/core/common_runtime/placer.cc:874] Placeholder_2: (Placeholder)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:21:38.171279: I tensorflow/core/common_runtime/placer.cc:874] Placeholder_1: (Placeholder)/job:localhost/replica:0/task:0/device:CPU:0\n",
+                "2021-01-07 06:21:38.171283: I tensorflow/core/common_runtime/placer.cc:874] Placeholder: (Placeholder)/job:localhost/replica:0/task:0/device:CPU:0\n"
+            ],
+            "output": [
+                "Single CPU computation time: 0:00:00.036824\n",
+                "Multi CPU computation time: 0:00:00.037961\n",
+                "Device mapping: no known devices.\n",
+                "MatMul_1: (MatMul): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "MatMul: (MatMul): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "AddN: (AddN): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "Placeholder_1: (Placeholder): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "Placeholder: (Placeholder): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "Device mapping: no known devices.\n",
+                "MatMul_3: (MatMul): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "MatMul_2: (MatMul): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "AddN_1: (AddN): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "MatMul_1: (MatMul): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "MatMul: (MatMul): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "AddN: (AddN): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "Placeholder_3: (Placeholder): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "Placeholder_2: (Placeholder): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "Placeholder_1: (Placeholder): /job:localhost/replica:0/task:0/device:CPU:0\n",
+                "Placeholder: (Placeholder): /job:localhost/replica:0/task:0/device:CPU:0\n"
+            ],
+            "retval": 0,
+            "seconds": 1.42
+        },
+        "tensorflow_v1/6_MultiGPU/multigpu_cnn.py": {
+            "error": [
+                "2021-01-07 06:21:48.252439: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n",
+                "Traceback (most recent call last):\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/client/session.py\", line 1323, in _do_call\n",
+                "    return fn(*args)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/client/session.py\", line 1293, in _run_fn\n",
+                "    self._extend_graph()\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/client/session.py\", line 1354, in _extend_graph\n",
+                "    self._session, graph_def.SerializeToString(), status)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/errors_impl.py\", line 473, in __exit__\n",
+                "    c_api.TF_GetCode(self.status.status))\n",
+                "tensorflow.python.framework.errors_impl.InvalidArgumentError: Cannot assign a device for operation 'gradients_1/Mean_2_grad/Prod_1': Operation was explicitly assigned to /device:GPU:1 but available devices are [ /job:localhost/replica:0/task:0/device:CPU:0 ]. Make sure the device specification refers to a valid device.\n",
+                "\t [[Node: gradients_1/Mean_2_grad/Prod_1 = Prod[T=DT_INT32, Tidx=DT_INT32, _class=[\"loc:@gradients_1/Mean_2_grad/Shape_1\"], keep_dims=false, _device=\"/device:GPU:1\"](gradients_1/Mean_2_grad/Shape_2, gradients_1/Mean_2_grad/Const_1)]]\n",
+                "\n",
+                "During handling of the above exception, another exception occurred:\n",
+                "\n",
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/6_MultiGPU/multigpu_cnn.py\", line 186, in <module>\n",
+                "    sess.run(init)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/client/session.py\", line 889, in run\n",
+                "    run_metadata_ptr)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/client/session.py\", line 1120, in _run\n",
+                "    feed_dict_tensor, options, run_metadata)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/client/session.py\", line 1317, in _do_run\n",
+                "    options, run_metadata)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/client/session.py\", line 1336, in _do_call\n",
+                "    raise type(e)(node_def, op, message)\n",
+                "tensorflow.python.framework.errors_impl.InvalidArgumentError: Cannot assign a device for operation 'gradients_1/Mean_2_grad/Prod_1': Operation was explicitly assigned to /device:GPU:1 but available devices are [ /job:localhost/replica:0/task:0/device:CPU:0 ]. Make sure the device specification refers to a valid device.\n",
+                "\t [[Node: gradients_1/Mean_2_grad/Prod_1 = Prod[T=DT_INT32, Tidx=DT_INT32, _class=[\"loc:@gradients_1/Mean_2_grad/Shape_1\"], keep_dims=false, _device=\"/device:GPU:1\"](gradients_1/Mean_2_grad/Shape_2, gradients_1/Mean_2_grad/Const_1)]]\n",
+                "\n",
+                "Caused by op 'gradients_1/Mean_2_grad/Prod_1', defined at:\n",
+                "  File \"tensorflow_v1/6_MultiGPU/multigpu_cnn.py\", line 165, in <module>\n",
+                "    grads = optimizer.compute_gradients(loss_op)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/training/optimizer.py\", line 414, in compute_gradients\n",
+                "    colocate_gradients_with_ops=colocate_gradients_with_ops)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/gradients_impl.py\", line 581, in gradients\n",
+                "    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/gradients_impl.py\", line 353, in _MaybeCompile\n",
+                "    return grad_fn()  # Exit early\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/gradients_impl.py\", line 581, in <lambda>\n",
+                "    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/math_grad.py\", line 105, in _MeanGrad\n",
+                "    math_ops.reduce_prod(input_shape), math_ops.reduce_prod(output_shape))\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/math_ops.py\", line 1449, in reduce_prod\n",
+                "    name=name)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/gen_math_ops.py\", line 2919, in _prod\n",
+                "    keep_dims=keep_dims, name=name)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/op_def_library.py\", line 787, in _apply_op_helper\n",
+                "    op_def=op_def)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 2956, in create_op\n",
+                "    op_def=op_def)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 1470, in __init__\n",
+                "    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access\n",
+                "\n",
+                "...which was originally created as op 'Mean_2', defined at:\n",
+                "  File \"tensorflow_v1/6_MultiGPU/multigpu_cnn.py\", line 162, in <module>\n",
+                "    tf.nn.softmax_cross_entropy_with_logits(logits=logits_train, labels=_y)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/math_ops.py\", line 1411, in reduce_mean\n",
+                "    name=name)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/ops/gen_math_ops.py\", line 2568, in _mean\n",
+                "    keep_dims=keep_dims, name=name)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/op_def_library.py\", line 787, in _apply_op_helper\n",
+                "    op_def=op_def)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 2956, in create_op\n",
+                "    op_def=op_def)\n",
+                "  File \"/usr/local/lib/python3.4/site-packages/tensorflow/python/framework/ops.py\", line 1470, in __init__\n",
+                "    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access\n",
+                "\n",
+                "InvalidArgumentError (see above for traceback): Cannot assign a device for operation 'gradients_1/Mean_2_grad/Prod_1': Operation was explicitly assigned to /device:GPU:1 but available devices are [ /job:localhost/replica:0/task:0/device:CPU:0 ]. Make sure the device specification refers to a valid device.\n",
+                "\t [[Node: gradients_1/Mean_2_grad/Prod_1 = Prod[T=DT_INT32, Tidx=DT_INT32, _class=[\"loc:@gradients_1/Mean_2_grad/Shape_1\"], keep_dims=false, _device=\"/device:GPU:1\"](gradients_1/Mean_2_grad/Shape_2, gradients_1/Mean_2_grad/Const_1)]]\n",
+                "\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n"
+            ],
+            "retval": 1,
+            "seconds": 10.65
+        },
+        "tensorflow_v1/3_NeuralNetworks/variational_autoencoder.py": {
+            "error": [
+                "2021-01-07 06:21:58.416696: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1, Loss: 648.534546\n",
+                "[[0.02556566521525383, 0.007203712128102779, 0.013519448228180408, 0.01536793913692236, 0.010892280377447605, 0.013382205739617348, 0.019387030974030495, 0.010357842780649662, 0.004583426751196384, 0.009745092131197453, 0.01606285199522972, 0.02223328873515129, 0.01632930152118206, 0.00931831169873476, 0.015390424989163876, 0.007527580019086599, 0.017461519688367844, 0.017084108665585518, 0.01996164582669735, 0.01763567142188549, 0.03549528494477272, 0.008425465784966946, 0.010399919003248215, 0.008914677426218987, 0.011140131391584873, 0.0023822824005037546, 0.018511340022087097, 0.009031581692397594], [0.01995280385017395, 0.01174282468855381, 0.01951095461845398, 0.010214017704129219, 0.015618870966136456, 0.00181421241723001, 0.010258280672132969, 0.012032917700707912, 0.022314053028821945, 0.01277047861367464, 0.010576235130429268, 0.017469514161348343, 0.00919643510133028, 0.020028194412589073, 0.015468106605112553, 0.012990216724574566, 0.00993046723306179, 0.036430735141038895, 0.012989996001124382, 0.008651703596115112, 0.007093442138284445, 0.006492315791547298, 0.017817901447415352, 0.005885413847863674, 0.020260287448763847, 0.019699757918715477, 0.012609124183654785, 0.015035072341561317], [0.027321048080921173, 0.045079540461301804, 0.017582064494490623, 0.008676559664309025, 0.009209069423377514, 0.010461308993399143, 0.007692476734519005, 0.00665066996589303, 0.02487461268901825, 0.015987196937203407, 0.024524593725800514, 0.01883676089346409, 0.045811351388692856, 0.05909823626279831, 0.0736701637506485, 0.02709154598414898, 0.03301027789711952, 0.02292543090879917, 0.03835827112197876, 0.04418583959341049, 0.038805749267339706, 0.03263816609978676, 0.013841637410223484, 0.00882761087268591, 0.015672847628593445, 0.007073420099914074, 0.015556100755929947, 0.009204154834151268], [0.004883491434156895, 0.01669652946293354, 0.025446787476539612, 0.03309610113501549, 0.007704558782279491, 0.023792246356606483, 0.011422774754464626, 0.03158590942621231, 0.05748387426137924, 0.09372267127037048, 0.07555161416530609, 0.12274155765771866, 0.0907670259475708, 0.12456953525543213, 0.0898108184337616, 0.14747506380081177, 0.05344058573246002, 0.09272239357233047, 0.03436415642499924, 0.03767876699566841, 0.040957432240247726, 0.05598404258489609, 0.03727126494050026, 0.011714542284607887, 0.011828761547803879, 0.00872625783085823, 0.01343116071075201, 0.011424164287745953], [0.020164916291832924, 0.019198425114154816, 0.028545640408992767, 0.01799246110022068, 0.013557283207774162, 0.037801120430231094, 0.04779735952615738, 0.05591900274157524, 0.07320994138717651, 0.10306572169065475, 0.15019020438194275, 0.21091991662979126, 0.44419723749160767, 0.3770655691623688, 0.18662767112255096, 0.25550955533981323, 0.19925279915332794, 0.22575442492961884, 0.1948247104883194, 0.08849042654037476, 0.036314547061920166, 0.06751886755228043, 0.06223141774535179, 0.041993409395217896, 0.018630338832736015, 0.013496682047843933, 0.01846824586391449, 0.017620354890823364], [0.014408016577363014, 0.015306268818676472, 0.006357245147228241, 0.013523749075829983, 0.04305559769272804, 0.10033305734395981, 0.20737972855567932, 0.3031574487686157, 0.48969370126724243, 0.3028586208820343, 0.30075332522392273, 0.3353680372238159, 0.2822452187538147, 0.3864258825778961, 0.3863377273082733, 0.6538701057434082, 0.2394690364599228, 0.3733130991458893, 0.2009659856557846, 0.24198180437088013, 0.1049451231956482, 0.09494648873806, 0.09821861237287521, 0.04111751168966293, 0.044034332036972046, 0.028190860524773598, 0.02178538404405117, 0.01908278279006481], [0.018485259264707565, 0.006848637945950031, 0.011158199980854988, 0.03273382410407066, 0.0776422768831253, 0.22227059304714203, 0.45136356353759766, 0.455415278673172, 0.4020651578903198, 0.36847636103630066, 0.3775407373905182, 0.3898938000202179, 0.36807429790496826, 0.5342530012130737, 0.636867344379425, 0.6072162985801697, 0.558052122592926, 0.38768917322158813, 0.24206288158893585, 0.1387135535478592, 0.1241009384393692, 0.18516764044761658, 0.03885228931903839, 0.06417448073625565, 0.04078342020511627, 0.018183987587690353, 0.02079027332365513, 0.011763920076191425], [0.03600065037608147, 0.018259242177009583, 0.012005602940917015, 0.027021953836083412, 0.08443305641412735, 0.12429597228765488, 0.3442137837409973, 0.24339509010314941, 0.2408987134695053, 0.20746968686580658, 0.23792941868305206, 0.31233450770378113, 0.43487516045570374, 0.6563521027565002, 0.4625263512134552, 0.8066930174827576, 0.7764011025428772, 0.6870306134223938, 0.2751409411430359, 0.3420872092247009, 0.062129370868206024, 0.07563631981611252, 0.06129883974790573, 0.10288506746292114, 0.029857467859983444, 0.023072335869073868, 0.01830397918820381, 0.010136921890079975], [0.019327156245708466, 0.009197895415127277, 0.016032103449106216, 0.04534527286887169, 0.1073356345295906, 0.32837146520614624, 0.1661161631345749, 0.19873535633087158, 0.18956466019153595, 0.23176337778568268, 0.31838133931159973, 0.3709959089756012, 0.24814561009407043, 0.30091392993927, 0.22574028372764587, 0.5853036642074585, 0.6493276357650757, 0.47092100977897644, 0.49522602558135986, 0.25834375619888306, 0.049374304711818695, 0.06571667641401291, 0.03449052944779396, 0.05249559134244919, 0.03547592833638191, 0.03941738232970238, 0.009708275087177753, 0.006423542741686106], [0.011745208874344826, 0.009798882529139519, 0.019943878054618835, 0.035753462463617325, 0.10083767771720886, 0.24314135313034058, 0.1273118406534195, 0.17709232866764069, 0.161738321185112, 0.1336800754070282, 0.2301616370677948, 0.23131413757801056, 0.25675109028816223, 0.2540082633495331, 0.45934921503067017, 0.5245502591133118, 0.4164879024028778, 0.6491097807884216, 0.4969424903392792, 0.289371132850647, 0.09513077139854431, 0.03682544082403183, 0.09607575088739395, 0.06071271002292633, 0.025726737454533577, 0.06631318479776382, 0.05807705596089363, 0.005596321541815996], [0.006873597390949726, 0.010350518859922886, 0.010833523236215115, 0.026668429374694824, 0.06461314111948013, 0.07462353259325027, 0.04279961436986923, 0.21171309053897858, 0.06558022648096085, 0.19153201580047607, 0.09476509690284729, 0.19130486249923706, 0.14437410235404968, 0.20460732281208038, 0.46316084265708923, 0.7628213763237, 0.8654078841209412, 0.6924123167991638, 0.4606580138206482, 0.1973952353000641, 0.05108340457081795, 0.08396647870540619, 0.07282435148954391, 0.014147291891276836, 0.033208560198545456, 0.03818869590759277, 0.010174722410738468, 0.02059418149292469], [0.012252303771674633, 0.012124486267566681, 0.030574694275856018, 0.054501015692949295, 0.07783680409193039, 0.09434379637241364, 0.15019720792770386, 0.06882048398256302, 0.14098407328128815, 0.11643361300230026, 0.16545450687408447, 0.2705174684524536, 0.2199631929397583, 0.35765355825424194, 0.7259944081306458, 0.7330394983291626, 0.7288890480995178, 0.7283998727798462, 0.4582420885562897, 0.22084257006645203, 0.07522385567426682, 0.04540066793560982, 0.0193235594779253, 0.011105991899967194, 0.011599444784224033, 0.03016969934105873, 0.0175391286611557, 0.006507946643978357], [0.010222284123301506, 0.027780909091234207, 0.0273100808262825, 0.030333971604704857, 0.08094930648803711, 0.07122305035591125, 0.0895380824804306, 0.02867071144282818, 0.05932161584496498, 0.18353626132011414, 0.10658316314220428, 0.4131319522857666, 0.281904399394989, 0.5929427742958069, 0.8225772976875305, 0.7210454344749451, 0.6038798689842224, 0.42887982726097107, 0.24802809953689575, 0.1371574103832245, 0.04007663577795029, 0.03203066438436508, 0.012138236314058304, 0.01394621841609478, 0.021155094727873802, 0.014866637997329235, 0.013739651069045067, 0.011727329343557358], [0.005126101430505514, 0.006520688999444246, 0.02640105038881302, 0.022646207362413406, 0.012088404037058353, 0.06551196426153183, 0.019661955535411835, 0.04639902338385582, 0.0846807211637497, 0.15550197660923004, 0.37242957949638367, 0.34354016184806824, 0.5421912670135498, 0.7104006409645081, 0.8331103324890137, 0.864046037197113, 0.6142396926879883, 0.5164381861686707, 0.29979732632637024, 0.13981348276138306, 0.046638038009405136, 0.0664367526769638, 0.011408068239688873, 0.02273610606789589, 0.042669810354709625, 0.012684749439358711, 0.014661161229014397, 0.025773515924811363], [0.034557439386844635, 0.018353093415498734, 0.01696096360683441, 0.030477182939648628, 0.026426315307617188, 0.01601199433207512, 0.03126632422208786, 0.03739485144615173, 0.19598619639873505, 0.23620843887329102, 0.4755621552467346, 0.25470611453056335, 0.46006420254707336, 0.7084479928016663, 0.7633405327796936, 0.8250967264175415, 0.504745602607727, 0.5833338499069214, 0.18836098909378052, 0.14882425963878632, 0.06380829960107803, 0.07438336312770844, 0.05355038121342659, 0.030108293518424034, 0.05171121284365654, 0.0204204972833395, 0.02624467760324478, 0.010457883588969707], [0.011811022646725178, 0.005835480522364378, 0.010502729564905167, 0.01767706498503685, 0.015758566558361053, 0.023642724379897118, 0.05148778483271599, 0.079945407807827, 0.045497048646211624, 0.1221635565161705, 0.24490423500537872, 0.3835967779159546, 0.5277234315872192, 0.6198195815086365, 0.6348813772201538, 0.5017978549003601, 0.4730645716190338, 0.22106187045574188, 0.13514338433742523, 0.2848486304283142, 0.11661820858716965, 0.05288700386881828, 0.07946383208036423, 0.03960900753736496, 0.030818240717053413, 0.028042826801538467, 0.027085740119218826, 0.006537037901580334], [0.019287969917058945, 0.01394463237375021, 0.007962330244481564, 0.009857099503278732, 0.05486134812235832, 0.0037855494301766157, 0.039564717561006546, 0.020425835624337196, 0.10107649117708206, 0.22902558743953705, 0.23998704552650452, 0.23064909875392914, 0.38680922985076904, 0.5551612973213196, 0.460923969745636, 0.25024425983428955, 0.32810506224632263, 0.3487531244754791, 0.4136209189891815, 0.1484091430902481, 0.12269221246242523, 0.10194237530231476, 0.03129051253199577, 0.03330375626683235, 0.029067767783999443, 0.02843768149614334, 0.010342818684875965, 0.0077185663394629955], [0.01680866628885269, 0.015269944444298744, 0.010754869319498539, 0.007208712864667177, 0.010382194072008133, 0.023990187793970108, 0.019964251667261124, 0.022159019485116005, 0.05813651531934738, 0.054240740835666656, 0.15557469427585602, 0.2900747060775757, 0.24955476820468903, 0.4878901243209839, 0.30912888050079346, 0.3417719900608063, 0.3285662531852722, 0.24582964181900024, 0.2954083979129791, 0.1867276430130005, 0.2629379332065582, 0.15422862768173218, 0.07172566652297974, 0.035937193781137466, 0.05298803001642227, 0.027680208906531334, 0.008921421132981777, 0.010638083331286907], [0.014017835259437561, 0.012964075431227684, 0.01638045348227024, 0.013483705930411816, 0.03303024545311928, 0.0479678139090538, 0.08930621296167374, 0.05023077130317688, 0.07063563913106918, 0.15232451260089874, 0.25388625264167786, 0.31686508655548096, 0.5042973756790161, 0.26927387714385986, 0.36617276072502136, 0.21322186291217804, 0.31033530831336975, 0.398152232170105, 0.20787043869495392, 0.1863059401512146, 0.32592302560806274, 0.14662207663059235, 0.20988936722278595, 0.06150643527507782, 0.054369278252124786, 0.015328880399465561, 0.00475176889449358, 0.02044728398323059], [0.014985298737883568, 0.012266981415450573, 0.016651496291160583, 0.07547471672296524, 0.03269275277853012, 0.05816372483968735, 0.08813756704330444, 0.12107767164707184, 0.20931553840637207, 0.33099836111068726, 0.4630887508392334, 0.42207613587379456, 0.4249499440193176, 0.33808085322380066, 0.23443424701690674, 0.27332815527915955, 0.3688863217830658, 0.3611118495464325, 0.38103848695755005, 0.16879183053970337, 0.18981778621673584, 0.2322644740343094, 0.21222716569900513, 0.13554950058460236, 0.06021023914217949, 0.03261251375079155, 0.0072708441875875, 0.010800410062074661], [0.0098793376237154, 0.013627915643155575, 0.01969650387763977, 0.03226136788725853, 0.06229902058839798, 0.07865067571401596, 0.04331609606742859, 0.09089090675115585, 0.22287273406982422, 0.2648123502731323, 0.4945037364959717, 0.39800533652305603, 0.4147140085697174, 0.29382795095443726, 0.22658462822437286, 0.5287372469902039, 0.4410110116004944, 0.3423832058906555, 0.38476628065109253, 0.3073021471500397, 0.40583014488220215, 0.4528333246707916, 0.19280467927455902, 0.14370505511760712, 0.10077640414237976, 0.017987048253417015, 0.02160390093922615, 0.017556145787239075], [0.010801948606967926, 0.025176476687192917, 0.007428386714309454, 0.020128116011619568, 0.071992427110672, 0.07630562037229538, 0.07068951427936554, 0.20074181258678436, 0.2595803737640381, 0.42982229590415955, 0.38128140568733215, 0.5511472821235657, 0.41107577085494995, 0.64566969871521, 0.6364228129386902, 0.3940117657184601, 0.475579172372818, 0.3311561346054077, 0.518101692199707, 0.4045180082321167, 0.21552109718322754, 0.16964061558246613, 0.23964586853981018, 0.11289570480585098, 0.054957643151283264, 0.02048400044441223, 0.0062615773640573025, 0.01643635518848896], [0.011781849898397923, 0.007342444267123938, 0.020130621269345284, 0.019422663375735283, 0.06179169937968254, 0.06768793612718582, 0.13481073081493378, 0.08625786751508713, 0.356920450925827, 0.256710410118103, 0.3526613712310791, 0.690484881401062, 0.4051853120326996, 0.4841778576374054, 0.5553520917892456, 0.36371365189552307, 0.2797561585903168, 0.17433370649814606, 0.2729300856590271, 0.2570844292640686, 0.12634553015232086, 0.06157511845231056, 0.07679551094770432, 0.043169546872377396, 0.026770014315843582, 0.005217501427978277, 0.013912220485508442, 0.009210366755723953], [0.021348925307393074, 0.020751606673002243, 0.028992950916290283, 0.008521441370248795, 0.040530916303396225, 0.055152326822280884, 0.08716437220573425, 0.10875649005174637, 0.2891543507575989, 0.3007417917251587, 0.4919586777687073, 0.2574050724506378, 0.3096887171268463, 0.28403082489967346, 0.5676761865615845, 0.35390332341194153, 0.24727226793766022, 0.185294970870018, 0.18378561735153198, 0.18776178359985352, 0.13761214911937714, 0.05634961649775505, 0.04015317186713219, 0.029625704512000084, 0.015447663143277168, 0.013033149763941765, 0.016926739364862442, 0.006586912553757429], [0.021225953474640846, 0.006003649905323982, 0.01524099800735712, 0.003685872070491314, 0.029382197186350822, 0.04108687862753868, 0.036926452070474625, 0.07268507778644562, 0.09062313288450241, 0.18668068945407867, 0.3642023205757141, 0.27405303716659546, 0.269755095243454, 0.40183576941490173, 0.25749635696411133, 0.2689957022666931, 0.1666632741689682, 0.09310230612754822, 0.16718322038650513, 0.10451968759298325, 0.051615018397569656, 0.0485164150595665, 0.0197664313018322, 0.030987095087766647, 0.013647300191223621, 0.0046569728292524815, 0.019230134785175323, 0.027222057804465294], [0.011505057103931904, 0.013282477855682373, 0.008847777731716633, 0.013981410302221775, 0.025855861604213715, 0.01900419034063816, 0.014217766933143139, 0.04395384341478348, 0.08126185834407806, 0.05227397382259369, 0.12451400607824326, 0.10730139911174774, 0.06292804330587387, 0.1960821896791458, 0.15403418242931366, 0.19755546748638153, 0.1728748083114624, 0.18032467365264893, 0.12761513888835907, 0.11849527060985565, 0.030524853616952896, 0.016497666016221046, 0.011450111865997314, 0.007327941246330738, 0.01339463796466589, 0.014861896634101868, 0.009496103972196579, 0.028346680104732513], [0.015030616894364357, 0.0075955940410494804, 0.008935374207794666, 0.011589493602514267, 0.021091805770993233, 0.014239843934774399, 0.016789959743618965, 0.04351361095905304, 0.03702352195978165, 0.05893755704164505, 0.029042081907391548, 0.07852589339017868, 0.16130559146404266, 0.1477511078119278, 0.07407773286104202, 0.049314625561237335, 0.09276045113801956, 0.05496877431869507, 0.09268065541982651, 0.04711176082491875, 0.01406942680478096, 0.026403231546282768, 0.024181971326470375, 0.013666043058037758, 0.022805100306868553, 0.018288562074303627, 0.012743520550429821, 0.014822705648839474], [0.018179377540946007, 0.023191405460238457, 0.014474030584096909, 0.007728510536253452, 0.016627728939056396, 0.016655853018164635, 0.021304376423358917, 0.016522977501153946, 0.015093063935637474, 0.033606428653001785, 0.036219820380210876, 0.023590940982103348, 0.022693917155265808, 0.043025411665439606, 0.02571628801524639, 0.020761897787451744, 0.029061835259199142, 0.023295490071177483, 0.01810399815440178, 0.014982061460614204, 0.013010567054152489, 0.007852786220610142, 0.01380106806755066, 0.008214039728045464, 0.008013096638023853, 0.015483456663787365, 0.014220267534255981, 0.007619334850460291]]\n"
+            ],
+            "retval": 0,
+            "seconds": 10.67
+        },
+        "tensorflow_v1/3_NeuralNetworks/neural_network_eager_api.py": {
+            "error": [
+                "Traceback (most recent call last):\n",
+                "  File \"tensorflow_v1/3_NeuralNetworks/neural_network_eager_api.py\", line 26, in <module>\n",
+                "    tf.enable_eager_execution()\n",
+                "AttributeError: 'module' object has no attribute 'enable_eager_execution'\n"
+            ],
+            "output": [],
+            "retval": 1,
+            "seconds": 1.25
+        },
+        "tensorflow_v1/3_NeuralNetworks/neural_network.py": {
+            "error": [
+                "WARNING:tensorflow:Using temporary folder as model directory: /tmp/tmpha3j1_6i\n",
+                "2021-01-07 06:22:10.313916: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Testing Accuracy: 0.8971\n"
+            ],
+            "retval": 0,
+            "seconds": 11.94
+        },
+        "tensorflow_v1/3_NeuralNetworks/bidirectional_rnn.py": {
+            "error": [
+                "2021-01-07 06:22:26.239339: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1, Minibatch Loss= 2.7272, Training Accuracy= 0.180\n",
+                "Step 2, Minibatch Loss= 2.7788, Training Accuracy= 0.125\n",
+                "Step 3, Minibatch Loss= 2.8425, Training Accuracy= 0.094\n",
+                "Step 4, Minibatch Loss= 2.7696, Training Accuracy= 0.148\n",
+                "Step 5, Minibatch Loss= 2.7919, Training Accuracy= 0.070\n",
+                "Step 6, Minibatch Loss= 2.8663, Training Accuracy= 0.078\n",
+                "Step 7, Minibatch Loss= 2.7570, Training Accuracy= 0.086\n",
+                "Step 8, Minibatch Loss= 2.7892, Training Accuracy= 0.102\n",
+                "Step 9, Minibatch Loss= 2.8018, Training Accuracy= 0.070\n",
+                "Step 10, Minibatch Loss= 2.6988, Training Accuracy= 0.078\n",
+                "Optimization Finished!\n",
+                "Testing Accuracy: 0.1796875\n"
+            ],
+            "retval": 0,
+            "seconds": 15.69
+        },
+        "tensorflow_v1/3_NeuralNetworks/convolutional_network_raw.py": {
+            "error": [
+                "2021-01-07 06:22:37.599009: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1, Minibatch Loss= 73365.3984, Training Accuracy= 0.070\n",
+                "Optimization Finished!\n",
+                "Testing Accuracy: 0.0546875\n"
+            ],
+            "retval": 0,
+            "seconds": 10.17
+        },
+        "tensorflow_v1/3_NeuralNetworks/autoencoder.py": {
+            "error": [
+                "2021-01-07 06:22:47.805189: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1: Minibatch Loss: 0.433541\n",
+                "Reconstructed Image\n",
+                "[[3.995294264313998e-06, 0.02613198012113571, 0.00236605666577816, 0.8249844908714294, 0.028743963688611984, 0.002802429720759392, 0.999984860420227, 0.0020659025758504868, 0.0004061042272951454, 0.9999996423721313, 0.05233250930905342, 0.0002891093317884952, 0.994013249874115, 3.3367214200552553e-06, 0.9999996423721313, 9.203753506881185e-06, 0.005617223680019379, 5.217831130721606e-06, 0.999987006187439, 0.1337970346212387, 0.27520185708999634, 0.02339441515505314, 0.5025289058685303, 0.21985769271850586, 8.868885625901157e-10, 0.9916362762451172, 0.030400104820728302, 0.6560226082801819], [0.9999986886978149, 7.443091453751549e-05, 0.9996193647384644, 0.13624270260334015, 0.39424440264701843, 0.011606285348534584, 0.9621391892433167, 0.0637800544500351, 0.9999995231628418, 0.9922371506690979, 0.9999995231628418, 0.9941148161888123, 0.9856508374214172, 0.0001362202747259289, 0.5231465101242065, 2.2666158500887074e-13, 1.8162019443934696e-07, 0.9999990463256836, 1.8254900169267785e-06, 0.22680607438087463, 0.9999996423721313, 0.7020389437675476, 0.4633362889289856, 5.284597648369527e-08, 0.9928396940231323, 0.9805520176887512, 0.9999920129776001, 0.44768252968788147], [0.94798344373703, 1.0, 0.1381928026676178, 0.6969489455223083, 0.0001795711141312495, 0.0053170472383499146, 0.5457981824874878, 7.056878075673012e-06, 0.70735102891922, 1.057880581356585e-06, 1.2529384539432253e-13, 0.0006080681341700256, 1.0, 0.7779489755630493, 0.7460981011390686, 6.8214482951134414e-09, 0.9999995231628418, 0.9939501285552979, 6.774842595562089e-14, 0.012254289351403713, 0.9998281002044678, 0.9629341959953308, 0.9999881982803345, 0.0004545195261016488, 0.015897758305072784, 0.000768063822761178, 0.9999915361404419, 0.9999886751174927], [0.9994613528251648, 2.9687598157579487e-07, 0.9999823570251465, 0.003839887212961912, 0.9999786615371704, 0.9879274964332581, 0.25993114709854126, 9.664690159283396e-10, 0.9995456337928772, 0.9999938011169434, 0.09993058443069458, 0.9202601909637451, 0.20551764965057373, 2.603005277990178e-08, 0.04294157773256302, 1.8020824427367188e-05, 3.5921621019952e-06, 2.595237913460835e-11, 0.9994070529937744, 0.016407249495387077, 0.92277592420578, 0.18061833083629608, 0.9997172951698303, 0.9824809432029724, 0.0034867494832724333, 0.004128806293010712, 0.0011869650334119797, 0.9704502820968628], [0.0044188606552779675, 0.883733868598938, 0.9304239153862, 0.0007315772236324847, 0.9999986886978149, 0.9583937525749207, 0.0008748355903662741, 0.9130998253822327, 5.53122390556382e-06, 3.874533376801992e-06, 0.8826607465744019, 0.999093770980835, 0.02854158729314804, 0.36312535405158997, 0.9999973773956299, 1.0, 0.9997931122779846, 0.9535625576972961, 0.9718853831291199, 1.0484442100278102e-05, 0.012101872824132442, 0.6278939843177795, 2.628392837579485e-13, 0.00010072792792925611, 0.9934067726135254, 0.9039716124534607, 0.0026158776599913836, 0.9999994039535522], [0.000155220041051507, 0.9760702252388, 0.0009763388079591095, 0.05913447216153145, 0.9999358654022217, 0.99997878074646, 0.0009279002551920712, 1.0, 0.9979109168052673, 0.0003668153949547559, 1.1460357995929371e-07, 0.042435865849256516, 0.00017777546599972993, 1.4123379799002578e-07, 0.9929066896438599, 0.9991818070411682, 0.814071774482727, 0.0013592313043773174, 0.0030791820026934147, 1.4823545825493056e-05, 0.38305866718292236, 0.1656273901462555, 0.9994183778762817, 0.002600905718281865, 1.444806457584491e-05, 0.8300509452819824, 0.9989902377128601, 1.0], [0.9999998807907104, 0.7424811124801636, 0.00018496648408472538, 1.0, 0.002645081141963601, 0.8801299333572388, 0.01111449021846056, 1.1520924999786075e-05, 6.5851324393406685e-09, 0.999790608882904, 0.2777877151966095, 8.95595311236827e-14, 0.9996664524078369, 0.17586538195610046, 0.004122766200453043, 0.9967934489250183, 0.7435483336448669, 0.9999126195907593, 0.26309341192245483, 0.9999842643737793, 0.9194129705429077, 0.9987899661064148, 0.9963052272796631, 0.0023056736681610346, 0.07898369431495667, 0.9930986762046814, 0.019558364525437355, 2.060936367342947e-06], [0.9999994039535522, 0.9892809987068176, 0.24783262610435486, 1.0, 0.7210085391998291, 4.286157562205517e-08, 0.9999908208847046, 1.947243845279445e-06, 0.9999462366104126, 0.0027470302302390337, 0.010401641950011253, 0.02693002298474312, 0.9998183846473694, 0.9999079704284668, 0.9999862909317017, 1.0, 1.9322358824069852e-08, 0.999737560749054, 0.8932719826698303, 0.9749548435211182, 0.8603057861328125, 0.9990878105163574, 0.9999911785125732, 0.051289234310388565, 0.9999995231628418, 1.0, 1.0, 1.0], [0.04758897423744202, 0.0011080444091930985, 0.9999858140945435, 0.9996151924133301, 1.0, 5.0475062352006717e-08, 0.9999163150787354, 0.9975903034210205, 0.48251697421073914, 0.1684686541557312, 0.0006697062053717673, 0.9996862411499023, 0.02412937767803669, 0.9990707635879517, 0.9999921321868896, 0.9957696199417114, 0.9999992847442627, 0.9999980926513672, 1.0, 0.9999994039535522, 0.0028905346989631653, 0.9874300360679626, 8.526417332177516e-06, 0.9999181032180786, 0.9756126403808594, 0.9999343156814575, 0.05536889284849167, 0.9999994039535522], [0.3880431354045868, 0.9999620914459229, 0.8900322914123535, 0.004401396028697491, 0.9994307160377502, 0.6439475417137146, 8.563850997234113e-07, 0.9677608609199524, 0.9999549388885498, 4.731759428722171e-10, 0.9999998807907104, 1.2483395948947873e-05, 1.0, 0.9971400499343872, 1.0, 2.070188638569892e-12, 1.4628942153649405e-05, 0.9999792575836182, 0.9106463193893433, 0.002120416145771742, 0.9989392161369324, 2.1321087842807174e-05, 0.999717652797699, 1.0, 0.9999998807907104, 3.1125771783990785e-05, 2.7593222284849617e-07, 0.039893440902233124], [0.7915890216827393, 7.159206560913844e-11, 0.018460961058735847, 4.781335860570834e-07, 0.02262403443455696, 1.0, 0.24976153671741486, 0.6837389469146729, 0.8214471340179443, 0.9999908208847046, 0.8300538659095764, 0.8840324878692627, 7.63013304094784e-06, 1.0, 0.9999665021896362, 1.0629608368617482e-05, 2.076507410464501e-09, 0.00020663850591517985, 0.022686094045639038, 0.9998331069946289, 0.953374981880188, 7.2143534453061875e-06, 0.011089732870459557, 0.9998012185096741, 0.9986956715583801, 2.395636329310946e-06, 0.00014883863332215697, 1.0], [0.9999980926513672, 0.9906917214393616, 1.0, 0.6497347354888916, 4.224791155138519e-06, 0.1775755137205124, 0.9189549684524536, 6.563129062442385e-08, 0.03188823163509369, 1.0, 0.9999731779098511, 0.9853217601776123, 0.9999998807907104, 4.4122847465532383e-14, 0.9982885718345642, 8.783140970081149e-08, 0.9729448556900024, 3.459111030679196e-05, 0.0042207310907542706, 1.0, 1.0, 0.9999582767486572, 1.3687681210683422e-08, 0.9999978542327881, 0.024198397994041443, 0.44002506136894226, 1.7859898434835486e-05, 0.9998196959495544], [0.7930576205253601, 0.999998927116394, 0.0030116846319288015, 0.002673870651051402, 0.42844611406326294, 0.9995415210723877, 7.94929519543075e-07, 1.2066193733062391e-07, 0.9187567830085754, 0.0009892403613775969, 2.8949477837159066e-06, 2.437405157706962e-07, 2.3183740267995745e-05, 9.49768400460016e-06, 0.9999963045120239, 0.9986286163330078, 8.998069097287953e-05, 0.9049890637397766, 0.988902747631073, 0.9768632650375366, 0.00020011076412629336, 0.9999812841415405, 0.00019794492982327938, 0.0004895623424090445, 2.3688851342740236e-06, 0.08599492907524109, 0.8314294815063477, 0.9159513115882874], [0.002408411120995879, 0.9973389506340027, 0.9999827146530151, 0.08612968772649765, 0.8291548490524292, 0.0568101592361927, 0.9997716546058655, 9.109154052566737e-05, 0.999988317489624, 0.9876998662948608, 0.049046486616134644, 0.0005907700979150832, 0.9999998807907104, 1.0, 1.0, 0.9999998807907104, 0.0015047803753986955, 3.8929368062490255e-10, 0.0017503541894257069, 0.9823282957077026, 0.9767589569091797, 0.715749204158783, 0.917972207069397, 0.9954854846000671, 1.0, 1.485500344955426e-08, 0.967689037322998, 6.111850137102692e-09], [0.9495890736579895, 0.995733916759491, 5.566838808590546e-06, 1.806123873393517e-05, 0.42277905344963074, 0.9954028129577637, 0.9999208450317383, 0.8424540162086487, 1.3927064173913095e-05, 0.9998737573623657, 1.5513449397985823e-05, 2.516376662242692e-05, 0.0027222600765526295, 0.9999955892562866, 0.37400466203689575, 0.0012795208021998405, 6.059438419470098e-06, 0.06104208156466484, 0.00038088069413788617, 0.963945209980011, 9.178754226013552e-06, 0.013647319748997688, 3.9168598919836484e-10, 0.0012129436945542693, 1.3615052921522874e-05, 0.7365047335624695, 0.9999741315841675, 0.8717229962348938], [0.4233495891094208, 0.005177226848900318, 0.9988669157028198, 0.9924817681312561, 0.8067883253097534, 6.244838459679158e-07, 0.7400409579277039, 0.9999994039535522, 0.9127906560897827, 0.9997773766517639, 0.9967251420021057, 0.9922831654548645, 0.7095038890838623, 0.12361790239810944, 0.9999953508377075, 1.574827166450632e-07, 0.18581612408161163, 0.9999994039535522, 7.3852165769494604e-06, 0.9999613761901855, 0.9634710550308228, 0.0012972591212019324, 0.8585283160209656, 0.9913759827613831, 0.07747644186019897, 0.00469589326530695, 3.651573265983643e-08, 0.9999990463256836], [2.6583931500567815e-08, 0.9924564361572266, 0.9867047071456909, 1.0, 0.0014737907331436872, 0.9138253927230835, 0.9999992847442627, 0.9999998807907104, 1.0, 0.999752938747406, 1.6140627849381417e-05, 8.635137783130631e-05, 0.00018736906349658966, 0.771399736404419, 0.00011775638995459303, 0.47635143995285034, 0.043289680033922195, 0.9189764261245728, 0.7596598267555237, 9.463618333427348e-09, 1.0, 0.7307462096214294, 0.8055739998817444, 0.9708705544471741, 0.9771952033042908, 0.9999998807907104, 6.206185844348511e-06, 0.0003197430050931871], [0.9999997615814209, 0.0013066647807136178, 0.0036920022685080767, 0.2878633141517639, 0.3832574486732483, 5.794907337985933e-05, 0.9997891783714294, 0.9934793710708618, 0.2154068499803543, 5.764284196629887e-07, 0.9997089505195618, 0.0001330840605078265, 0.9991962313652039, 4.7594801344530424e-07, 0.9997112154960632, 0.0063255042769014835, 1.007476602143953e-10, 0.9520089626312256, 0.0011642184108495712, 5.616298981436785e-09, 0.26322343945503235, 0.9853613972663879, 0.9655207991600037, 2.4399190579060814e-07, 3.1424198823515326e-05, 5.2703015285260335e-09, 0.9999998807907104, 0.999570906162262], [0.9934321641921997, 0.4194357693195343, 6.961061444599181e-06, 0.6205686926841736, 0.24989520013332367, 0.3184492588043213, 7.009030582594278e-07, 0.633698582649231, 1.0, 6.013081092076655e-12, 7.233760257463473e-09, 9.894700269796886e-06, 0.006031644064933062, 0.9999871253967285, 0.4466297924518585, 0.00011654732952592894, 0.004699600860476494, 7.104250828837266e-15, 1.732289511835461e-08, 0.2294045388698578, 0.7003833651542664, 0.972515881061554, 0.038275256752967834, 1.2244178833498154e-05, 0.8672515749931335, 0.9999891519546509, 0.1289265900850296, 0.7114668488502502], [0.9999669790267944, 0.08356429636478424, 0.3359929621219635, 0.9996753931045532, 1.0, 0.004267666954547167, 0.0024394404608756304, 5.181068445381243e-06, 6.565576970984921e-10, 0.035225044935941696, 0.5611990094184875, 0.8303530812263489, 4.352253654360538e-06, 0.9986209869384766, 0.9954906105995178, 0.9999804496765137, 0.8998035788536072, 0.9998526573181152, 0.024205295369029045, 0.9999995231628418, 0.9992048144340515, 0.0004455835442058742, 6.93381080054678e-05, 0.000327980233123526, 1.0, 1.0, 0.9999444484710693, 0.9999947547912598], [0.026690924540162086, 6.379525530064711e-07, 0.002766051096841693, 0.8875406980514526, 0.1427273452281952, 0.9782465696334839, 0.9959421753883362, 0.9491736888885498, 1.4461121509157238e-06, 0.10387042909860611, 0.9999998807907104, 0.925125002861023, 0.0022016000002622604, 1.0, 0.0026040656957775354, 0.7729764580726624, 0.9755134582519531, 0.9984083771705627, 0.9224626421928406, 2.344996346437256e-06, 4.6562014176743105e-05, 0.9996159076690674, 0.0002824945258907974, 7.93731214798754e-06, 0.06827066838741302, 0.9999922513961792, 0.1841796636581421, 0.9999994039535522], [1.574481871102762e-06, 0.7271159887313843, 0.9999983310699463, 0.0004233079089317471, 0.9652616381645203, 0.015377978794276714, 0.9664249420166016, 0.007541713770478964, 0.9999997615814209, 0.9999945163726807, 0.9968631267547607, 0.9999998807907104, 0.19556120038032532, 0.2760964035987854, 0.5975208282470703, 0.047584567219018936, 0.916585385799408, 0.9978955984115601, 0.978359043598175, 2.8549451599246822e-05, 0.00013505766401067376, 0.3485668897628784, 0.007643526419997215, 5.917405360378325e-05, 0.9483940601348877, 0.0002552117221057415, 0.22781147062778473, 0.0034018249716609716], [1.524944726050137e-09, 0.7787877321243286, 0.8204519748687744, 0.0004036625614389777, 0.9999971389770508, 0.1362217217683792, 0.9999998807907104, 0.9235677719116211, 5.084114945930196e-06, 0.9548681378364563, 0.9999948740005493, 3.738222176252748e-06, 0.9999996423721313, 0.9710317254066467, 0.9997867941856384, 1.0, 0.9999995231628418, 0.9999451637268066, 2.7652619749574114e-08, 0.9999992847442627, 1.0, 0.013248356059193611, 1.0, 4.59504434502378e-08, 0.0001004675796139054, 0.7353087663650513, 0.5261252522468567, 8.152584030085563e-08], [1.0, 0.0008201219607144594, 0.8903588652610779, 0.00170164555311203, 4.925989287585253e-07, 5.9558265093073715e-06, 0.8602564930915833, 0.9948192238807678, 0.4898693561553955, 2.7838088499265723e-05, 0.002522990806028247, 0.13212311267852783, 0.8731655478477478, 0.0005433346959762275, 0.0008550964412279427, 0.0346587672829628, 1.7102829569237699e-12, 0.9988008737564087, 1.0, 0.9673269391059875, 0.9991710186004639, 0.9459897875785828, 0.9999933242797852, 0.8398438096046448, 0.7402148842811584, 8.25453971629031e-05, 6.487940140686987e-07, 0.91329425573349], [0.9999750852584839, 7.53309586798423e-06, 0.0007279435521923006, 0.9666163325309753, 0.9999991655349731, 0.9996106028556824, 0.9999954700469971, 0.00011078007082687691, 0.010455516166985035, 0.9828824996948242, 0.9238961338996887, 1.2337354249325472e-08, 0.7111330032348633, 7.225261242638226e-07, 0.9394554495811462, 0.9999998807907104, 0.9998701810836792, 0.9964991807937622, 0.0001671542413532734, 1.8657349443174098e-08, 2.4392123876282312e-09, 0.9630468487739563, 0.9106746912002563, 0.09851570427417755, 1.1361513951868574e-09, 0.02749067358672619, 1.0, 0.839341938495636], [0.0015894195530563593, 6.480281626863871e-06, 0.13063731789588928, 0.0064207338728010654, 0.9598194360733032, 7.686867320444435e-05, 0.45631036162376404, 1.0, 0.9999964237213135, 0.04435106739401817, 0.9999915361404419, 0.09731364995241165, 1.6494635929120705e-05, 0.9999899864196777, 0.3547879457473755, 0.6962692141532898, 3.3381184483260995e-09, 3.7709128264395986e-07, 0.767081618309021, 0.3644779920578003, 0.9977259039878845, 0.9689082503318787, 0.6705672144889832, 0.0040749902836978436, 0.014606917276978493, 1.1825844694612897e-06, 0.3339173495769501, 0.03959805145859718], [0.38777872920036316, 0.9999027252197266, 0.20795543491840363, 0.9741412401199341, 0.9988742470741272, 1.0, 0.817893385887146, 0.0001561509707244113, 0.13502644002437592, 0.9545412659645081, 2.484914602973731e-07, 2.521376245567808e-06, 0.006507601588964462, 0.999723494052887, 6.160000339150429e-05, 0.003495752578601241, 0.9835288524627686, 0.9939408302307129, 0.999996542930603, 0.2998960316181183, 0.9738981127738953, 0.0019041381310671568, 0.01355500053614378, 0.999700665473938, 0.9997808337211609, 1.0427810082092037e-07, 0.9998621940612793, 0.07896322757005692], [0.9999409914016724, 0.005769717041403055, 5.847547299708822e-07, 0.8995266556739807, 0.9890403747558594, 1.0, 0.19953177869319916, 1.057685835803568e-06, 0.9991236329078674, 2.7311954781117365e-12, 0.007856780663132668, 0.4348948299884796, 0.00044541535316966474, 0.9999011754989624, 0.999254047870636, 0.9985758066177368, 0.10641468316316605, 1.6499293451488484e-06, 0.00023246041382662952, 0.9892838597297668, 0.9999983310699463, 9.600404915488525e-10, 0.0013982673408463597, 0.9828790426254272, 0.027457691729068756, 0.0007821099134162068, 0.0001032551153912209, 0.9981250166893005]]\n"
+            ],
+            "retval": 0,
+            "seconds": 9.67
+        },
+        "tensorflow_v1/3_NeuralNetworks/gan.py": {
+            "error": [
+                "2021-01-07 06:22:57.939944: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1: Generator Loss: 0.930344, Discriminator Loss: 1.323045\n"
+            ],
+            "retval": 0,
+            "seconds": 10.99
+        },
+        "tensorflow_v1/3_NeuralNetworks/recurrent_network.py": {
+            "error": [
+                "2021-01-07 06:23:11.065498: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1, Minibatch Loss= 2.7676, Training Accuracy= 0.152\n",
+                "Step 2, Minibatch Loss= 2.8456, Training Accuracy= 0.133\n",
+                "Step 3, Minibatch Loss= 2.9018, Training Accuracy= 0.090\n",
+                "Step 4, Minibatch Loss= 2.8518, Training Accuracy= 0.098\n",
+                "Step 5, Minibatch Loss= 2.8365, Training Accuracy= 0.090\n",
+                "Step 6, Minibatch Loss= 2.8755, Training Accuracy= 0.078\n",
+                "Step 7, Minibatch Loss= 2.6090, Training Accuracy= 0.125\n",
+                "Step 8, Minibatch Loss= 2.6605, Training Accuracy= 0.094\n",
+                "Step 9, Minibatch Loss= 2.7207, Training Accuracy= 0.109\n",
+                "Step 10, Minibatch Loss= 2.6440, Training Accuracy= 0.105\n",
+                "Optimization Finished!\n",
+                "Testing Accuracy: 0.1875\n"
+            ],
+            "retval": 0,
+            "seconds": 14.06
+        },
+        "tensorflow_v1/3_NeuralNetworks/neural_network_raw.py": {
+            "error": [
+                "2021-01-07 06:23:22.468690: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Step 1, Minibatch Loss= 7781.7930, Training Accuracy= 0.414\n",
+                "Step 100, Minibatch Loss= 356.4415, Training Accuracy= 0.859\n",
+                "Step 200, Minibatch Loss= 74.8037, Training Accuracy= 0.922\n",
+                "Step 300, Minibatch Loss= 39.0350, Training Accuracy= 0.859\n",
+                "Optimization Finished!\n",
+                "Testing Accuracy: 0.842\n"
+            ],
+            "retval": 0,
+            "seconds": 10.59
+        },
+        "tensorflow_v1/3_NeuralNetworks/multilayer_perceptron.py": {
+            "error": [
+                "2021-01-07 06:23:34.186589: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Epoch: 0001 cost=509.123405832\n",
+                "Optimization Finished!\n",
+                "Accuracy: 0.8195\n"
+            ],
+            "retval": 0,
+            "seconds": 11.96
+        },
+        "tensorflow_v1/3_NeuralNetworks/convolutional_network.py": {
+            "error": [
+                "WARNING:tensorflow:Using temporary folder as model directory: /tmp/tmpm8dd4cby\n",
+                "2021-01-07 06:23:46.579994: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA\n"
+            ],
+            "output": [
+                "Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\n",
+                "Extracting /tmp/data/train-images-idx3-ubyte.gz\n",
+                "Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\n",
+                "Extracting /tmp/data/train-labels-idx1-ubyte.gz\n",
+                "Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\n",
+                "Extracting /tmp/data/t10k-images-idx3-ubyte.gz\n",
+                "Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\n",
+                "Extracting /tmp/data/t10k-labels-idx1-ubyte.gz\n",
+                "Testing Accuracy: 0.4569\n"
+            ],
+            "retval": 0,
+            "seconds": 16.51
+        }
+    },
+    "requirements.txt": [
+        "bleach==1.5.0\n",
+        "enum34==1.1.10\n",
+        "html5lib==0.9999999\n",
+        "Markdown==3.0.1\n",
+        "numpy==1.16.6\n",
+        "protobuf==3.14.0\n",
+        "six==1.15.0\n",
+        "tensorflow==1.4.0\n",
+        "tensorflow-tensorboard==0.4.0\n",
+        "Werkzeug==0.16.1\n"
+    ]
+}

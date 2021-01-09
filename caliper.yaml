@@ -5,6 +5,12 @@ analysis:
   dependency: tensorflow
   python_versions:
     - cp27
+    - cp33
+    - cp34
+    - cp35
+    - cp36
+    - cp37
+    - cp38
   tests:
     - tensorflow_v0.11/5_MultiGPU/multigpu_basics.py
     - tensorflow_v0.11/1_Introduction/basic_operations.py
