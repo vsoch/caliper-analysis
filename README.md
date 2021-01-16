@@ -68,7 +68,9 @@ can use function signatures [loaded from a repository](https://caliper-python.re
 $ caliper extract --metric functiondb pypi:tensorflow
 ```
 
-This is all done in the file [2.assess_change.py](2.assess_change.py).
+This is all done in the file [2.assess_change.py](2.assess_change.py), and saved to
+the [.caliper/sims](.caliper/sims) folder. We will want to plot these scores next,
+and compare the matrices.
 
 
 ### 3. Parse Data
