@@ -7,9 +7,12 @@ __license__ = "MPL 2.0"
 import argparse
 from glob import glob
 from caliper.utils.file import read_json, write_json
+from caliper.metrics import MetricsExtractor
 import sys
 import os
 import re
+import csv
+
 
 # regular expression to identify raw result files
 result_regex = "pypi-tensorflow-(?P<tfversion>.+)-python-cp(?P<pversion>[0-9]+)[.]json"
@@ -27,6 +30,17 @@ def get_parser():
     return parser
 
 
+def write_rows(rows, filename, sep="\t"):
+    """Given a list of lists, write to a tab separated file"""
+    with open(filename, "w", newline="") as csvfile:
+        writer = csv.writer(
+            csvfile, delimiter=sep, quotechar="|", quoting=csv.QUOTE_MINIMAL
+        )
+        for row in rows:
+            writer.writerow(row)
+    return filename
+
+
 def iter_files(dirname):
     """A helper function to iterate over result files (and skip others)"""
     for filename in glob("%s/*" % dirname):
@@ -34,6 +48,21 @@ def iter_files(dirname):
         if not re.search(result_regex, filename):
             continue
         yield filename
+
+
+class DependencyVersion:
+    """Small helper class to easily derive versions"""
+
+    def __init__(self, filename):
+        self.match = re.search(result_regex, filename)
+
+    @property
+    def tfversion(self):
+        return self.match["tfversion"]
+
+    @property
+    def pyversion(self):
+        return self.match["pversion"]
 
 
 def main():
@@ -52,11 +81,36 @@ def main():
     if not os.path.exists(outdir):
         os.mkdir(outdir)
 
-    ## Step 1: requirements
-    parse_requirements(dirname, outdir)
+    ## Step 1: extract requirements to assses change
+    extract_requirements(dirname, outdir)
+
+    # parse_requirements(dirname, outdir)
 
     # Step 2: build fail/success, put all results into one file
-    parse_tests(dirname, outdir)
+    # parse_tests(dirname, outdir)
+
+    # Step 3: create separated tests (breaking into python version)
+    # parse_versioned_tests(dirname, outdir)
+
+
+def extract_requirements(dirname, outdir):
+    """Given a known list of dependencies for a package, we want to extract all
+    requirements (to see change between version) that can then be used to assess
+    overall change in a package
+    """
+    client = MetricsExtractor()
+    for name, metric in client.metrics.items():
+        if not args.query:
+            print("%20s: %s" % (name, metric))
+        elif args.query and re.search(args.query, name):
+            print("%20s: %s" % (name, metric))
+
+
+def parse_versioned_tests(dirname, outdir):
+    """Instead of a single results file, we want to create a tsv export to
+    show
+    """
+    pass
 
 
 def parse_tests(dirname, outdir):
@@ -68,10 +122,8 @@ def parse_tests(dirname, outdir):
     # Read in input files, organize by python version, tensorflow version
     for filename in iter_files(dirname):
 
-        # Make it easier to organize by versions
-        match = re.search(result_regex, filename)
-        tensorflow_version = match["tfversion"]
-        python_version = match["pversion"]
+        # Create object to parse versions
+        dep = DependencyVersion(filename)
 
         # Derive the name and versions from the filename (also in inputs:name)
         result = read_json(filename)
@@ -80,8 +132,8 @@ def parse_tests(dirname, outdir):
             result["tests"] = {"build": {"retval": result["build_retval"]}}
         results[basename] = {
             "tests": result["tests"],
-            "python": python_version,
-            "tensorflow": tensorflow_version,
+            "python": dep.pyversion,
+            "tensorflow": dep.tfversion,
         }
 
     outfile = os.path.join(outdir, "tests.json")
@@ -111,19 +163,18 @@ def parse_requirements(dirname, outdir):
             for x in result["requirements.txt"]
         ]
 
-    # Now create a flattened dict frame with versions
+    # Now create a flattened dict frame with versions, and a lookup
     requirements = {}
     for filename in iter_files(dirname):
 
         versions = dict.fromkeys(rxments, None)
-        match = re.search(result_regex, filename)
-        tensorflow_version = match["tfversion"]
+        dep = DependencyVersion(filename)
         basename = os.path.splitext(os.path.basename(filename))[0]
 
         # **Important** this is specific to tensorflow
         for x in result["requirements.txt"]:
             if "file://" in x:
-                versions["tensorflow"] = tensorflow_version
+                versions["tensorflow"] = dep.tfversion
             else:
                 version = re.split("(==|@|<=|>=)", x)[-1].strip()
                 library = re.split("(==|@|<=|>=)", x)[0].strip()
@@ -131,9 +182,30 @@ def parse_requirements(dirname, outdir):
 
         requirements[basename] = versions
 
-    # Save versions to file
+    # Finally, create a data frame (of lists)
+    df = [["name", "x", "y", "value", "tensorflow", "python"]]
+    for ycoord, requirement in enumerate(rxments):
+        for xcoord, filename in enumerate(iter_files(dirname)):
+
+            # Create object to parse versions
+            dep = DependencyVersion(filename)
+            basename = os.path.splitext(os.path.basename(filename))[0]
+            df.append(
+                [
+                    basename,
+                    xcoord,
+                    ycoord,
+                    requirements[basename][requirement],
+                    dep.tfversion,
+                    dep.pyversion,
+                ]
+            )
+
+    # Save versions and matrix to file
     outfile = os.path.join(outdir, "requirements.txt.json")
     write_json(requirements, outfile)
+    outfile = os.path.join(outdir, "requirements.txt.tsv")
+    write_rows(df, outfile, sep="\t")
     return outfile
 
 
