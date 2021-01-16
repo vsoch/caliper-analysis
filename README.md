@@ -83,10 +83,10 @@ and compare the matrices. We can then next plot the similarities.
 $ python 3.plot_sims.py --filename .caliper/sims/pypi-tensorflow-sims.json
 ```
 
-And this will generate similarity matrix plots in the [.caliper/plots](.caliper/plots)
+Note that to make the plot simpler, we don't show the release candidates (as we assume they are
+similar to the release). This will generate similarity matrix plots in the [.caliper/plots](.caliper/plots)
 folder in both png and svg. Here is an example - showing the similarity metric to compare different versions
 of tensorflow based on the function names *and* args (the most detailed comarison):
-
 
 ![.caliper/plots/pypi-tensorflow-func_args_sim-plot.png](.caliper/plots/pypi-tensorflow-func_args_sim-plot.png)
 

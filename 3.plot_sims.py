@@ -5,11 +5,13 @@ __copyright__ = "Copyright 2021, Vanessa Sochat"
 __license__ = "MPL 2.0"
 
 import argparse
+from distutils.version import StrictVersion
 from caliper.utils.file import read_json
 
 import sys
 import matplotlib.pyplot as plt
 import os
+import re
 import pandas
 
 
@@ -49,10 +51,20 @@ def main():
         label1, label2 = key.split(
             "-"
         )  # important, other libraries should use .. in case - is part of the version
+        if re.search("(rc|a|b)", label1) or re.search("(rc|a|b)", label2):
+            continue
         labels.add(label1)
         labels.add(label1)
 
-    labels = sorted(list(labels))
+    # Versions need to be sorted by version, not string
+    # For now we will remove the release candidtes
+
+    #lookup = {x.split('rc')[0]:x for x in labels}
+    #versions = [x.split('rc')[0] for x in labels]
+    labels = list(labels)
+    labels.sort(key=StrictVersion)
+    # labels = [lookup[x] for x in versions]
+    # labels = list(labels).sort(key=StrictVersion)
 
     # Next create a data frame for each
     dfs = {
@@ -61,6 +73,8 @@ def main():
     }
     for pair, values in sims.items():
         label1, label2 = pair.split("-")
+        if re.search("(rc|a|b)", label1) or re.search("(rc|a|b)", label2):
+            continue
         for key, value in values.items():
             dfs[key].loc[label1, label2] = value
             dfs[key].loc[label2, label1] = value
@@ -72,7 +86,7 @@ def main():
 
     # Finally, prepare plots!
     for name, df in dfs.items():
-        fig, ax = plt.subplots(figsize=(30, 30))
+        fig, ax = plt.subplots(figsize=(20, 20))
         cax = ax.matshow(df.to_numpy(dtype=float), interpolation="nearest")
         ax.grid(True)
         plt.title("Tensorflow Version Similarity: %s" % name)
@@ -103,6 +117,7 @@ def main():
             print("Saving %s" % outfile)
             plt.savefig(outfile, dpi=300)
 
+## TODO: subtract matrices to see difference
 
 if __name__ == "__main__":
     main()
