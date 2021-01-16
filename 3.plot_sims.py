@@ -72,7 +72,7 @@ def main():
 
     # Finally, prepare plots!
     for name, df in dfs.items():
-        fig, ax = plt.subplots(figsize=(20, 20))
+        fig, ax = plt.subplots(figsize=(30, 30))
         cax = ax.matshow(df.to_numpy(dtype=float), interpolation="nearest")
         ax.grid(True)
         plt.title("Tensorflow Version Similarity: %s" % name)
@@ -98,9 +98,10 @@ def main():
             ],
         )
         # plt.show()
-        outfile = os.path.join(outdir, "pypi-tensorflow-%s-plot.svg" % name)
-        print("Saving %s" % outfile)
-        plt.savefig(outfile, dpi=300)
+        for extension in ["png", "svg"]:
+            outfile = os.path.join(outdir, "pypi-tensorflow-%s-plot.%s" % (name, extension))
+            print("Saving %s" % outfile)
+            plt.savefig(outfile, dpi=300)
 
 
 if __name__ == "__main__":
