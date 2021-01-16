@@ -28,6 +28,12 @@ def get_parser():
         help="path to root caliper directory with results (defaults to .caliper)",
         default=".caliper",
     )
+    parser.add_argument(
+        "--funcdb",
+        dest="funcdb",
+        help="path to extracted function database (zip or json)",
+        default=".caliper",
+    )
     return parser
 
 
@@ -95,7 +101,7 @@ def main():
         os.mkdir(outdir)
 
     # Step 3: load in the function signatures to assess version changes
-    extract_function_changes(outdir)
+    extract_function_changes(outdir, args.funcdb)
 
 
 def information_coefficient(total1, total2, intersect):
@@ -133,16 +139,18 @@ def get_functions(lookup, include_args=False):
     return funcs
 
 
-def extract_function_changes(outdir):
+def extract_function_changes(outdir, funcdb):
     """Given a functiondb file (a metric called functiondb served by caliper,
     with an extracted result for tensorflow) iterate over all combinations
     and calculate the change score.
     """
     # We don't need a manager since we aren't extracting from a repository
     extractor = MetricsExtractor("pypi:tensorflow")
-    filename = os.path.abspath(
-        "../caliper-metrics/pypi/tensorflow/functiondb/functiondb-results.zip"
-    )
+
+    # Read in and load the function database metric
+    filename = os.path.abspath(funcdb)
+    if not os.path.exists(funcdb):
+        sys.exit("Function database file %s does not exist." % funcdb)
     db = extractor.load_metric("functiondb", filename=filename)
 
     # Level 1 similarity: overall modules

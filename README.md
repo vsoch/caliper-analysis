@@ -62,15 +62,29 @@ version combination and another. We can create a simple list that increases in d
 
 For points 1 and 2, we have the information that we need in the results files to calculate this. For point 3, we
 can use function signatures [loaded from a repository](https://caliper-python.readthedocs.io/en/latest/getting_started/user-guide.html#extraction-from-repository),
-[caliper-metrics](https://github.com/vsoch/caliper-metrics) where we've run this command to generate a function lookup for each version of tensorflow:
+[caliper-metrics](https://github.com/vsoch/caliper-metrics) where (before running our analysis script here) we have run this command to generate a function lookup for each version of tensorflow:
 
 ```bash
 $ caliper extract --metric functiondb pypi:tensorflow
 ```
 
-This is all done in the file [2.assess_change.py](2.assess_change.py), and saved to
+Since the file is too big for version control, we can then run our script to assess changes with
+a path to it.
+
+```bash
+python 2.assess_change.py --funcdb ../caliper-metrics/pypi/tensorflow/functiondb/functiondb-results.zip
+```
+
+This will save a json structure of the three kinds of changes above to the
 the [.caliper/sims](.caliper/sims) folder. We will want to plot these scores next,
-and compare the matrices.
+and compare the matrices. We can then next plot the similarities.
+
+```bash
+$ python 3.plot_sims.py --filename .caliper/sims/pypi-tensorflow-sims.json
+```
+
+And this will generate similarity matrix plots in the [.caliper/plots](.caliper/plots)
+folder.
 
 
 ### 3. Parse Data
