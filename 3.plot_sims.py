@@ -23,6 +23,18 @@ def get_parser():
         help="path to the file with similarity scores to plot.",
     )
     parser.add_argument(
+        "--name",
+        dest="name",
+        help="name to distinguish output file.",
+    )
+    parser.add_argument(
+        "--dim",
+        dest="dim",
+        type=int,
+        help="dimension for svg figure (defaults to 20)",
+        default=20,
+    )
+    parser.add_argument(
         "--outdir", dest="outdir", help="path to output directory.", default=".caliper"
     )
     return parser
@@ -49,7 +61,7 @@ def main():
     labels = set()
     for key in sims:
         label1, label2 = key.split(
-            "-"
+            ".."
         )  # important, other libraries should use .. in case - is part of the version
         if re.search("(rc|a|b)", label1) or re.search("(rc|a|b)", label2):
             continue
@@ -59,12 +71,11 @@ def main():
     # Versions need to be sorted by version, not string
     # For now we will remove the release candidtes
 
-    #lookup = {x.split('rc')[0]:x for x in labels}
-    #versions = [x.split('rc')[0] for x in labels]
     labels = list(labels)
-    labels.sort(key=StrictVersion)
-    # labels = [lookup[x] for x in versions]
-    # labels = list(labels).sort(key=StrictVersion)
+    try:
+        labels.sort(key=StrictVersion)
+    except:
+        labels.sort()
 
     # Next create a data frame for each
     dfs = {
@@ -72,7 +83,7 @@ def main():
         for x in sims[list(sims.keys())[0]].keys()
     }
     for pair, values in sims.items():
-        label1, label2 = pair.split("-")
+        label1, label2 = pair.split("..")
         if re.search("(rc|a|b)", label1) or re.search("(rc|a|b)", label2):
             continue
         for key, value in values.items():
@@ -86,7 +97,7 @@ def main():
 
     # Finally, prepare plots!
     for name, df in dfs.items():
-        fig, ax = plt.subplots(figsize=(20, 20))
+        fig, ax = plt.subplots(figsize=(args.dim, args.dim))
         cax = ax.matshow(df.to_numpy(dtype=float), interpolation="nearest")
         ax.grid(True)
         plt.title("Tensorflow Version Similarity: %s" % name)
@@ -113,9 +124,12 @@ def main():
         )
         # plt.show()
         for extension in ["png", "svg"]:
-            outfile = os.path.join(outdir, "pypi-tensorflow-%s-plot.%s" % (name, extension))
+            outfile = os.path.join(
+                outdir, "pypi-tensorflow-%s-%s-plot.%s" % (name, args.name, extension)
+            )
             print("Saving %s" % outfile)
             plt.savefig(outfile, dpi=300)
+
 
 ## TODO: subtract matrices to see difference
 

@@ -32,7 +32,6 @@ def get_parser():
         "--funcdb",
         dest="funcdb",
         help="path to extracted function database (zip or json)",
-        default=".caliper",
     )
     return parser
 
@@ -89,18 +88,14 @@ def main():
         sys.exit("The data directory is missing from the caliper root folder.")
 
     # Create output directory
-    outdir = os.path.join(dirname, "changes")
+    outdir = os.path.join(dirname, "sims")
     if not os.path.exists(outdir):
         os.mkdir(outdir)
 
     ## Step 1: extract requirements to assses change
     extract_requirements(datadir, outdir)
 
-    outdir = os.path.join(dirname, "sims")
-    if not os.path.exists(outdir):
-        os.mkdir(outdir)
-
-    # Step 3: load in the function signatures to assess version changes
+    ## Step 2: load in the function signatures to assess version changes
     extract_function_changes(outdir, args.funcdb)
 
 
@@ -147,11 +142,13 @@ def extract_function_changes(outdir, funcdb):
     # We don't need a manager since we aren't extracting from a repository
     extractor = MetricsExtractor("pypi:tensorflow")
 
-    # Read in and load the function database metric
-    filename = os.path.abspath(funcdb)
-    if not os.path.exists(funcdb):
-        sys.exit("Function database file %s does not exist." % funcdb)
-    db = extractor.load_metric("functiondb", filename=filename)
+    if funcdb:
+        filename = os.path.abspath(funcdb)
+        if not os.path.exists(funcdb):
+            sys.exit("Function database file %s does not exist." % funcdb)
+        db = extractor.load_metric("functiondb", filename=filename)
+    else:
+        db = extractor.load_metric("functiondb")
 
     # Level 1 similarity: overall modules
     # Level 2 similarity: functions
@@ -159,12 +156,12 @@ def extract_function_changes(outdir, funcdb):
     sims = {}
 
     # First just compare functions that exist
-    for version1, db1 in db["by-file"].items():
-        for version2, db2 in db["by-file"].items():
+    for version1, db1 in db.items():
+        for version2, db2 in db.items():
 
             # Dont' calculate it twice
             scores = {}
-            key = "-".join(sorted([version1, version2]))
+            key = "..".join(sorted([version1, version2]))
 
             # Keep the user updated
             if key in sims:
@@ -208,40 +205,71 @@ def extract_function_changes(outdir, funcdb):
 
 
 def extract_requirements(datadir, outdir):
-    """Given a known list of dependencies for a package, we want to extract all
-    requirements (to see change between version) that can then be used to assess
-    overall change in a package
+    """Create a lookup for requirements including (and not including) versions
+    to generate similarity matrices. An alternative is to extract all
+    requirements (to see change between version) for a package and have this
+    say something about the parent package, but this seems more complicated.
     """
     # Keep a lookup of requirements.txt to compare across
-    rxments = set()
     requirements = {}
 
     # Read in input files, organize by python version, tensorflow version
     for filename in iter_files(datadir):
 
-        # Derive the name and versions from the filename (also in inputs:name)
-        result = read_json(filename)
-        if "requirements.txt" not in result:
-            requirements[filename] = {}
+        # Skip release candidates and a/b for now
+        if re.search("(rc|b|a)", os.path.basename(filename)):
             continue
 
-        [
-            rxments.add(re.split("(=|@)", x)[0].strip())
-            for x in result["requirements.txt"]
-        ]
+        # Only include those we have requirements for (meaning success install)
+        result = read_json(filename)
+        if "requirements.txt" in result:
+            requirements[filename] = [
+                x.strip().lower() for x in result["requirements.txt"]
+            ]
 
-    client = MetricsExtractor()
-    for library in rxments:
+    # Level 1 similarity: overall modules
+    # Level 2 similarity: modules and version string
+    sims = {}
 
-        try:
-            manager = PypiManager(library)
-            extractor = MetricsExtractor(manager)
-            # extractor.extract_metric("changedlines")
-            extractor.extract_metric("totalcounts")
-            extractor.save_all(outdir)
-            extractor.cleanup(force=True)
-        except:
-            print("Issue with %s" % library)
+    # First just compare functions that exist
+    for filename1, modules1 in requirements.items():
+        for filename2, modules2 in requirements.items():
+
+            uid1 = os.path.basename(filename1).rstrip(".json")
+            uid2 = os.path.basename(filename2).rstrip(".json")
+
+            # Dont' calculate it twice
+            scores = {}
+            key = "..".join(sorted([uid1, uid2]))
+            if key in sims:
+                continue
+
+            # Diagonal is perfectly similar
+            if uid1 == uid2:
+                scores = {"module_sim": 1, "module_version_sim": 1}
+                sims[key] = scores
+                continue
+
+            # Level 1: Module and version similarity
+            modules1 = set(modules1)
+            modules2 = set(modules2)
+            scores["module_version_sim"] = information_coefficient(
+                len(modules1), len(modules2), len(modules1.intersection(modules2))
+            )
+
+            # Level 2: Don't include versions, ignore casing
+            funcs1 = [re.split("(==|@)", x)[0].strip().lower() for x in modules1]
+            funcs2 = [re.split("(==|@)", x)[0].strip().lower() for x in modules2]
+            scores["module_sim"] = information_coefficient(
+                len(set(funcs1)),
+                len(set(funcs2)),
+                len(set(funcs1).intersection(set(funcs2))),
+            )
+            sims[key] = scores
+
+    outfile = os.path.join(outdir, "pypi-tensorflow-requirements-sims.json")
+    write_json(sims, outfile)
+    return outfile
 
 
 if __name__ == "__main__":

@@ -68,19 +68,21 @@ can use function signatures [loaded from a repository](https://caliper-python.re
 $ caliper extract --metric functiondb pypi:tensorflow
 ```
 
-Since the file is too big for version control, we can then run our script to assess changes with
-a path to it.
+And this is added to the repository to be read by Caliper. We can then run the
+script:
 
 ```bash
-python 2.assess_change.py --funcdb ../caliper-metrics/pypi/tensorflow/functiondb/functiondb-results.zip
+python 2.assess_change.py
 ```
 
-This will save a json structure of the three kinds of changes above to the
+This will save two json structures of changes, the first for the function database, and
+the second for the requirements (modules and versions) changes. Both are saved to
 the [.caliper/sims](.caliper/sims) folder. We will want to plot these scores next,
 and compare the matrices. We can then next plot the similarities.
 
 ```bash
 $ python 3.plot_sims.py --filename .caliper/sims/pypi-tensorflow-sims.json
+$ python 3.plot_sims.py --name requirements --filename .caliper/sims/pypi-tensorflow-requirements-sims.json --dim 35
 ```
 
 Note that to make the plot simpler, we don't show the release candidates (as we assume they are
@@ -90,8 +92,19 @@ of tensorflow based on the function names *and* args (the most detailed comariso
 
 ![.caliper/plots/pypi-tensorflow-func_args_sim-plot.png](.caliper/plots/pypi-tensorflow-func_args_sim-plot.png)
 
-You can [look at the svg](.caliper/plots/pypi-tensorflow-func_args_sim-plot.svg) if you want to see more detail,
-or [browse the folder](.caliper/plots/) for other plots to compare just functions (or one level up), modules.
+We can also look at similarity based on requirements, either considering versions:
+
+![.caliper/plots/pypi-tensorflow-module_version_sim-requirements-plot.png](.caliper/plots/pypi-tensorflow-module_version_sim-requirements-plot.png)
+
+Or just modules:
+
+![.caliper/plots/pypi-tensorflow-module_sim-requirements-plot.png](.caliper/plots/pypi-tensorflow-module_sim-requirements-plot.png)
+
+
+*Todo** We should also look at how different the plots are.
+
+You can [browse the plots folder](.caliper/plots/) to see more detail, and for other 
+plots to compare just functions (or one level up), modules.
 
 
 ### 3. Parse Data
