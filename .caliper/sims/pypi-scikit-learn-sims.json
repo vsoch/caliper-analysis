@@ -1,0 +1,7 @@
+{
+    "0.24.1..0.24.1": {
+        "module_sim": 1,
+        "func_args_sim": 1,
+        "func_sim": 1
+    }
+}

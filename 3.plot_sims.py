@@ -23,6 +23,12 @@ def get_parser():
         help="path to the file with similarity scores to plot.",
     )
     parser.add_argument(
+        "--package",
+        dest="package",
+        help="package on pypi to plot (should correspond to input file)",
+        default="tensorflow",
+    )
+    parser.add_argument(
         "--name",
         dest="name",
         help="name to distinguish output file.",
@@ -100,7 +106,7 @@ def main():
         fig, ax = plt.subplots(figsize=(args.dim, args.dim))
         cax = ax.matshow(df.to_numpy(dtype=float), interpolation="nearest")
         ax.grid(True)
-        plt.title("Tensorflow Version Similarity: %s" % name)
+        plt.title("%s Version Similarity: %s" % (args.package.upper(), name))
         plt.xticks(range(len(labels)), labels, rotation=90)
         plt.yticks(range(len(labels)), labels)
         fig.colorbar(
@@ -124,9 +130,16 @@ def main():
         )
         # plt.show()
         for extension in ["png", "svg"]:
-            outfile = os.path.join(
-                outdir, "pypi-tensorflow-%s-%s-plot.%s" % (name, args.name, extension)
-            )
+            if args.name:
+                outfile = os.path.join(
+                    outdir,
+                    "pypi-%s-%s-%s-plot.%s"
+                    % (args.package, name, args.name, extension),
+                )
+            else:
+                outfile = os.path.join(
+                    outdir, "pypi-%s-%s-plot.%s" % (args.package, name, extension)
+                )
             print("Saving %s" % outfile)
             plt.savefig(outfile, dpi=300)
 

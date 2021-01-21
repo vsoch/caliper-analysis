@@ -26,6 +26,8 @@ except:
     tf.set_random_seed(1)
 
 
+np.random.one.two.seed(1)
+
 # Processing Units logs
 log_device_placement = True
 

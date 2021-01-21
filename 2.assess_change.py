@@ -15,10 +15,6 @@ import re
 import csv
 
 
-# regular expression to identify raw result files
-result_regex = "pypi-tensorflow-(?P<tfversion>.+)-python-cp(?P<pversion>[0-9]+)[.]json"
-
-
 def get_parser():
     parser = argparse.ArgumentParser(description="Caliper Analysis Runner")
     parser.add_argument(
@@ -32,6 +28,12 @@ def get_parser():
         "--funcdb",
         dest="funcdb",
         help="path to extracted function database (zip or json)",
+    )
+    parser.add_argument(
+        "--package",
+        dest="package",
+        help="package to extract changes for (defaults to tensorflow)",
+        default="tensorflow",
     )
     return parser
 
@@ -47,28 +49,19 @@ def write_rows(rows, filename, sep="\t"):
     return filename
 
 
-def iter_files(dirname):
+def iter_files(dirname, package):
     """A helper function to iterate over result files (and skip others)"""
+
+    # regular expression to identify raw result files
+    result_regex = (
+        "pypi-%s-(?P<tfversion>.+)-python-cp(?P<pversion>[0-9]+)[.]json" % package
+    )
+
     for filename in glob("%s/*" % dirname):
         # Skip over non result files
         if not re.search(result_regex, filename):
             continue
         yield filename
-
-
-class DependencyVersion:
-    """Small helper class to easily derive versions"""
-
-    def __init__(self, filename):
-        self.match = re.search(result_regex, filename)
-
-    @property
-    def tfversion(self):
-        return self.match["tfversion"]
-
-    @property
-    def pyversion(self):
-        return self.match["pversion"]
 
 
 def main():
@@ -93,10 +86,10 @@ def main():
         os.mkdir(outdir)
 
     ## Step 1: extract requirements to assses change
-    extract_requirements(datadir, outdir)
+    extract_requirements(datadir, outdir, args.package)
 
     ## Step 2: load in the function signatures to assess version changes
-    extract_function_changes(outdir, args.funcdb)
+    extract_function_changes(outdir, args.funcdb, args.package)
 
 
 def information_coefficient(total1, total2, intersect):
@@ -134,13 +127,13 @@ def get_functions(lookup, include_args=False):
     return funcs
 
 
-def extract_function_changes(outdir, funcdb):
+def extract_function_changes(outdir, funcdb, package):
     """Given a functiondb file (a metric called functiondb served by caliper,
     with an extracted result for tensorflow) iterate over all combinations
     and calculate the change score.
     """
     # We don't need a manager since we aren't extracting from a repository
-    extractor = MetricsExtractor("pypi:tensorflow")
+    extractor = MetricsExtractor("pypi:%s" % package)
 
     if funcdb:
         filename = os.path.abspath(funcdb)
@@ -204,7 +197,7 @@ def extract_function_changes(outdir, funcdb):
     return outfile
 
 
-def extract_requirements(datadir, outdir):
+def extract_requirements(datadir, outdir, package):
     """Create a lookup for requirements including (and not including) versions
     to generate similarity matrices. An alternative is to extract all
     requirements (to see change between version) for a package and have this
@@ -214,7 +207,7 @@ def extract_requirements(datadir, outdir):
     requirements = {}
 
     # Read in input files, organize by python version, tensorflow version
-    for filename in iter_files(datadir):
+    for filename in iter_files(datadir, package):
 
         # Skip release candidates and a/b for now
         if re.search("(rc|b|a)", os.path.basename(filename)):
@@ -267,7 +260,7 @@ def extract_requirements(datadir, outdir):
             )
             sims[key] = scores
 
-    outfile = os.path.join(outdir, "pypi-tensorflow-requirements-sims.json")
+    outfile = os.path.join(outdir, "pypi-%s-requirements-sims.json" % package)
     write_json(sims, outfile)
     return outfile
 

@@ -75,6 +75,12 @@ script:
 python 2.assess_change.py
 ```
 
+We can also run this for another library like numpy, which we also have a functiondb extraction for:
+
+```bash
+python 2.assess_change.py --package numpy
+```
+
 This will save two json structures of changes, the first for the function database, and
 the second for the requirements (modules and versions) changes. Both are saved to
 the [.caliper/sims](.caliper/sims) folder. We will want to plot these scores next,
@@ -83,6 +89,9 @@ and compare the matrices. We can then next plot the similarities.
 ```bash
 $ python 3.plot_sims.py --filename .caliper/sims/pypi-tensorflow-sims.json
 $ python 3.plot_sims.py --name requirements --filename .caliper/sims/pypi-tensorflow-requirements-sims.json --dim 35
+```
+```bash
+$ python 3.plot_sims.py --package numpy --filename .caliper/sims/pypi-numpy-sims.json
 ```
 
 Note that to make the plot simpler, we don't show the release candidates (as we assume they are
@@ -101,15 +110,45 @@ Or just modules:
 ![.caliper/plots/pypi-tensorflow-module_sim-requirements-plot.png](.caliper/plots/pypi-tensorflow-module_sim-requirements-plot.png)
 
 
-*Todo** We should also look at how different the plots are.
+#### Comparing more packages
+
+I realized that just looking at these plots is very interesting, so I decided to extract many more functions than just tensorflow and
+numpy.
+
+```bash
+python 2.assess_change.py --package Keras
+python 2.assess_change.py --package pandas
+python 2.assess_change.py --package scikit-image
+python 2.assess_change.py --package scikit-learn
+python 2.assess_change.py --package scipy
+python 2.assess_change.py --package sif
+python 2.assess_change.py --package sregistry
+```
+
+and then I generated the corresponding plots to assess changes:
+
+```bash
+for name in Keras pandas scikit-image scikit-learn scipy sif sregistry; do
+    python 3.plot_sims.py --filename .caliper/sims/pypi-$name-sims.json --package "$name"
+done
+```
 
 You can [browse the plots folder](.caliper/plots/) to see more detail, and for other 
 plots to compare just functions (or one level up), modules.
 
-
 ### 3. Parse Data
 
-**not done yet**
+At this point I would want to use some metric to be able to predict when a script / module version / python version
+would not work. I started by looking at the overlap of modules and functions in a file compared
+to the lookup for each version, but this is imperfect because not all imports that are possible
+can be reflected in the file structure (e.g., take a look at `numpy.random.seed` and you'll see
+there is a numpy.random folder, but seed is defined in the `__init__.py` based on another import.
+I realized this quickly when I started [4.predict_tests.py](4.predict_tests.py) and stopped at this
+point.
 
-To develop functions to create combined files for visualization, there is an example
-[parse_analysis.py](parse_analysis.py) script example provided.
+### 4. Plot Ground Truth
+
+But what we can do (that might be useful) is to take our results from the analysis in step
+1, and create a grid that can show what versions of tensorflow and python work for each script.
+To do this, we first generate data with [5.generate_analysis_data.py](5.generate_analysis_data.py)
+and then plot in the [docs/ground-truth](docs/ground-truth) folder (under development).
