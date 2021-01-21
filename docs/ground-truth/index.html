@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<link ref="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <script src="https://d3js.org/d3.v2.min.js?2.8.1"></script>
+<script src="https://vsoch.github.io/image-comparison-thresholding/static/js/tipsy.js"></script>
 
 <style>
 #controls {
@@ -9,10 +12,39 @@
   top: 10px;
   left: 30px;
 }
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+  max-width: 800px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+}
 </style>
 <body>
 <div id="controls">
- <select id="version_selector" onchange="update_graph(this)">
+ <select class="custom-select" id="version_selector" onchange="update_graph(this)">
  </select>
 </div>
 <script>
@@ -25,6 +57,23 @@ var margin = {top: 400, right: 100, bottom: 100, left: 200},
 function generate_plot(version) {
     version = version || "38"
 
+    // Tooltips
+    var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10,10])
+        .html(function(d) {
+        if (d.retval == -1) {
+            return "<div class='row'><strong style='color:red'>Error: </strong>This container did not successfully build, so there is no output or return code.</div>";
+        }
+        if ((d.x_name == "build") && (d.retval == 0)) {
+           return "<div class='row'><strong style='color:green'>Output: </strong>This is the container build step, and not a test in the container. The container built successfully. </div><div class='col-md-6'><br><strong style='color:yellow'>Return Code:</strong><br>" + d.retval + "</div>";
+        }
+        if ((d.x_name == "build") && (d.retval == 1)) {
+           return "<div class='row'><strong style='color:red'>Error: </strong>This is the container build step, and not a test in the container. The container did not build successfully.</div><div class='col-md-6'><br><strong style='color:yellow'>Return Code:</strong><br>" + d.retval + "</div>";
+        }
+        return "<div class='row'><strong style='color:red'>Error: </strong><code>"+ d.error.join("<br>") +"</code></div><br><div class='col-md-6'><strong style='color:green'>Output:</strong><br><code>" + d.output.join('<br>') + "</code></div><div class='col-md-6'><br><strong style='color:yellow'>Return Code:</strong><br>" + d.retval + "</div>";
+       })
+
     var element = document.getElementById("plotarea");
     if (element) {
         element.parentNode.removeChild(element);    
@@ -36,6 +85,9 @@ function generate_plot(version) {
         .attr("height", height + margin.top + margin.bottom)
       .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    // Call tooltips function
+    svg.call(tip);
 
     svg.append("rect")
         .attr("class", "background")
@@ -54,10 +106,7 @@ function generate_plot(version) {
         columnLabels.add(window.data[version][i]["x_name"])
     }
 
-    console.log(columnLabels)    
     columnLabels = Array.from(columnLabels);
-    console.log(columnLabels)    
-    console.log(columnLabels.length)
 
     for (var i = 0; i < window.data[version].length; i++) {
         if (row_version != window.data[version][i]['y_tensorflow']) {
@@ -126,6 +175,7 @@ function generate_plot(version) {
 
     row.selectAll(".cell")
         .data(function(d, i) { return matrix[i]; })
+
         // 1 indicates error, 0 indicates success, -1 is didn't run
         .style("fill", function(d, i) {
            if (d['retval'] == -1) {
@@ -134,7 +184,9 @@ function generate_plot(version) {
                return "green";
            }
            return "red"
-        });
+        })
+        .on('mouseout.tip', tip.hide)
+        .on('mouseover.tip', tip.show);
 }
 
 // Change version on select change
@@ -156,6 +208,7 @@ d3.json("test-results-by-python.json", function(data) {
         selector.appendChild(option);
     }
 
+    // Get json name from the browser url
     generate_plot(versions[0])
 
 });
